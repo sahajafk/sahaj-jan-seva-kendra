@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Sahaj Jan Seva Kendra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF7EF; --bg-alt:#FFFFFF; --surface:rgba(255,255,255,0.65);
+  --text:#15241E; --text-muted:#4B5D57;
+  --primary:#0B4D3C; --primary-dark:#093B2E; --primary-light:#15794F;
+  --accent:#E1992F; --border:rgba(11,77,60,0.14);
+  --tricolor:linear-gradient(90deg,#E1992F 0%,#F4EFE2 50%,#0B4D3C 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(225,153,47,0.25), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(21,121,79,0.25), transparent 45%),
+    linear-gradient(135deg,var(--primary-dark),var(--primary));
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+}
+.card{
+  background:var(--bg-alt);
+  width:100%;max-width:420px;
+  border-radius:20px;
+  padding:36px 30px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  border-top:6px solid var(--accent);
+}
+.brand{text-align:center;margin-bottom:22px;}
+.brand h1{font-family:'Playfair Display',serif;font-size:22px;color:var(--primary);}
+.brand p{font-size:12px;color:var(--text-muted);margin-top:4px;letter-spacing:1px;text-transform:uppercase;}
+.tricolor-rule{height:4px;width:60px;background:var(--tricolor);border-radius:4px;margin:12px auto 0;}
+
+.tabs{display:flex;background:#F1EEE4;border-radius:12px;padding:5px;margin-bottom:22px;}
+.tab-btn{
+  flex:1;text-align:center;padding:10px;border:none;background:none;
+  border-radius:9px;font-weight:600;font-size:14px;cursor:pointer;color:var(--text-muted);
+  transition:.2s;
+}
+.tab-btn.active{background:var(--primary);color:#fff;}
+
+.form-panel{display:none;}
+.form-panel.active{display:block;}
+label{font-size:13px;font-weight:600;color:var(--text);display:block;margin:12px 0 4px;}
+input{
+  width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;
+  font-size:14px;background:#FBFAF6;
+}
+input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.btn{
+  width:100%;margin-top:20px;padding:13px;border:none;border-radius:10px;
+  background:var(--primary);color:#fff;font-weight:700;font-size:15px;cursor:pointer;
+  transition:.2s;
+}
+.btn:hover{background:var(--primary-light);}
+.hint{
+  margin-top:16px;font-size:12px;color:var(--text-muted);
+  background:#FBF3E1;border:1px dashed var(--accent);border-radius:8px;padding:10px;
+}
+.error{color:#c0392b;font-size:13px;margin-top:10px;display:none;}
+.back-link{display:block;text-align:center;margin-top:18px;font-size:13px;color:var(--primary);text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="brand">
+    <h1>SAHAJ JAN SEVA KENDRA</h1>
+    <p>Secure Login</p>
+    <div class="tricolor-rule"></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" id="staffTabBtn" onclick="switchTab('staff')">Staff Login</button>
+    <button class="tab-btn" id="customerTabBtn" onclick="switchTab('customer')">Customer Login</button>
+  </div>
+
+  <!-- STAFF LOGIN -->
+  <div class="form-panel active" id="staffPanel">
+    <label for="staffUser">Username</label>
+    <input type="text" id="staffUser" placeholder="Enter username">
+    <label for="staffPass">Password</label>
+    <input type="password" id="staffPass" placeholder="Enter password">
+    <button class="btn" onclick="staffLogin()">Login as Staff</button>
+    <p class="error" id="staffError">Galat username ya password.</p>
+    <div class="hint">Demo login — Username: <b>admin</b> &nbsp;Password: <b>admin123</b></div>
+  </div>
+
+  <!-- CUSTOMER LOGIN -->
+  <div class="form-panel" id="customerPanel">
+    <label for="custMobile">Mobile Number</label>
+    <input type="tel" id="custMobile" placeholder="Enter your 10-digit mobile number" maxlength="10">
+    <button class="btn" onclick="customerLogin()">View My Requests</button>
+    <p class="error" id="custError">Ye mobile number kisi request se linked nahi hai.</p>
+    <div class="hint">Apna wahi mobile number daalein jo aapne request form mein diya tha.</div>
+  </div>
+
+  <a class="back-link" href="index.html">← Back to Website</a>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const initialTab = urlParams.get('tab');
+if(initialTab === 'customer'){ window.addEventListener('DOMContentLoaded', () => switchTab('customer')); }
+
+function switchTab(tab){
+  document.getElementById('staffPanel').classList.toggle('active', tab==='staff');
+  document.getElementById('customerPanel').classList.toggle('active', tab==='customer');
+  document.getElementById('staffTabBtn').classList.toggle('active', tab==='staff');
+  document.getElementById('customerTabBtn').classList.toggle('active', tab==='customer');
+}
+
+function staffLogin(){
+  const user = document.getElementById('staffUser').value.trim();
+  const pass = document.getElementById('staffPass').value.trim();
+  const err = document.getElementById('staffError');
+  if(user === 'admin' && pass === 'admin123'){
+    sessionStorage.setItem('sjsk_role','staff');
+    window.location.href = 'dashboard.html';
+  } else {
+    err.style.display = 'block';
+  }
+}
+
+function customerLogin(){
+  const mobile = document.getElementById('custMobile').value.trim();
+  const err = document.getElementById('custError');
+  if(mobile.length === 10 && /^[0-9]+$/.test(mobile)){
+    sessionStorage.setItem('sjsk_role','customer');
+    sessionStorage.setItem('sjsk_mobile', mobile);
+    window.location.href = 'dashboard.html';
+  } else {
+    err.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
