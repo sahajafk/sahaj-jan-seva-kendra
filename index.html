@@ -159,6 +159,34 @@ nav a:hover, nav a:focus-visible{color:var(--accent);}
 }
 .theme-toggle:hover{border-color:var(--accent);}
 
+.portal-buttons{
+  display:flex;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+.portal-btn{
+  text-decoration:none;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.5px;
+  padding:10px 16px;
+  text-transform:uppercase;
+  transition:filter .2s;
+}
+.portal-btn:hover{filter:brightness(1.08);}
+.portal-staff{
+  background:#8B1E23;
+  color:#FFD447;
+  border:2px solid #FFD447;
+  border-right:none;
+}
+.portal-customer{
+  background:#0B7A3F;
+  color:#FFFFFF;
+  border:2px solid #0B7A3F;
+}
+
 /* ===== HERO ===== */
 header{
   position:relative;
@@ -525,6 +553,10 @@ footer .tricolor-rule{margin:0 auto 14px;}
 <a href="#gallery">Gallery</a>
 <a href="#form">Request</a>
 <a href="#contact">Contact</a>
+<div class="portal-buttons">
+<a class="portal-btn portal-staff" href="login.html?tab=staff">Staff Login</a>
+<a class="portal-btn portal-customer" href="login.html?tab=customer">Customer Login</a>
+</div>
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
 </nav>
 
