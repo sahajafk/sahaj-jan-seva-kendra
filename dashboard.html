@@ -108,6 +108,9 @@ select.status-select{border:1px solid var(--border);border-radius:8px;padding:4p
 </main>
 
 <script>
+// PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwvVtzAYDjmFJW8Ol7yT7VJ6EENbjiUT_oUeh07DBH30xJZ-Awpr-7Qxn9X1RWlZIM1/exec";
+
 const role = sessionStorage.getItem('sjsk_role');
 if(!role){ window.location.href = 'login.html'; }
 
@@ -125,80 +128,69 @@ if(role === 'staff'){
   tableTitle.textContent = 'My Requests';
 }
 
-function seedIfEmpty(){
-  if(!localStorage.getItem('sjsk_requests')){
-    const demo = [
-      {name:'Gajraj Chaudhary', mobile:'9876543210', service:'PAN Card Correction', date:'2026-06-28', status:'done'},
-      {name:'Priya Sharma', mobile:'9123456780', service:'Scholarship Form', date:'2026-06-30', status:'process'},
-      {name:'Suresh Chaudhary', mobile:'9988776655', service:'AEPS Banking', date:'2026-07-01', status:'pending'}
-    ];
-    localStorage.setItem('sjsk_requests', JSON.stringify(demo));
-  }
-}
-seedIfEmpty();
-
-function getRequests(){
-  return JSON.parse(localStorage.getItem('sjsk_requests') || '[]');
-}
-function saveRequests(list){
-  localStorage.setItem('sjsk_requests', JSON.stringify(list));
-}
-
 function statusLabel(s){
   if(s==='done') return '<span class="status status-done">Completed</span>';
   if(s==='process') return '<span class="status status-process">In Process</span>';
   return '<span class="status status-pending">Pending</span>';
 }
 
-function renderTable(){
-  let list = getRequests();
-  if(role === 'customer'){
-    const mobile = sessionStorage.getItem('sjsk_mobile');
-    list = list.filter(r => r.mobile === mobile);
-  }
+async function fetchRequests(){
   const body = document.getElementById('reqBody');
   const emptyMsg = document.getElementById('emptyMsg');
-  body.innerHTML = '';
-  if(list.length === 0){
-    emptyMsg.style.display = 'block';
+
+  if(SCRIPT_URL.includes('PASTE_YOUR')){
+    body.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:#c0392b;">Setup abhi baaki hai — dashboard.html mein SCRIPT_URL set karein.</td></tr>';
     return;
   }
-  emptyMsg.style.display = 'none';
-  list.forEach((r, idx) => {
-    const tr = document.createElement('tr');
-    let statusCell;
-    if(role === 'staff'){
-      statusCell = `<select class="status-select" onchange="updateStatus('${r.mobile}','${r.date}','${r.service}',this.value)">
-        <option value="pending" ${r.status==='pending'?'selected':''}>Pending</option>
-        <option value="process" ${r.status==='process'?'selected':''}>In Process</option>
-        <option value="done" ${r.status==='done'?'selected':''}>Completed</option>
-      </select>`;
-    } else {
-      statusCell = statusLabel(r.status);
+
+  body.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted);">Loading...</td></tr>';
+  try{
+    const res = await fetch(SCRIPT_URL);
+    let list = await res.json();
+    if(role === 'customer'){
+      const mobile = sessionStorage.getItem('sjsk_mobile');
+      list = list.filter(r => String(r.mobile) === mobile);
     }
-    tr.innerHTML = `<td>${r.name}</td><td>${r.mobile}</td><td>${r.service}</td><td>${r.date}</td><td>${statusCell}</td>`;
-    body.appendChild(tr);
-  });
+    body.innerHTML = '';
+    if(list.length === 0){ emptyMsg.style.display='block'; return; }
+    emptyMsg.style.display='none';
+    list.forEach(r => {
+      const tr = document.createElement('tr');
+      let statusCell;
+      if(role === 'staff'){
+        statusCell = `<select class="status-select" onchange="updateStatus('${r.mobile}','${r.date}','${r.service}',this.value)">
+          <option value="pending" ${r.status==='pending'?'selected':''}>Pending</option>
+          <option value="process" ${r.status==='process'?'selected':''}>In Process</option>
+          <option value="done" ${r.status==='done'?'selected':''}>Completed</option>
+        </select>`;
+      } else {
+        statusCell = statusLabel(r.status);
+      }
+      tr.innerHTML = `<td>${r.name}</td><td>${r.mobile}</td><td>${r.service}</td><td>${r.date}</td><td>${statusCell}</td>`;
+      body.appendChild(tr);
+    });
+  } catch(err){
+    body.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:#c0392b;">Data load nahi ho paya. Internet check karein ya SCRIPT_URL sahi hai verify karein.</td></tr>';
+  }
 }
 
-function updateStatus(mobile, date, service, newStatus){
-  const list = getRequests();
-  const item = list.find(r => r.mobile === mobile && r.date === date && r.service === service);
-  if(item){ item.status = newStatus; saveRequests(list); }
+async function updateStatus(mobile, date, service, newStatus){
+  const url = `${SCRIPT_URL}?action=update&mobile=${encodeURIComponent(mobile)}&date=${encodeURIComponent(date)}&service=${encodeURIComponent(service)}&status=${encodeURIComponent(newStatus)}`;
+  await fetch(url);
+  fetchRequests();
 }
 
-function addRequest(){
+async function addRequest(){
   const name = document.getElementById('newName').value.trim();
   const mobile = document.getElementById('newMobile').value.trim();
   const service = document.getElementById('newService').value;
   if(!name || !mobile){ alert('Naam aur mobile number dono zaroori hai.'); return; }
-  const list = getRequests();
   const today = new Date().toISOString().slice(0,10);
-  list.unshift({name, mobile, service, date: today, status: 'pending'});
-  saveRequests(list);
+  const url = `${SCRIPT_URL}?action=add&name=${encodeURIComponent(name)}&mobile=${encodeURIComponent(mobile)}&service=${encodeURIComponent(service)}&date=${encodeURIComponent(today)}`;
+  await fetch(url);
   document.getElementById('newName').value = '';
   document.getElementById('newMobile').value = '';
-  renderTable();
+  fetchRequests();
 }
 
 function logout(){
@@ -207,7 +199,7 @@ function logout(){
   window.location.href = 'login.html';
 }
 
-renderTable();
+fetchRequests();
 </script>
 
 </body>
