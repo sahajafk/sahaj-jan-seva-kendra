@@ -46,21 +46,21 @@
 
 <style>
 :root{
-  --bg:#FAF7EF;
+  --bg:#F5F8FA;
   --bg-alt:#FFFFFF;
   --surface:rgba(255,255,255,0.65);
   --surface-solid:#FFFFFF;
-  --text:#15241E;
-  --text-muted:#4B5D57;
+  --text:#152331;
+  --text-muted:#4C5F6F;
   --primary:#0B4D3C;
   --primary-dark:#093B2E;
   --primary-light:#15794F;
-  --accent:#E1992F;
+  --accent:#1565C0;
   --accent-2:#0D7377;
-  --border:rgba(11,77,60,0.14);
-  --shadow:rgba(11,77,60,0.16);
+  --border:rgba(21,101,192,0.16);
+  --shadow:rgba(11,77,60,0.14);
   --radius:16px;
-  --tricolor:linear-gradient(90deg,#E1992F 0%,#F4EFE2 50%,#0B4D3C 100%);
+  --tricolor:linear-gradient(90deg,#1565C0 0%,#FFFFFF 50%,#0B4D3C 100%);
 }
 
 [data-theme="dark"]{
@@ -73,7 +73,7 @@
   --primary:#2FA579;
   --primary-dark:#1F7D5C;
   --primary-light:#3FC493;
-  --accent:#F0B85C;
+  --accent:#4C9BE8;
   --accent-2:#3FBDB9;
   --border:rgba(255,255,255,0.12);
   --shadow:rgba(0,0,0,0.45);
@@ -148,6 +148,14 @@ nav a{
   transition:color .2s;
 }
 nav a:hover, nav a:focus-visible{color:var(--accent);}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+  justify-content:center;
+  flex:1;
+}
 .theme-toggle{
   background:var(--bg);
   border:1px solid var(--border);
@@ -191,7 +199,7 @@ nav a:hover, nav a:focus-visible{color:var(--accent);}
 header{
   position:relative;
   background:
-    radial-gradient(circle at 15% 20%, rgba(225,153,47,0.25), transparent 40%),
+    radial-gradient(circle at 15% 20%, rgba(21,101,192,0.3), transparent 40%),
     radial-gradient(circle at 85% 80%, rgba(63,196,147,0.25), transparent 45%),
     linear-gradient(135deg,var(--primary-dark),var(--primary));
   color:#fff;
@@ -210,7 +218,7 @@ header::after{
   font-size:12px;
   letter-spacing:3px;
   text-transform:uppercase;
-  color:#F4D9A6;
+  color:#9FD3FF;
   font-weight:700;
   margin-bottom:14px;
 }
@@ -335,7 +343,7 @@ h2{color:var(--primary);font-size:clamp(1.6rem,3vw,2.2rem);}
 
 /* ===== SCHOLARSHIP BANNER ===== */
 .scholarship-banner{
-  background:linear-gradient(120deg,var(--accent),#c97a1c);
+  background:linear-gradient(120deg,var(--accent),#0D3B66);
   color:#fff;
   border-radius:20px;
   padding:34px clamp(20px,4vw,50px);
@@ -344,7 +352,7 @@ h2{color:var(--primary);font-size:clamp(1.6rem,3vw,2.2rem);}
   justify-content:space-between;
   gap:20px;
   flex-wrap:wrap;
-  box-shadow:0 12px 30px rgba(225,153,47,.35);
+  box-shadow:0 12px 30px rgba(21,101,192,.3);
 }
 .scholarship-banner h3{font-size:22px;margin-bottom:6px;}
 .scholarship-banner p{font-size:14px;opacity:.95;}
@@ -519,6 +527,61 @@ footer .tricolor-rule{margin:0 auto 14px;}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
 }
+
+/* ===== ABOUT / OWNER ===== */
+.about-flex{display:grid;grid-template-columns:180px 1fr;gap:30px;align-items:center;margin-bottom:10px;}
+.owner-photo-box{
+  width:180px;height:180px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:44px;font-weight:800;
+  border:4px solid var(--bg-alt);box-shadow:0 8px 24px var(--shadow);
+}
+.about-name{font-family:'Playfair Display',serif;font-size:19px;color:var(--primary);margin-top:6px;}
+[data-theme="dark"] .about-name{color:var(--primary-light);}
+.about-role{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;}
+
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px;}
+.why-item{
+  display:flex;gap:12px;align-items:flex-start;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;
+}
+.why-item .ico{font-size:22px;flex-shrink:0;}
+.why-item h4{font-size:14px;margin-bottom:4px;color:var(--text);font-family:'Poppins';font-weight:700;}
+.why-item p{font-size:12px;color:var(--text-muted);line-height:1.5;}
+
+.section-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;}
+.btn-sm{padding:11px 22px;font-size:13px;border-radius:24px;}
+.btn-green{background:var(--primary);color:#fff;}
+.btn-blue{background:var(--accent);color:#fff;}
+.btn-green:hover, .btn-blue:hover{filter:brightness(1.1);}
+
+.service-desc{font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.4;}
+.service-card{flex-direction:column;align-items:flex-start;}
+.service-card .ico{margin-bottom:4px;}
+.service-card .svc-title{font-weight:700;font-size:14px;}
+.price-tag{font-size:11px;color:var(--accent);font-weight:700;margin-top:6px;}
+
+.reviews-placeholder{
+  text-align:center;padding:30px 20px;
+  background:var(--surface);border:1px dashed var(--border);border-radius:16px;
+}
+.reviews-placeholder p{color:var(--text-muted);font-size:14px;margin-bottom:16px;}
+
+/* Mobile hamburger nav */
+.nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text);}
+@media (max-width:768px){
+  .about-flex{grid-template-columns:1fr;text-align:center;justify-items:center;}
+  nav{justify-content:space-between;}
+  .nav-links{
+    display:none;width:100%;flex-direction:column;gap:14px;
+    padding-top:14px;text-align:center;
+  }
+  .nav-links.open{display:flex;}
+  .nav-toggle{display:block;}
+  .portal-buttons{width:100%;justify-content:center;}
+  .theme-toggle{width:100%;}
+}
 </style>
 </head>
 <body>
@@ -547,6 +610,8 @@ footer .tricolor-rule{margin:0 auto 14px;}
 </div>
 
 <nav>
+<button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+<div class="nav-links" id="navLinks">
 <a href="#about">About</a>
 <a href="#services">Services</a>
 <a href="#testimonials">Reviews</a>
@@ -558,6 +623,7 @@ footer .tricolor-rule{margin:0 auto 14px;}
 <a class="portal-btn portal-customer" href="login.html?tab=customer">Customer Login</a>
 </div>
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
+</div>
 </nav>
 
 <header>
@@ -594,14 +660,35 @@ footer .tricolor-rule{margin:0 auto 14px;}
 <span class="eyebrow">Who We Are</span>
 <h2>About Us</h2>
 <div class="tricolor-rule"></div>
+
+<div class="about-flex">
+<div style="text-align:center;">
+<div class="owner-photo-box">GC</div>
+<div class="about-name">Gaurav Chaudhary</div>
+<div class="about-role">Founder &amp; VLE</div>
+</div>
 <p style="color:var(--text-muted);line-height:1.8;">
-Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helping citizens of Khair with Aadhaar, PAN Card, Income Certificate, Caste Certificate, Domicile Certificate, AEPS Banking, Account Opening, Scholarship forms and many other online services.
+Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helping citizens of Khair with Aadhaar, PAN Card, Income Certificate, Caste Certificate, Domicile Certificate, AEPS Banking, Account Opening, Scholarship forms and many other online services. Our goal is simple — bring every government service closer to you, with speed and transparency.
 </p>
+</div>
 
 <div class="stats">
 <div class="stat-card"><h3>5+</h3><p>Years Experience</p></div>
 <div class="stat-card"><h3>1000+</h3><p>Happy Customers</p></div>
 <div class="stat-card"><h3>25+</h3><p>Services Available</p></div>
+</div>
+
+<h3 style="font-size:18px;color:var(--primary);margin-top:30px;margin-bottom:6px;">Why Choose Us</h3>
+<div class="why-grid">
+<div class="why-item"><span class="ico">⚡</span><div><h4>Fast Turnaround</h4><p>Most documents processed same-day, no unnecessary delays.</p></div></div>
+<div class="why-item"><span class="ico">🤝</span><div><h4>Trusted Locally</h4><p>Years of service to Khair families, known and recommended by name.</p></div></div>
+<div class="why-item"><span class="ico">🔍</span><div><h4>Transparent Process</h4><p>Clear guidance at every step — no hidden confusion about your application.</p></div></div>
+<div class="why-item"><span class="ico">🗂️</span><div><h4>One-Stop Center</h4><p>Aadhaar to banking to certificates — all under one roof.</p></div></div>
+</div>
+
+<div class="section-cta">
+<a href="tel:8954214200" class="btn btn-sm btn-green">📞 Call Now</a>
+<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-blue">💬 WhatsApp Now</a>
 </div>
 </div>
 </section>
@@ -613,22 +700,29 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 <div class="tricolor-rule"></div>
 
 <div class="services-grid">
-<div class="service-card"><span class="ico">🪪</span>Aadhaar Card Services</div>
-<div class="service-card"><span class="ico">💳</span>New PAN Card</div>
-<div class="service-card"><span class="ico">✏️</span>PAN Card Correction</div>
-<div class="service-card"><span class="ico">📄</span>Income Certificate</div>
-<div class="service-card"><span class="ico">📜</span>Caste Certificate</div>
-<div class="service-card"><span class="ico">🏠</span>Residence Certificate</div>
-<div class="service-card"><span class="ico">👷</span>Labour Card</div>
-<div class="service-card"><span class="ico">👴</span>Old Age Pension</div>
-<div class="service-card"><span class="ico">🧕</span>Widow Pension</div>
-<div class="service-card"><span class="ico">♿</span>Disability Pension</div>
-<div class="service-card"><span class="ico">🚗</span>Driving Licence</div>
-<div class="service-card"><span class="ico">🚆</span>Railway Ticket Booking</div>
-<div class="service-card"><span class="ico">🏧</span>AEPS Banking</div>
-<div class="service-card"><span class="ico">🏦</span>Account Opening</div>
-<div class="service-card"><span class="ico">🖨️</span>Photo Copy &amp; Lamination</div>
-<div class="service-card"><span class="ico">🎓</span>Scholarship Form (NSP)</div>
+<div class="service-card"><span class="ico">🪪</span><span class="svc-title">Aadhaar Card Services</span><span class="service-desc">New enrollment, updates &amp; corrections.</span></div>
+<div class="service-card"><span class="ico">💳</span><span class="svc-title">New PAN Card</span><span class="service-desc">Fresh PAN application, guided end-to-end.</span></div>
+<div class="service-card"><span class="ico">✏️</span><span class="svc-title">PAN Card Correction</span><span class="service-desc">Name, DOB &amp; detail corrections.</span></div>
+<div class="service-card"><span class="ico">📄</span><span class="svc-title">Income Certificate</span><span class="service-desc">Official income proof for government use.</span></div>
+<div class="service-card"><span class="ico">📜</span><span class="svc-title">Caste Certificate</span><span class="service-desc">Category certificates for eligible applicants.</span></div>
+<div class="service-card"><span class="ico">🏠</span><span class="svc-title">Residence Certificate</span><span class="service-desc">Domicile proof for local residents.</span></div>
+<div class="service-card"><span class="ico">👷</span><span class="svc-title">Labour Card</span><span class="service-desc">Registration for construction/labour workers.</span></div>
+<div class="service-card"><span class="ico">👴</span><span class="svc-title">Old Age Pension</span><span class="service-desc">Application &amp; status help for senior citizens.</span></div>
+<div class="service-card"><span class="ico">🧕</span><span class="svc-title">Widow Pension</span><span class="service-desc">Support applying for widow pension scheme.</span></div>
+<div class="service-card"><span class="ico">♿</span><span class="svc-title">Disability Pension</span><span class="service-desc">Pension assistance for persons with disability.</span></div>
+<div class="service-card"><span class="ico">🚗</span><span class="svc-title">Driving Licence</span><span class="service-desc">Learner's &amp; permanent licence guidance.</span></div>
+<div class="service-card"><span class="ico">🚆</span><span class="svc-title">Railway Ticket Booking</span><span class="service-desc">Reserved &amp; general ticket booking.</span></div>
+<div class="service-card"><span class="ico">🏧</span><span class="svc-title">AEPS Banking</span><span class="service-desc">Cash withdrawal &amp; balance check via Aadhaar.</span></div>
+<div class="service-card"><span class="ico">🏦</span><span class="svc-title">Account Opening</span><span class="service-desc">Bank account opening assistance.</span></div>
+<div class="service-card"><span class="ico">🖨️</span><span class="svc-title">Photo Copy &amp; Lamination</span><span class="service-desc">Quick printing, copying &amp; lamination.</span></div>
+<div class="service-card"><span class="ico">🎓</span><span class="svc-title">Scholarship Form (NSP)</span><span class="service-desc">National Scholarship Portal form filling.</span></div>
+</div>
+
+<p style="font-size:12px;color:var(--text-muted);margin-top:16px;">*Service fees vary by document type — call or WhatsApp us for current pricing.</p>
+
+<div class="section-cta">
+<a href="tel:8954214200" class="btn btn-sm btn-green">📞 Call Now</a>
+<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-blue">💬 WhatsApp Now</a>
 </div>
 </div>
 </section>
@@ -649,27 +743,10 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 <h2>What People Say</h2>
 <div class="tricolor-rule"></div>
 
-<div class="testimonial-grid">
-<div class="testimonial-card">
-<div class="stars">★★★★★</div>
-<p class="quote">PAN card correction ka kaam bahut jaldi ho gaya, staff ne poori tarah help ki.</p>
-<div class="who">Gajraj Chaudhary</div>
-<div class="service-tag">PAN Card Correction</div>
+<div class="reviews-placeholder">
+<p>⭐ Real customer reviews coming soon. Meanwhile, check our latest reviews on Google.</p>
+<a href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener" class="btn btn-sm btn-blue">See Google Reviews</a>
 </div>
-<div class="testimonial-card">
-<div class="stars">★★★★★</div>
-<p class="quote">Scholarship form yahin se bharwaya, sahi guidance mili aur samay par ho gaya.</p>
-<div class="who">Priya Sharma</div>
-<div class="service-tag">Scholarship Form</div>
-</div>
-<div class="testimonial-card">
-<div class="stars">★★★★☆</div>
-<p class="quote">AEPS banking ka use kiya, paisa turant mil gaya bina bank jaaye.</p>
-<div class="who">Suresh Chaudhary</div>
-<div class="service-tag">AEPS Banking</div>
-</div>
-</div>
-<p style="margin-top:16px;font-size:12px;color:var(--text-muted);">*Sample reviews — please replace with your real customer feedback.</p>
 </div>
 </section>
 
@@ -692,6 +769,11 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 <img src="office3.jpeg" alt="Digital service workspace">
 <h3>Digital Service Workspace</h3>
 </div>
+</div>
+<p style="font-size:12px;color:var(--text-muted);margin-top:16px;">*More photos coming soon.</p>
+<div class="section-cta">
+<a href="tel:8954214200" class="btn btn-sm btn-green">📞 Call Now</a>
+<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-blue">💬 WhatsApp Now</a>
 </div>
 </div>
 </section>
@@ -764,6 +846,12 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 </div>
 
 <script>
+// Mobile hamburger nav
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
 // Dark mode toggle
 const root = document.documentElement;
 const themeToggle = document.getElementById('themeToggle');
