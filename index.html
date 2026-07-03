@@ -167,6 +167,13 @@ nav a:hover, nav a:focus-visible{color:var(--accent);}
 }
 .theme-toggle:hover{border-color:var(--accent);}
 
+.lang-switch{display:flex;gap:4px;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:3px;}
+.lang-btn{
+  background:none;border:none;padding:6px 10px;border-radius:16px;
+  font-size:12px;font-weight:700;cursor:pointer;color:var(--text-muted);
+}
+.lang-btn.active{background:var(--primary);color:#fff;}
+
 .portal-buttons{
   display:flex;
   border-radius:6px;
@@ -592,138 +599,143 @@ footer .tricolor-rule{margin:0 auto 14px;}
   <div class="popup-box">
     <button class="popup-close" id="popupClose" aria-label="Close">✕</button>
     <div style="font-size:40px;">🎓</div>
-    <h3>Scholarship Form 2026-27</h3>
-    <p>National Scholarship Portal (NSP) ke form ab bharwaye ja rahe hain. Students apna scholarship form aaj hi Sahaj Jan Seva Kendra Khair par aakar submit karayein.</p>
-    <a href="#form" class="btn btn-primary" style="background:var(--primary);color:#fff;" id="popupCta">Apply Now</a>
+    <h3 data-i18n="popup_title">Scholarship Form 2026-27</h3>
+    <p data-i18n="popup_text">National Scholarship Portal (NSP) ke form ab bharwaye ja rahe hain. Students apna scholarship form aaj hi Sahaj Jan Seva Kendra Khair par aakar submit karayein.</p>
+    <a href="#form" class="btn btn-primary" style="background:var(--primary);color:#fff;" id="popupCta" data-i18n="popup_cta">Apply Now</a>
   </div>
 </div>
 
 <!-- NEWS TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <span>🎓 Scholarship Form 2026-27 registration open — visit today for NSP help</span>
-    <span>📢 Naye Aadhaar update aur PAN correction ab same-day possible</span>
-    <span>💳 AEPS Banking &amp; Account Opening available at counter</span>
-    <span>📞 Emergency service ke liye call karein: 8954214200</span>
-    <span>🎓 Scholarship Form 2026-27 registration open — visit today for NSP help</span>
-    <span>📢 Naye Aadhaar update aur PAN correction ab same-day possible</span>
+    <span data-i18n="ticker1">🎓 Scholarship Form 2026-27 registration open — visit today for NSP help</span>
+    <span data-i18n="ticker2">📢 Naye Aadhaar update aur PAN correction ab same-day possible</span>
+    <span data-i18n="ticker3">💳 AEPS Banking &amp; Account Opening available at counter</span>
+    <span data-i18n="ticker4">📞 Emergency service ke liye call karein: 8954214200</span>
+    <span data-i18n="ticker1">🎓 Scholarship Form 2026-27 registration open — visit today for NSP help</span>
+    <span data-i18n="ticker2">📢 Naye Aadhaar update aur PAN correction ab same-day possible</span>
   </div>
 </div>
 
 <nav>
 <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
 <div class="nav-links" id="navLinks">
-<a href="#about">About</a>
-<a href="#services">Services</a>
-<a href="#testimonials">Reviews</a>
-<a href="#gallery">Gallery</a>
-<a href="#form">Request</a>
-<a href="#contact">Contact</a>
+<a href="#about" data-i18n="nav_about">About</a>
+<a href="#services" data-i18n="nav_services">Services</a>
+<a href="#testimonials" data-i18n="nav_reviews">Reviews</a>
+<a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+<a href="#form" data-i18n="nav_request">Request</a>
+<a href="#contact" data-i18n="nav_contact">Contact</a>
+<div class="lang-switch" id="langSwitch">
+<button data-lang="en" class="lang-btn active">EN</button>
+<button data-lang="hi" class="lang-btn">हिं</button>
+<button data-lang="mr" class="lang-btn">मर</button>
+</div>
 <div class="portal-buttons">
-<a class="portal-btn portal-staff" href="login.html?tab=staff">Staff Login</a>
-<a class="portal-btn portal-customer" href="login.html?tab=customer">Customer Login</a>
+<a class="portal-btn portal-staff" href="login.html?tab=staff" data-i18n="staff_login">Staff Login</a>
+<a class="portal-btn portal-customer" href="login.html?tab=customer" data-i18n="customer_login">Customer Login</a>
 </div>
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
 </div>
 </nav>
 
 <header>
-<div class="hero-eyebrow">Authorised CSC · Jan Seva Kendra · Khair, Aligarh</div>
+<div class="hero-eyebrow" data-i18n="hero_eyebrow">Authorised CSC · Jan Seva Kendra · Khair, Aligarh</div>
 <h1>SAHAJ JAN SEVA KENDRA</h1>
-<p class="tagline">All Government &amp; Digital Services Under One Roof</p>
+<p class="tagline" data-i18n="hero_tagline">All Government &amp; Digital Services Under One Roof</p>
 <p class="meta-line">📍 Malipura, Tentigaon Road, Khair, Aligarh - 202138</p>
 <p class="meta-line">📞 8954214200 &nbsp;|&nbsp; 8954204200</p>
 
 <div class="hero-ctas">
-<a href="#form" class="btn btn-primary">Apply Online</a>
-<a href="tel:8954214200" class="btn btn-outline">📞 Call Now</a>
+<a href="#form" class="btn btn-primary" data-i18n="hero_apply">Apply Online</a>
+<a href="tel:8954214200" class="btn btn-outline" data-i18n="cta_call">📞 Call Now</a>
 </div>
 
 <div class="hero-stats">
-<div class="hero-stat"><h3>5+</h3><p>Years Experience</p></div>
-<div class="hero-stat"><h3>1000+</h3><p>Happy Customers</p></div>
-<div class="hero-stat"><h3>25+</h3><p>Services Available</p></div>
+<div class="hero-stat"><h3>5+</h3><p data-i18n="stat_years">Years Experience</p></div>
+<div class="hero-stat"><h3>1000+</h3><p data-i18n="stat_customers">Happy Customers</p></div>
+<div class="hero-stat"><h3>25+</h3><p data-i18n="stat_services">Services Available</p></div>
 </div>
 </header>
 
 <div class="quick-services">
   <div class="quick-grid">
-    <a class="quick-item" href="tel:8954214200"><span class="ico">📞</span>Call Us</a>
-    <a class="quick-item" href="https://wa.me/918954214200" target="_blank" rel="noopener"><span class="ico">💬</span>WhatsApp</a>
-    <a class="quick-item" href="#form"><span class="ico">📝</span>Apply Online</a>
-    <a class="quick-item" href="#services"><span class="ico">🗂️</span>All Services</a>
-    <a class="quick-item" href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener"><span class="ico">📍</span>Directions</a>
+    <a class="quick-item" href="tel:8954214200"><span class="ico">📞</span><span data-i18n="quick_call">Call Us</span></a>
+    <a class="quick-item" href="https://wa.me/918954214200" target="_blank" rel="noopener"><span class="ico">💬</span><span data-i18n="quick_whatsapp">WhatsApp</span></a>
+    <a class="quick-item" href="#form"><span class="ico">📝</span><span data-i18n="quick_apply">Apply Online</span></a>
+    <a class="quick-item" href="#services"><span class="ico">🗂️</span><span data-i18n="quick_allservices">All Services</span></a>
+    <a class="quick-item" href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener"><span class="ico">📍</span><span data-i18n="quick_directions">Directions</span></a>
   </div>
 </div>
 
 <section id="about">
 <div class="section-inner reveal">
-<span class="eyebrow">Who We Are</span>
-<h2>About Us</h2>
+<span class="eyebrow" data-i18n="about_eyebrow">Who We Are</span>
+<h2 data-i18n="about_title">About Us</h2>
 <div class="tricolor-rule"></div>
 
 <div class="about-flex">
 <div style="text-align:center;">
 <div class="owner-photo-box">GC</div>
 <div class="about-name">Gaurav Chaudhary</div>
-<div class="about-role">Founder &amp; VLE</div>
+<div class="about-role" data-i18n="about_role">Founder &amp; VLE</div>
 </div>
-<p style="color:var(--text-muted);line-height:1.8;">
+<p style="color:var(--text-muted);line-height:1.8;" data-i18n="about_text">
 Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helping citizens of Khair with Aadhaar, PAN Card, Income Certificate, Caste Certificate, Domicile Certificate, AEPS Banking, Account Opening, Scholarship forms and many other online services. Our goal is simple — bring every government service closer to you, with speed and transparency.
 </p>
 </div>
 
 <div class="stats">
-<div class="stat-card"><h3>5+</h3><p>Years Experience</p></div>
-<div class="stat-card"><h3>1000+</h3><p>Happy Customers</p></div>
-<div class="stat-card"><h3>25+</h3><p>Services Available</p></div>
+<div class="stat-card"><h3>5+</h3><p data-i18n="stat_years">Years Experience</p></div>
+<div class="stat-card"><h3>1000+</h3><p data-i18n="stat_customers">Happy Customers</p></div>
+<div class="stat-card"><h3>25+</h3><p data-i18n="stat_services">Services Available</p></div>
 </div>
 
-<h3 style="font-size:18px;color:var(--primary);margin-top:30px;margin-bottom:6px;">Why Choose Us</h3>
+<h3 style="font-size:18px;color:var(--primary);margin-top:30px;margin-bottom:6px;" data-i18n="why_title">Why Choose Us</h3>
 <div class="why-grid">
-<div class="why-item"><span class="ico">⚡</span><div><h4>Fast Turnaround</h4><p>Most documents processed same-day, no unnecessary delays.</p></div></div>
-<div class="why-item"><span class="ico">🤝</span><div><h4>Trusted Locally</h4><p>Years of service to Khair families, known and recommended by name.</p></div></div>
-<div class="why-item"><span class="ico">🔍</span><div><h4>Transparent Process</h4><p>Clear guidance at every step — no hidden confusion about your application.</p></div></div>
-<div class="why-item"><span class="ico">🗂️</span><div><h4>One-Stop Center</h4><p>Aadhaar to banking to certificates — all under one roof.</p></div></div>
+<div class="why-item"><span class="ico">⚡</span><div><h4 data-i18n="why1_title">Fast Turnaround</h4><p data-i18n="why1_desc">Most documents processed same-day, no unnecessary delays.</p></div></div>
+<div class="why-item"><span class="ico">🤝</span><div><h4 data-i18n="why2_title">Trusted Locally</h4><p data-i18n="why2_desc">Years of service to Khair families, known and recommended by name.</p></div></div>
+<div class="why-item"><span class="ico">🔍</span><div><h4 data-i18n="why3_title">Transparent Process</h4><p data-i18n="why3_desc">Clear guidance at every step — no hidden confusion about your application.</p></div></div>
+<div class="why-item"><span class="ico">🗂️</span><div><h4 data-i18n="why4_title">One-Stop Center</h4><p data-i18n="why4_desc">Aadhaar to banking to certificates — all under one roof.</p></div></div>
 </div>
 
 <div class="section-cta">
-<a href="tel:8954214200" class="btn btn-sm btn-green">📞 Call Now</a>
-<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-whatsapp">💬 WhatsApp Now</a>
+<a href="tel:8954214200" class="btn btn-sm btn-green" data-i18n="cta_call">📞 Call Now</a>
+<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-whatsapp" data-i18n="cta_whatsapp">💬 WhatsApp Now</a>
 </div>
 </div>
 </section>
 
 <section id="services">
 <div class="section-inner reveal">
-<span class="eyebrow">What We Offer</span>
-<h2>Our Services</h2>
+<span class="eyebrow" data-i18n="services_eyebrow">What We Offer</span>
+<h2 data-i18n="services_title">Our Services</h2>
 <div class="tricolor-rule"></div>
 
 <div class="services-grid">
-<div class="service-card"><span class="ico">🪪</span><span class="svc-title">Aadhaar Card Services</span><span class="service-desc">New enrollment, updates &amp; corrections.</span></div>
-<div class="service-card"><span class="ico">💳</span><span class="svc-title">New PAN Card</span><span class="service-desc">Fresh PAN application, guided end-to-end.</span></div>
-<div class="service-card"><span class="ico">✏️</span><span class="svc-title">PAN Card Correction</span><span class="service-desc">Name, DOB &amp; detail corrections.</span></div>
-<div class="service-card"><span class="ico">📄</span><span class="svc-title">Income Certificate</span><span class="service-desc">Official income proof for government use.</span></div>
-<div class="service-card"><span class="ico">📜</span><span class="svc-title">Caste Certificate</span><span class="service-desc">Category certificates for eligible applicants.</span></div>
-<div class="service-card"><span class="ico">🏠</span><span class="svc-title">Residence Certificate</span><span class="service-desc">Domicile proof for local residents.</span></div>
-<div class="service-card"><span class="ico">👷</span><span class="svc-title">Labour Card</span><span class="service-desc">Registration for construction/labour workers.</span></div>
-<div class="service-card"><span class="ico">👴</span><span class="svc-title">Old Age Pension</span><span class="service-desc">Application &amp; status help for senior citizens.</span></div>
-<div class="service-card"><span class="ico">🧕</span><span class="svc-title">Widow Pension</span><span class="service-desc">Support applying for widow pension scheme.</span></div>
-<div class="service-card"><span class="ico">♿</span><span class="svc-title">Disability Pension</span><span class="service-desc">Pension assistance for persons with disability.</span></div>
-<div class="service-card"><span class="ico">🚗</span><span class="svc-title">Driving Licence</span><span class="service-desc">Learner's &amp; permanent licence guidance.</span></div>
-<div class="service-card"><span class="ico">🚆</span><span class="svc-title">Railway Ticket Booking</span><span class="service-desc">Reserved &amp; general ticket booking.</span></div>
-<div class="service-card"><span class="ico">🏧</span><span class="svc-title">AEPS Banking</span><span class="service-desc">Cash withdrawal &amp; balance check via Aadhaar.</span></div>
-<div class="service-card"><span class="ico">🏦</span><span class="svc-title">Account Opening</span><span class="service-desc">Bank account opening assistance.</span></div>
-<div class="service-card"><span class="ico">🖨️</span><span class="svc-title">Photo Copy &amp; Lamination</span><span class="service-desc">Quick printing, copying &amp; lamination.</span></div>
-<div class="service-card"><span class="ico">🎓</span><span class="svc-title">Scholarship Form (NSP)</span><span class="service-desc">National Scholarship Portal form filling.</span></div>
+<div class="service-card"><span class="ico">🪪</span><span class="svc-title" data-i18n="svc1_title">Aadhaar Card Services</span><span class="service-desc" data-i18n="svc1_desc">New enrollment, updates &amp; corrections.</span></div>
+<div class="service-card"><span class="ico">💳</span><span class="svc-title" data-i18n="svc2_title">New PAN Card</span><span class="service-desc" data-i18n="svc2_desc">Fresh PAN application, guided end-to-end.</span></div>
+<div class="service-card"><span class="ico">✏️</span><span class="svc-title" data-i18n="svc3_title">PAN Card Correction</span><span class="service-desc" data-i18n="svc3_desc">Name, DOB &amp; detail corrections.</span></div>
+<div class="service-card"><span class="ico">📄</span><span class="svc-title" data-i18n="svc4_title">Income Certificate</span><span class="service-desc" data-i18n="svc4_desc">Official income proof for government use.</span></div>
+<div class="service-card"><span class="ico">📜</span><span class="svc-title" data-i18n="svc5_title">Caste Certificate</span><span class="service-desc" data-i18n="svc5_desc">Category certificates for eligible applicants.</span></div>
+<div class="service-card"><span class="ico">🏠</span><span class="svc-title" data-i18n="svc6_title">Residence Certificate</span><span class="service-desc" data-i18n="svc6_desc">Domicile proof for local residents.</span></div>
+<div class="service-card"><span class="ico">👷</span><span class="svc-title" data-i18n="svc7_title">Labour Card</span><span class="service-desc" data-i18n="svc7_desc">Registration for construction/labour workers.</span></div>
+<div class="service-card"><span class="ico">👴</span><span class="svc-title" data-i18n="svc8_title">Old Age Pension</span><span class="service-desc" data-i18n="svc8_desc">Application &amp; status help for senior citizens.</span></div>
+<div class="service-card"><span class="ico">🧕</span><span class="svc-title" data-i18n="svc9_title">Widow Pension</span><span class="service-desc" data-i18n="svc9_desc">Support applying for widow pension scheme.</span></div>
+<div class="service-card"><span class="ico">♿</span><span class="svc-title" data-i18n="svc10_title">Disability Pension</span><span class="service-desc" data-i18n="svc10_desc">Pension assistance for persons with disability.</span></div>
+<div class="service-card"><span class="ico">🚗</span><span class="svc-title" data-i18n="svc11_title">Driving Licence</span><span class="service-desc" data-i18n="svc11_desc">Learner's &amp; permanent licence guidance.</span></div>
+<div class="service-card"><span class="ico">🚆</span><span class="svc-title" data-i18n="svc12_title">Railway Ticket Booking</span><span class="service-desc" data-i18n="svc12_desc">Reserved &amp; general ticket booking.</span></div>
+<div class="service-card"><span class="ico">🏧</span><span class="svc-title" data-i18n="svc13_title">AEPS Banking</span><span class="service-desc" data-i18n="svc13_desc">Cash withdrawal &amp; balance check via Aadhaar.</span></div>
+<div class="service-card"><span class="ico">🏦</span><span class="svc-title" data-i18n="svc14_title">Account Opening</span><span class="service-desc" data-i18n="svc14_desc">Bank account opening assistance.</span></div>
+<div class="service-card"><span class="ico">🖨️</span><span class="svc-title" data-i18n="svc15_title">Photo Copy &amp; Lamination</span><span class="service-desc" data-i18n="svc15_desc">Quick printing, copying &amp; lamination.</span></div>
+<div class="service-card"><span class="ico">🎓</span><span class="svc-title" data-i18n="svc16_title">Scholarship Form (NSP)</span><span class="service-desc" data-i18n="svc16_desc">National Scholarship Portal form filling.</span></div>
 </div>
 
-<p style="font-size:12px;color:var(--text-muted);margin-top:16px;">*Service fees vary by document type — call or WhatsApp us for current pricing.</p>
+<p style="font-size:12px;color:var(--text-muted);margin-top:16px;" data-i18n="svc_note">*Service fees vary by document type — call or WhatsApp us for current pricing.</p>
 
 <div class="section-cta">
-<a href="tel:8954214200" class="btn btn-sm btn-green">📞 Call Now</a>
-<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-whatsapp">💬 WhatsApp Now</a>
+<a href="tel:8954214200" class="btn btn-sm btn-green" data-i18n="cta_call">📞 Call Now</a>
+<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-whatsapp" data-i18n="cta_whatsapp">💬 WhatsApp Now</a>
 </div>
 </div>
 </section>
@@ -731,50 +743,50 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 <section>
 <div class="scholarship-banner reveal">
   <div>
-    <h3>🎓 Scholarship Form 2026-27 — Registration Open</h3>
-    <p>Students apna documents leke aaj hi visit karein aur apna NSP scholarship form submit karayein.</p>
+    <h3 data-i18n="scholarship_title">🎓 Scholarship Form 2026-27 — Registration Open</h3>
+    <p data-i18n="scholarship_text">Students apna documents leke aaj hi visit karein aur apna NSP scholarship form submit karayein.</p>
   </div>
-  <a href="#form" class="btn btn-primary">Apply for Scholarship</a>
+  <a href="#form" class="btn btn-primary" data-i18n="scholarship_cta">Apply for Scholarship</a>
 </div>
 </section>
 
 <section id="testimonials">
 <div class="section-inner reveal">
-<span class="eyebrow">Customer Feedback</span>
-<h2>What People Say</h2>
+<span class="eyebrow" data-i18n="testimonials_eyebrow">Customer Feedback</span>
+<h2 data-i18n="testimonials_title">What People Say</h2>
 <div class="tricolor-rule"></div>
 
 <div class="reviews-placeholder">
-<p>⭐ Real customer reviews coming soon. Meanwhile, check our latest reviews on Google.</p>
-<a href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener" class="btn btn-sm btn-blue">See Google Reviews</a>
+<p data-i18n="reviews_text">⭐ Real customer reviews coming soon. Meanwhile, check our latest reviews on Google.</p>
+<a href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener" class="btn btn-sm btn-blue" data-i18n="reviews_cta">See Google Reviews</a>
 </div>
 </div>
 </section>
 
 <section id="gallery">
 <div class="section-inner reveal">
-<span class="eyebrow">Take A Look</span>
-<h2>Our Digital Service Center</h2>
+<span class="eyebrow" data-i18n="gallery_eyebrow">Take A Look</span>
+<h2 data-i18n="gallery_title">Our Digital Service Center</h2>
 <div class="tricolor-rule"></div>
 
 <div class="gallery">
 <div class="gallery-card" data-img="office1.jpeg">
 <img src="office1.jpeg" alt="Main service desk at Sahaj Jan Seva Kendra Khair">
-<h3>Premium Service Desk</h3>
+<h3 data-i18n="gallery1_title">Premium Service Desk</h3>
 </div>
 <div class="gallery-card" data-img="office2.jpeg">
 <img src="office2.jpeg" alt="Customer waiting area">
-<h3>Customer Support Area</h3>
+<h3 data-i18n="gallery2_title">Customer Support Area</h3>
 </div>
 <div class="gallery-card" data-img="office3.jpeg">
 <img src="office3.jpeg" alt="Digital service workspace">
-<h3>Digital Service Workspace</h3>
+<h3 data-i18n="gallery3_title">Digital Service Workspace</h3>
 </div>
 </div>
-<p style="font-size:12px;color:var(--text-muted);margin-top:16px;">*More photos coming soon.</p>
+<p style="font-size:12px;color:var(--text-muted);margin-top:16px;" data-i18n="gallery_note">*More photos coming soon.</p>
 <div class="section-cta">
-<a href="tel:8954214200" class="btn btn-sm btn-green">📞 Call Now</a>
-<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-whatsapp">💬 WhatsApp Now</a>
+<a href="tel:8954214200" class="btn btn-sm btn-green" data-i18n="cta_call">📞 Call Now</a>
+<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-whatsapp" data-i18n="cta_whatsapp">💬 WhatsApp Now</a>
 </div>
 </div>
 </section>
@@ -786,35 +798,35 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 
 <section id="form">
 <div class="section-inner reveal">
-<span class="eyebrow">Get Started</span>
-<h2>Online Work Request</h2>
+<span class="eyebrow" data-i18n="form_eyebrow">Get Started</span>
+<h2 data-i18n="form_title">Online Work Request</h2>
 <div class="tricolor-rule"></div>
 
 <form action="https://formsubmit.co/panmtr60@gmail.com" method="POST">
 <input type="hidden" name="_captcha" value="false">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="tel" name="mobile" placeholder="Mobile Number" required>
+<input type="text" name="name" placeholder="Your Name" data-i18n-placeholder="placeholder_name" required>
+<input type="tel" name="mobile" placeholder="Mobile Number" data-i18n-placeholder="placeholder_mobile" required>
 <select name="service">
-<option>Aadhaar Service</option>
-<option>New PAN Card</option>
-<option>PAN Correction</option>
-<option>Income Certificate</option>
-<option>Caste Certificate</option>
-<option>Domicile Certificate</option>
-<option>AEPS Banking</option>
-<option>Scholarship Form</option>
-<option>Other Service</option>
+<option data-i18n="form_opt1">Aadhaar Service</option>
+<option data-i18n="form_opt2">New PAN Card</option>
+<option data-i18n="form_opt3">PAN Correction</option>
+<option data-i18n="form_opt4">Income Certificate</option>
+<option data-i18n="form_opt5">Caste Certificate</option>
+<option data-i18n="form_opt6">Domicile Certificate</option>
+<option data-i18n="form_opt7">AEPS Banking</option>
+<option data-i18n="form_opt8">Scholarship Form</option>
+<option data-i18n="form_opt9">Other Service</option>
 </select>
-<textarea name="message" rows="5" placeholder="Write Your Requirement"></textarea>
-<button type="submit">Submit Request</button>
+<textarea name="message" rows="5" placeholder="Write Your Requirement" data-i18n-placeholder="placeholder_message"></textarea>
+<button type="submit" data-i18n="submit_btn">Submit Request</button>
 </form>
 </div>
 </section>
 
 <section id="contact">
 <div class="section-inner reveal">
-<span class="eyebrow">Reach Us</span>
-<h2>Contact Us</h2>
+<span class="eyebrow" data-i18n="contact_eyebrow">Reach Us</span>
+<h2 data-i18n="contact_title">Contact Us</h2>
 <div class="tricolor-rule"></div>
 
 <div class="contact-wrap">
@@ -825,7 +837,7 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 📍 Malipura, Tentigaon Road, Khair, Aligarh - 202138
 <br><br>
 <a href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener">
-<button type="button">Open Google Maps</button>
+<button type="button" data-i18n="contact_map_btn">Open Google Maps</button>
 </a>
 </div>
 
@@ -847,6 +859,202 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 </div>
 
 <script>
+const TRANSLATIONS = {
+en: {
+  nav_about:"About", nav_services:"Services", nav_reviews:"Reviews", nav_gallery:"Gallery", nav_request:"Request", nav_contact:"Contact",
+  staff_login:"Staff Login", customer_login:"Customer Login",
+  theme_dark:"🌙 Dark", theme_light:"☀️ Light",
+  hero_eyebrow:"Authorised CSC · Jan Seva Kendra · Khair, Aligarh",
+  hero_tagline:"All Government & Digital Services Under One Roof",
+  hero_apply:"Apply Online", cta_call:"📞 Call Now", cta_whatsapp:"💬 WhatsApp Now",
+  stat_years:"Years Experience", stat_customers:"Happy Customers", stat_services:"Services Available",
+  quick_call:"Call Us", quick_whatsapp:"WhatsApp", quick_apply:"Apply Online", quick_allservices:"All Services", quick_directions:"Directions",
+  about_eyebrow:"Who We Are", about_title:"About Us", about_role:"Founder & VLE",
+  about_text:"Sahaj Jan Seva Kendra is a trusted Digital & Government Service Center helping citizens of Khair with Aadhaar, PAN Card, Income Certificate, Caste Certificate, Domicile Certificate, AEPS Banking, Account Opening, Scholarship forms and many other online services. Our goal is simple — bring every government service closer to you, with speed and transparency.",
+  why_title:"Why Choose Us",
+  why1_title:"Fast Turnaround", why1_desc:"Most documents processed same-day, no unnecessary delays.",
+  why2_title:"Trusted Locally", why2_desc:"Years of service to Khair families, known and recommended by name.",
+  why3_title:"Transparent Process", why3_desc:"Clear guidance at every step — no hidden confusion about your application.",
+  why4_title:"One-Stop Center", why4_desc:"Aadhaar to banking to certificates — all under one roof.",
+  services_eyebrow:"What We Offer", services_title:"Our Services",
+  svc1_title:"Aadhaar Card Services", svc1_desc:"New enrollment, updates & corrections.",
+  svc2_title:"New PAN Card", svc2_desc:"Fresh PAN application, guided end-to-end.",
+  svc3_title:"PAN Card Correction", svc3_desc:"Name, DOB & detail corrections.",
+  svc4_title:"Income Certificate", svc4_desc:"Official income proof for government use.",
+  svc5_title:"Caste Certificate", svc5_desc:"Category certificates for eligible applicants.",
+  svc6_title:"Residence Certificate", svc6_desc:"Domicile proof for local residents.",
+  svc7_title:"Labour Card", svc7_desc:"Registration for construction/labour workers.",
+  svc8_title:"Old Age Pension", svc8_desc:"Application & status help for senior citizens.",
+  svc9_title:"Widow Pension", svc9_desc:"Support applying for widow pension scheme.",
+  svc10_title:"Disability Pension", svc10_desc:"Pension assistance for persons with disability.",
+  svc11_title:"Driving Licence", svc11_desc:"Learner's & permanent licence guidance.",
+  svc12_title:"Railway Ticket Booking", svc12_desc:"Reserved & general ticket booking.",
+  svc13_title:"AEPS Banking", svc13_desc:"Cash withdrawal & balance check via Aadhaar.",
+  svc14_title:"Account Opening", svc14_desc:"Bank account opening assistance.",
+  svc15_title:"Photo Copy & Lamination", svc15_desc:"Quick printing, copying & lamination.",
+  svc16_title:"Scholarship Form (NSP)", svc16_desc:"National Scholarship Portal form filling.",
+  svc_note:"*Service fees vary by document type — call or WhatsApp us for current pricing.",
+  scholarship_title:"🎓 Scholarship Form 2026-27 — Registration Open",
+  scholarship_text:"Students should visit today with their documents and submit their NSP scholarship form.",
+  scholarship_cta:"Apply for Scholarship",
+  testimonials_eyebrow:"Customer Feedback", testimonials_title:"What People Say",
+  reviews_text:"⭐ Real customer reviews coming soon. Meanwhile, check our latest reviews on Google.",
+  reviews_cta:"See Google Reviews",
+  gallery_eyebrow:"Take A Look", gallery_title:"Our Digital Service Center",
+  gallery1_title:"Premium Service Desk", gallery2_title:"Customer Support Area", gallery3_title:"Digital Service Workspace",
+  gallery_note:"*More photos coming soon.",
+  form_eyebrow:"Get Started", form_title:"Online Work Request",
+  placeholder_name:"Your Name", placeholder_mobile:"Mobile Number", placeholder_message:"Write Your Requirement", submit_btn:"Submit Request",
+  form_opt1:"Aadhaar Service", form_opt2:"New PAN Card", form_opt3:"PAN Correction", form_opt4:"Income Certificate", form_opt5:"Caste Certificate", form_opt6:"Domicile Certificate", form_opt7:"AEPS Banking", form_opt8:"Scholarship Form", form_opt9:"Other Service",
+  contact_eyebrow:"Reach Us", contact_title:"Contact Us", contact_map_btn:"Open Google Maps",
+  ticker1:"🎓 Scholarship Form 2026-27 registration open — visit today for NSP help",
+  ticker2:"📢 New Aadhaar update and PAN correction now possible same-day",
+  ticker3:"💳 AEPS Banking & Account Opening available at counter",
+  ticker4:"📞 For emergency service, call: 8954214200",
+  popup_title:"Scholarship Form 2026-27",
+  popup_text:"National Scholarship Portal (NSP) forms are now being filled. Students should visit Sahaj Jan Seva Kendra Khair today to submit their scholarship form.",
+  popup_cta:"Apply Now"
+},
+hi: {
+  nav_about:"हमारे बारे में", nav_services:"सेवाएं", nav_reviews:"समीक्षाएं", nav_gallery:"गैलरी", nav_request:"अनुरोध", nav_contact:"संपर्क",
+  staff_login:"स्टाफ लॉगिन", customer_login:"ग्राहक लॉगिन",
+  theme_dark:"🌙 डार्क", theme_light:"☀️ लाइट",
+  hero_eyebrow:"अधिकृत सीएससी · जन सेवा केंद्र · खैर, अलीगढ़",
+  hero_tagline:"सभी सरकारी और डिजिटल सेवाएं एक ही छत के नीचे",
+  hero_apply:"ऑनलाइन आवेदन करें", cta_call:"📞 अभी कॉल करें", cta_whatsapp:"💬 व्हाट्सएप करें",
+  stat_years:"वर्षों का अनुभव", stat_customers:"खुश ग्राहक", stat_services:"उपलब्ध सेवाएं",
+  quick_call:"कॉल करें", quick_whatsapp:"व्हाट्सएप", quick_apply:"ऑनलाइन आवेदन", quick_allservices:"सभी सेवाएं", quick_directions:"दिशा-निर्देश",
+  about_eyebrow:"हम कौन हैं", about_title:"हमारे बारे में", about_role:"संस्थापक एवं वीएलई",
+  about_text:"सहज जन सेवा केंद्र खैर के नागरिकों के लिए एक विश्वसनीय डिजिटल एवं सरकारी सेवा केंद्र है, जो आधार, पैन कार्ड, आय प्रमाण पत्र, जाति प्रमाण पत्र, निवास प्रमाण पत्र, एईपीएस बैंकिंग, खाता खोलना, छात्रवृत्ति फॉर्म तथा कई अन्य ऑनलाइन सेवाओं में मदद करता है। हमारा लक्ष्य सरल है — हर सरकारी सेवा को तेज़ी और पारदर्शिता के साथ आप तक पहुंचाना।",
+  why_title:"हमें क्यों चुनें",
+  why1_title:"तेज़ सेवा", why1_desc:"अधिकांश दस्तावेज़ उसी दिन तैयार हो जाते हैं, कोई अनावश्यक देरी नहीं।",
+  why2_title:"स्थानीय विश्वास", why2_desc:"खैर के परिवारों को वर्षों से सेवा, नाम से जाने और अनुशंसित।",
+  why3_title:"पारदर्शी प्रक्रिया", why3_desc:"हर कदम पर स्पष्ट मार्गदर्शन — आपके आवेदन में कोई छिपा भ्रम नहीं।",
+  why4_title:"वन-स्टॉप केंद्र", why4_desc:"आधार से लेकर बैंकिंग और प्रमाण पत्र तक — सब एक ही छत के नीचे।",
+  services_eyebrow:"हम क्या प्रदान करते हैं", services_title:"हमारी सेवाएं",
+  svc1_title:"आधार कार्ड सेवाएं", svc1_desc:"नया पंजीकरण, अपडेट और सुधार।",
+  svc2_title:"नया पैन कार्ड", svc2_desc:"नया पैन आवेदन, शुरू से अंत तक मार्गदर्शन।",
+  svc3_title:"पैन कार्ड सुधार", svc3_desc:"नाम, जन्मतिथि व विवरण सुधार।",
+  svc4_title:"आय प्रमाण पत्र", svc4_desc:"सरकारी उपयोग हेतु आधिकारिक आय प्रमाण।",
+  svc5_title:"जाति प्रमाण पत्र", svc5_desc:"पात्र आवेदकों के लिए श्रेणी प्रमाण पत्र।",
+  svc6_title:"निवास प्रमाण पत्र", svc6_desc:"स्थानीय निवासियों के लिए अधिवास प्रमाण।",
+  svc7_title:"श्रमिक कार्ड", svc7_desc:"निर्माण/श्रमिक श्रमिकों के लिए पंजीकरण।",
+  svc8_title:"वृद्धावस्था पेंशन", svc8_desc:"वरिष्ठ नागरिकों के लिए आवेदन व स्थिति सहायता।",
+  svc9_title:"विधवा पेंशन", svc9_desc:"विधवा पेंशन योजना हेतु आवेदन सहायता।",
+  svc10_title:"विकलांगता पेंशन", svc10_desc:"दिव्यांगजनों के लिए पेंशन सहायता।",
+  svc11_title:"ड्राइविंग लाइसेंस", svc11_desc:"लर्निंग व स्थायी लाइसेंस हेतु मार्गदर्शन।",
+  svc12_title:"रेलवे टिकट बुकिंग", svc12_desc:"आरक्षित व सामान्य टिकट बुकिंग।",
+  svc13_title:"एईपीएस बैंकिंग", svc13_desc:"आधार के माध्यम से नकद निकासी व बैलेंस जांच।",
+  svc14_title:"खाता खोलना", svc14_desc:"बैंक खाता खोलने में सहायता।",
+  svc15_title:"फोटो कॉपी व लेमिनेशन", svc15_desc:"त्वरित प्रिंटिंग, कॉपी व लेमिनेशन।",
+  svc16_title:"छात्रवृत्ति फॉर्म (एनएसपी)", svc16_desc:"राष्ट्रीय छात्रवृत्ति पोर्टल फॉर्म भरना।",
+  svc_note:"*सेवा शुल्क दस्तावेज़ के प्रकार अनुसार भिन्न होता है — वर्तमान मूल्य हेतु कॉल या व्हाट्सएप करें।",
+  scholarship_title:"🎓 छात्रवृत्ति फॉर्म 2026-27 — पंजीकरण शुरू",
+  scholarship_text:"छात्र अपने दस्तावेज़ लेकर आज ही आएं और अपना एनएसपी छात्रवृत्ति फॉर्म जमा करें।",
+  scholarship_cta:"छात्रवृत्ति हेतु आवेदन करें",
+  testimonials_eyebrow:"ग्राहक प्रतिक्रिया", testimonials_title:"लोग क्या कहते हैं",
+  reviews_text:"⭐ जल्द ही वास्तविक ग्राहक समीक्षाएं आ रही हैं। तब तक, गूगल पर हमारी नवीनतम समीक्षाएं देखें।",
+  reviews_cta:"गूगल समीक्षाएं देखें",
+  gallery_eyebrow:"एक नज़र डालें", gallery_title:"हमारा डिजिटल सेवा केंद्र",
+  gallery1_title:"प्रीमियम सेवा डेस्क", gallery2_title:"ग्राहक सहायता क्षेत्र", gallery3_title:"डिजिटल सेवा कार्यक्षेत्र",
+  gallery_note:"*और तस्वीरें जल्द आ रही हैं।",
+  form_eyebrow:"शुरू करें", form_title:"ऑनलाइन कार्य अनुरोध",
+  placeholder_name:"आपका नाम", placeholder_mobile:"मोबाइल नंबर", placeholder_message:"अपनी आवश्यकता लिखें", submit_btn:"अनुरोध जमा करें",
+  form_opt1:"आधार सेवा", form_opt2:"नया पैन कार्ड", form_opt3:"पैन सुधार", form_opt4:"आय प्रमाण पत्र", form_opt5:"जाति प्रमाण पत्र", form_opt6:"निवास प्रमाण पत्र", form_opt7:"एईपीएस बैंकिंग", form_opt8:"छात्रवृत्ति फॉर्म", form_opt9:"अन्य सेवा",
+  contact_eyebrow:"हमसे संपर्क करें", contact_title:"संपर्क करें", contact_map_btn:"गूगल मैप्स खोलें",
+  ticker1:"🎓 छात्रवृत्ति फॉर्म 2026-27 पंजीकरण शुरू — एनएसपी सहायता हेतु आज ही आएं",
+  ticker2:"📢 नया आधार अपडेट और पैन सुधार अब उसी दिन संभव",
+  ticker3:"💳 एईपीएस बैंकिंग व खाता खोलना काउंटर पर उपलब्ध",
+  ticker4:"📞 आपातकालीन सेवा हेतु कॉल करें: 8954214200",
+  popup_title:"छात्रवृत्ति फॉर्म 2026-27",
+  popup_text:"राष्ट्रीय छात्रवृत्ति पोर्टल (एनएसपी) के फॉर्म अब भरे जा रहे हैं। छात्र आज ही सहज जन सेवा केंद्र खैर आकर अपना छात्रवृत्ति फॉर्म जमा करें।",
+  popup_cta:"अभी आवेदन करें"
+},
+mr: {
+  nav_about:"आमच्याबद्दल", nav_services:"सेवा", nav_reviews:"अभिप्राय", nav_gallery:"गॅलरी", nav_request:"विनंती", nav_contact:"संपर्क",
+  staff_login:"स्टाफ लॉगिन", customer_login:"ग्राहक लॉगिन",
+  theme_dark:"🌙 डार्क", theme_light:"☀️ लाइट",
+  hero_eyebrow:"अधिकृत सीएससी · जन सेवा केंद्र · खैर, अलीगढ",
+  hero_tagline:"सर्व शासकीय आणि डिजिटल सेवा एकाच छताखाली",
+  hero_apply:"ऑनलाइन अर्ज करा", cta_call:"📞 आता कॉल करा", cta_whatsapp:"💬 व्हॉट्सअॅप करा",
+  stat_years:"वर्षांचा अनुभव", stat_customers:"समाधानी ग्राहक", stat_services:"उपलब्ध सेवा",
+  quick_call:"कॉल करा", quick_whatsapp:"व्हॉट्सअॅप", quick_apply:"ऑनलाइन अर्ज", quick_allservices:"सर्व सेवा", quick_directions:"दिशादर्शन",
+  about_eyebrow:"आम्ही कोण आहोत", about_title:"आमच्याबद्दल", about_role:"संस्थापक व व्हीएलई",
+  about_text:"सहज जन सेवा केंद्र हे खैरमधील नागरिकांसाठी एक विश्वासार्ह डिजिटल व शासकीय सेवा केंद्र आहे, जे आधार, पॅन कार्ड, उत्पन्न प्रमाणपत्र, जात प्रमाणपत्र, रहिवासी प्रमाणपत्र, एईपीएस बँकिंग, खाते उघडणे, शिष्यवृत्ती फॉर्म तसेच इतर अनेक ऑनलाइन सेवांसाठी मदत करते. आमचे ध्येय सोपे आहे — प्रत्येक शासकीय सेवा वेग आणि पारदर्शकतेने तुमच्यापर्यंत पोहोचवणे.",
+  why_title:"आम्हाला का निवडावे",
+  why1_title:"जलद सेवा", why1_desc:"बहुतांश कागदपत्रे त्याच दिवशी तयार होतात, अनावश्यक विलंब नाही.",
+  why2_title:"स्थानिक विश्वास", why2_desc:"खैरमधील कुटुंबांना अनेक वर्षांची सेवा, नावाने ओळखले व शिफारस केले जाते.",
+  why3_title:"पारदर्शक प्रक्रिया", why3_desc:"प्रत्येक टप्प्यावर स्पष्ट मार्गदर्शन — तुमच्या अर्जाबाबत कोणताही गोंधळ नाही.",
+  why4_title:"वन-स्टॉप केंद्र", why4_desc:"आधारपासून बँकिंग व प्रमाणपत्रांपर्यंत — सर्व एकाच छताखाली.",
+  services_eyebrow:"आम्ही काय देतो", services_title:"आमच्या सेवा",
+  svc1_title:"आधार कार्ड सेवा", svc1_desc:"नवीन नोंदणी, अद्ययावत व दुरुस्ती.",
+  svc2_title:"नवीन पॅन कार्ड", svc2_desc:"नवीन पॅन अर्ज, सुरुवातीपासून शेवटपर्यंत मार्गदर्शन.",
+  svc3_title:"पॅन कार्ड दुरुस्ती", svc3_desc:"नाव, जन्मतारीख व तपशील दुरुस्ती.",
+  svc4_title:"उत्पन्न प्रमाणपत्र", svc4_desc:"शासकीय वापरासाठी अधिकृत उत्पन्नाचा पुरावा.",
+  svc5_title:"जात प्रमाणपत्र", svc5_desc:"पात्र अर्जदारांसाठी प्रवर्ग प्रमाणपत्र.",
+  svc6_title:"रहिवासी प्रमाणपत्र", svc6_desc:"स्थानिक रहिवाशांसाठी अधिवास पुरावा.",
+  svc7_title:"कामगार कार्ड", svc7_desc:"बांधकाम/कामगार कामगारांसाठी नोंदणी.",
+  svc8_title:"वृद्धापकाळ निवृत्तिवेतन", svc8_desc:"ज्येष्ठ नागरिकांसाठी अर्ज व स्थिती मदत.",
+  svc9_title:"विधवा निवृत्तिवेतन", svc9_desc:"विधवा निवृत्तिवेतन योजनेसाठी अर्ज मदत.",
+  svc10_title:"अपंगत्व निवृत्तिवेतन", svc10_desc:"अपंग व्यक्तींसाठी निवृत्तिवेतन मदत.",
+  svc11_title:"वाहन परवाना", svc11_desc:"लर्निंग व कायमस्वरूपी परवान्यासाठी मार्गदर्शन.",
+  svc12_title:"रेल्वे तिकीट बुकिंग", svc12_desc:"आरक्षित व सर्वसाधारण तिकीट बुकिंग.",
+  svc13_title:"एईपीएस बँकिंग", svc13_desc:"आधारद्वारे रोख रक्कम काढणे व शिल्लक तपासणी.",
+  svc14_title:"खाते उघडणे", svc14_desc:"बँक खाते उघडण्यास मदत.",
+  svc15_title:"फोटो कॉपी व लॅमिनेशन", svc15_desc:"जलद प्रिंटिंग, कॉपी व लॅमिनेशन.",
+  svc16_title:"शिष्यवृत्ती फॉर्म (एनएसपी)", svc16_desc:"राष्ट्रीय शिष्यवृत्ती पोर्टल फॉर्म भरणे.",
+  svc_note:"*सेवा शुल्क कागदपत्रांच्या प्रकारानुसार बदलते — सध्याच्या दरासाठी कॉल किंवा व्हॉट्सअॅप करा.",
+  scholarship_title:"🎓 शिष्यवृत्ती फॉर्म 2026-27 — नोंदणी सुरू",
+  scholarship_text:"विद्यार्थ्यांनी आपली कागदपत्रे घेऊन आजच भेट द्यावी आणि आपला एनएसपी शिष्यवृत्ती फॉर्म सादर करावा.",
+  scholarship_cta:"शिष्यवृत्तीसाठी अर्ज करा",
+  testimonials_eyebrow:"ग्राहक अभिप्राय", testimonials_title:"लोक काय म्हणतात",
+  reviews_text:"⭐ लवकरच खरे ग्राहक अभिप्राय येत आहेत. तोपर्यंत, गुगलवर आमचे नवीनतम अभिप्राय पहा.",
+  reviews_cta:"गुगल अभिप्राय पहा",
+  gallery_eyebrow:"एक नजर टाका", gallery_title:"आमचे डिजिटल सेवा केंद्र",
+  gallery1_title:"प्रीमियम सेवा डेस्क", gallery2_title:"ग्राहक सहाय्य क्षेत्र", gallery3_title:"डिजिटल सेवा कार्यक्षेत्र",
+  gallery_note:"*आणखी छायाचित्रे लवकरच येत आहेत.",
+  form_eyebrow:"सुरुवात करा", form_title:"ऑनलाइन कामाची विनंती",
+  placeholder_name:"तुमचे नाव", placeholder_mobile:"मोबाइल नंबर", placeholder_message:"तुमची गरज लिहा", submit_btn:"विनंती सादर करा",
+  form_opt1:"आधार सेवा", form_opt2:"नवीन पॅन कार्ड", form_opt3:"पॅन दुरुस्ती", form_opt4:"उत्पन्न प्रमाणपत्र", form_opt5:"जात प्रमाणपत्र", form_opt6:"अधिवास प्रमाणपत्र", form_opt7:"एईपीएस बँकिंग", form_opt8:"शिष्यवृत्ती फॉर्म", form_opt9:"इतर सेवा",
+  contact_eyebrow:"आमच्याशी संपर्क साधा", contact_title:"संपर्क करा", contact_map_btn:"गुगल नकाशा उघडा",
+  ticker1:"🎓 शिष्यवृत्ती फॉर्म 2026-27 नोंदणी सुरू — एनएसपी मदतीसाठी आजच भेट द्या",
+  ticker2:"📢 नवीन आधार अद्ययावत आणि पॅन दुरुस्ती आता त्याच दिवशी शक्य",
+  ticker3:"💳 एईपीएस बँकिंग व खाते उघडणे काउंटरवर उपलब्ध",
+  ticker4:"📞 आपत्कालीन सेवेसाठी कॉल करा: 8954214200",
+  popup_title:"शिष्यवृत्ती फॉर्म 2026-27",
+  popup_text:"राष्ट्रीय शिष्यवृत्ती पोर्टल (एनएसपी) चे फॉर्म आता भरले जात आहेत. विद्यार्थ्यांनी आजच सहज जन सेवा केंद्र खैर येथे येऊन आपला शिष्यवृत्ती फॉर्म सादर करावा.",
+  popup_cta:"आता अर्ज करा"
+}
+};
+
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function applyLanguage(lang){
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  const dict = TRANSLATIONS[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(dict[key]) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if(dict[key]) el.placeholder = dict[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  const themeToggleBtn = document.getElementById('themeToggle');
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  themeToggleBtn.textContent = isDark ? dict.theme_dark.replace('🌙','☀️').replace('Dark','Light') : dict.theme_dark;
+  if(isDark){ themeToggleBtn.textContent = dict.theme_light; } else { themeToggleBtn.textContent = dict.theme_dark; }
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+});
+applyLanguage(currentLang);
+
 // Mobile hamburger nav
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
