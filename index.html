@@ -46,35 +46,35 @@
 
 <style>
 :root{
-  --bg:#F5F8FA;
+  --bg:#F0F4F8;
   --bg-alt:#FFFFFF;
-  --surface:rgba(255,255,255,0.65);
+  --surface:rgba(255,255,255,0.7);
   --surface-solid:#FFFFFF;
-  --text:#152331;
-  --text-muted:#4C5F6F;
-  --primary:#0B4D3C;
-  --primary-dark:#093B2E;
-  --primary-light:#15794F;
-  --accent:#1565C0;
-  --accent-2:#0D7377;
-  --border:rgba(21,101,192,0.16);
-  --shadow:rgba(11,77,60,0.14);
+  --text:#212529;
+  --text-muted:#5B6470;
+  --primary:#003087;
+  --primary-dark:#001F5C;
+  --primary-light:#1450B0;
+  --accent:#E06B00;
+  --accent-2:#006400;
+  --border:rgba(0,48,135,0.14);
+  --shadow:rgba(0,48,135,0.14);
   --radius:16px;
-  --tricolor:linear-gradient(90deg,#1565C0 0%,#FFFFFF 50%,#0B4D3C 100%);
+  --tricolor:linear-gradient(90deg,#003087 0%,#FFFFFF 50%,#006400 100%);
 }
 
 [data-theme="dark"]{
-  --bg:#081712;
-  --bg-alt:#0E211A;
+  --bg:#0A1220;
+  --bg-alt:#111C30;
   --surface:rgba(255,255,255,0.06);
-  --surface-solid:#0E211A;
-  --text:#EAF3EF;
-  --text-muted:#9FB8AF;
-  --primary:#2FA579;
-  --primary-dark:#1F7D5C;
-  --primary-light:#3FC493;
-  --accent:#4C9BE8;
-  --accent-2:#3FBDB9;
+  --surface-solid:#111C30;
+  --text:#F0F4F8;
+  --text-muted:#9FB0C4;
+  --primary:#3E6FD9;
+  --primary-dark:#1A3A80;
+  --primary-light:#6D9BF0;
+  --accent:#FF9838;
+  --accent-2:#3EA55A;
   --border:rgba(255,255,255,0.12);
   --shadow:rgba(0,0,0,0.45);
 }
@@ -199,8 +199,8 @@ nav a:hover, nav a:focus-visible{color:var(--accent);}
 header{
   position:relative;
   background:
-    radial-gradient(circle at 15% 20%, rgba(21,101,192,0.3), transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(63,196,147,0.25), transparent 45%),
+    radial-gradient(circle at 15% 20%, rgba(0,48,135,0.35), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(0,100,0,0.22), transparent 45%),
     linear-gradient(135deg,var(--primary-dark),var(--primary));
   color:#fff;
   padding:90px 20px 70px;
@@ -218,7 +218,7 @@ header::after{
   font-size:12px;
   letter-spacing:3px;
   text-transform:uppercase;
-  color:#9FD3FF;
+  color:#FFD9A6;
   font-weight:700;
   margin-bottom:14px;
 }
@@ -343,7 +343,7 @@ h2{color:var(--primary);font-size:clamp(1.6rem,3vw,2.2rem);}
 
 /* ===== SCHOLARSHIP BANNER ===== */
 .scholarship-banner{
-  background:linear-gradient(120deg,var(--accent),#0D3B66);
+  background:linear-gradient(120deg,var(--accent),#A64500);
   color:#fff;
   border-radius:20px;
   padding:34px clamp(20px,4vw,50px);
@@ -352,7 +352,7 @@ h2{color:var(--primary);font-size:clamp(1.6rem,3vw,2.2rem);}
   justify-content:space-between;
   gap:20px;
   flex-wrap:wrap;
-  box-shadow:0 12px 30px rgba(21,101,192,.3);
+  box-shadow:0 12px 30px rgba(224,107,0,.3);
 }
 .scholarship-banner h3{font-size:22px;margin-bottom:6px;}
 .scholarship-banner p{font-size:14px;opacity:.95;}
@@ -554,7 +554,8 @@ footer .tricolor-rule{margin:0 auto 14px;}
 .btn-sm{padding:11px 22px;font-size:13px;border-radius:24px;}
 .btn-green{background:var(--primary);color:#fff;}
 .btn-blue{background:var(--accent);color:#fff;}
-.btn-green:hover, .btn-blue:hover{filter:brightness(1.1);}
+.btn-whatsapp{background:#25D366;color:#fff;}
+.btn-green:hover, .btn-blue:hover, .btn-whatsapp:hover{filter:brightness(1.1);}
 
 .service-desc{font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.4;}
 .service-card{flex-direction:column;align-items:flex-start;}
@@ -688,7 +689,7 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 
 <div class="section-cta">
 <a href="tel:8954214200" class="btn btn-sm btn-green">📞 Call Now</a>
-<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-blue">💬 WhatsApp Now</a>
+<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-whatsapp">💬 WhatsApp Now</a>
 </div>
 </div>
 </section>
@@ -722,7 +723,7 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 
 <div class="section-cta">
 <a href="tel:8954214200" class="btn btn-sm btn-green">📞 Call Now</a>
-<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-blue">💬 WhatsApp Now</a>
+<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-whatsapp">💬 WhatsApp Now</a>
 </div>
 </div>
 </section>
@@ -773,7 +774,7 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 <p style="font-size:12px;color:var(--text-muted);margin-top:16px;">*More photos coming soon.</p>
 <div class="section-cta">
 <a href="tel:8954214200" class="btn btn-sm btn-green">📞 Call Now</a>
-<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-blue">💬 WhatsApp Now</a>
+<a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="btn btn-sm btn-whatsapp">💬 WhatsApp Now</a>
 </div>
 </div>
 </section>
