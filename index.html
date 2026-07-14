@@ -46,37 +46,37 @@
 
 <style>
 :root{
-  --bg:#F0F4F8;
+  --bg:#F5F5FA;
   --bg-alt:#FFFFFF;
   --surface:rgba(255,255,255,0.7);
   --surface-solid:#FFFFFF;
   --text:#212529;
-  --text-muted:#5B6470;
-  --primary:#003087;
-  --primary-dark:#001F5C;
-  --primary-light:#1450B0;
-  --accent:#E06B00;
-  --accent-2:#006400;
-  --border:rgba(0,48,135,0.14);
-  --shadow:rgba(0,48,135,0.14);
+  --text-muted:#5B5F6A;
+  --primary:#0B00CF;
+  --primary-dark:#300A6E;
+  --primary-light:#4A3FE0;
+  --accent:#FF2D2B;
+  --accent-2:#C10A28;
+  --border:rgba(11,0,207,0.16);
+  --shadow:rgba(11,0,207,0.14);
   --radius:16px;
-  --tricolor:linear-gradient(90deg,#003087 0%,#FFFFFF 50%,#006400 100%);
+  --tricolor:linear-gradient(90deg,#0B00CF 0%,#FFFFFF 50%,#FF2D2B 100%);
 }
 
 [data-theme="dark"]{
-  --bg:#0A1220;
-  --bg-alt:#111C30;
+  --bg:#191927;
+  --bg-alt:#1F2140;
   --surface:rgba(255,255,255,0.06);
-  --surface-solid:#111C30;
-  --text:#F0F4F8;
-  --text-muted:#9FB0C4;
-  --primary:#3E6FD9;
-  --primary-dark:#1A3A80;
-  --primary-light:#6D9BF0;
-  --accent:#FF9838;
-  --accent-2:#3EA55A;
-  --border:rgba(255,255,255,0.12);
-  --shadow:rgba(0,0,0,0.45);
+  --surface-solid:#1F2140;
+  --text:#F1F2F8;
+  --text-muted:#9B9FC2;
+  --primary:#57FF8F;
+  --primary-dark:#2FBF6B;
+  --primary-light:#8CFFB4;
+  --accent:#00D7D2;
+  --accent-2:#8E72EE;
+  --border:rgba(87,255,143,0.18);
+  --shadow:rgba(0,0,0,0.5);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
@@ -205,27 +205,53 @@ nav a:hover, nav a:focus-visible{color:var(--accent);}
 /* ===== HERO ===== */
 header{
   position:relative;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(0,48,135,0.35), transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(0,100,0,0.22), transparent 45%),
-    linear-gradient(135deg,var(--primary-dark),var(--primary));
+  background:var(--primary-dark);
   color:#fff;
   padding:90px 20px 70px;
   text-align:center;
   overflow:hidden;
 }
+.hero-carousel{position:absolute;inset:0;z-index:0;}
+.hero-slide{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:0;
+  animation:heroFade 12s infinite;
+}
+.hero-slide:nth-child(1){animation-delay:0s;}
+.hero-slide:nth-child(2){animation-delay:4s;}
+.hero-slide:nth-child(3){animation-delay:8s;}
+@keyframes heroFade{
+  0%{opacity:0;} 6%{opacity:1;} 33%{opacity:1;} 40%{opacity:0;} 100%{opacity:0;}
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,45,43,0.3), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(48,10,110,0.4), transparent 45%),
+    linear-gradient(135deg,var(--primary-dark) 10%,var(--primary) 100%);
+  opacity:.88;
+}
+.hero-content{position:relative;z-index:2;}
+.hero-dots{display:flex;gap:8px;justify-content:center;margin-top:26px;position:relative;z-index:2;}
+.hero-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);animation:heroDot 12s infinite;}
+.hero-dots span:nth-child(1){animation-delay:0s;}
+.hero-dots span:nth-child(2){animation-delay:4s;}
+.hero-dots span:nth-child(3){animation-delay:8s;}
+@keyframes heroDot{0%{background:rgba(255,255,255,.35);}6%{background:#fff;}33%{background:#fff;}40%{background:rgba(255,255,255,.35);}100%{background:rgba(255,255,255,.35);}}
 header::after{
   content:"";
   position:absolute;
   left:0;right:0;bottom:0;
   height:6px;
   background:var(--tricolor);
+  z-index:2;
 }
 .hero-eyebrow{
   font-size:12px;
   letter-spacing:3px;
   text-transform:uppercase;
-  color:#FFD9A6;
+  color:#FFD1D0;
   font-weight:700;
   margin-bottom:14px;
 }
@@ -350,7 +376,7 @@ h2{color:var(--primary);font-size:clamp(1.6rem,3vw,2.2rem);}
 
 /* ===== SCHOLARSHIP BANNER ===== */
 .scholarship-banner{
-  background:linear-gradient(120deg,var(--accent),#A64500);
+  background:linear-gradient(120deg,var(--accent),var(--accent-2));
   color:#fff;
   border-radius:20px;
   padding:34px clamp(20px,4vw,50px);
@@ -359,7 +385,7 @@ h2{color:var(--primary);font-size:clamp(1.6rem,3vw,2.2rem);}
   justify-content:space-between;
   gap:20px;
   flex-wrap:wrap;
-  box-shadow:0 12px 30px rgba(224,107,0,.3);
+  box-shadow:0 12px 30px rgba(255,45,43,.3);
 }
 .scholarship-banner h3{font-size:22px;margin-bottom:6px;}
 .scholarship-banner p{font-size:14px;opacity:.95;}
@@ -463,11 +489,22 @@ footer{
   background:var(--primary-dark);
   color:#fff;
   text-align:center;
-  padding:26px 20px;
+  padding:40px 20px 26px;
   margin-top:40px;
   font-size:13px;
 }
 footer .tricolor-rule{margin:0 auto 14px;}
+.footer-grid{
+  max-width:1100px;margin:0 auto 30px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:26px;text-align:left;
+}
+.footer-col h4{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;color:#fff;}
+.footer-col a, .footer-col span{
+  display:block;color:rgba(255,255,255,.8);text-decoration:none;
+  font-size:13px;margin-bottom:9px;line-height:1.5;
+}
+.footer-col a:hover{color:#fff;text-decoration:underline;}
 
 /* ===== FLOATING BUTTONS ===== */
 .floating-stack{
@@ -563,12 +600,25 @@ footer .tricolor-rule{margin:0 auto 14px;}
 .btn-blue{background:var(--accent);color:#fff;}
 .btn-whatsapp{background:#25D366;color:#fff;}
 .btn-green:hover, .btn-blue:hover, .btn-whatsapp:hover{filter:brightness(1.1);}
+[data-theme="dark"] .btn-green{color:#0B2914;font-weight:800;}
+[data-theme="dark"] .stat-card{color:#0B2914;}
+[data-theme="dark"] .hero-stat h3{color:#F1F2F8;}
 
 .service-desc{font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.4;}
 .service-card{flex-direction:column;align-items:flex-start;}
 .service-card .ico{margin-bottom:4px;}
 .service-card .svc-title{font-weight:700;font-size:14px;}
 .price-tag{font-size:11px;color:var(--accent);font-weight:700;margin-top:6px;}
+
+.important-links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.link-chip{
+  display:flex;align-items:center;gap:8px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:14px 16px;
+  text-decoration:none;color:var(--text);font-weight:600;font-size:13px;
+  transition:.2s;
+}
+.link-chip:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 8px 18px var(--shadow);}
 
 .reviews-placeholder{
   text-align:center;padding:30px 20px;
@@ -640,6 +690,14 @@ footer .tricolor-rule{margin:0 auto 14px;}
 </nav>
 
 <header>
+<div class="hero-carousel">
+  <div class="hero-slide" style="background-image:url('office1.jpeg');"></div>
+  <div class="hero-slide" style="background-image:url('office2.jpeg');"></div>
+  <div class="hero-slide" style="background-image:url('office3.jpeg');"></div>
+</div>
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
 <div class="hero-eyebrow" data-i18n="hero_eyebrow">Authorised CSC · Jan Seva Kendra · Khair, Aligarh</div>
 <h1>SAHAJ JAN SEVA KENDRA</h1>
 <p class="tagline" data-i18n="hero_tagline">All Government &amp; Digital Services Under One Roof</p>
@@ -656,6 +714,9 @@ footer .tricolor-rule{margin:0 auto 14px;}
 <div class="hero-stat"><h3>1000+</h3><p data-i18n="stat_customers">Happy Customers</p></div>
 <div class="hero-stat"><h3>25+</h3><p data-i18n="stat_services">Services Available</p></div>
 </div>
+
+<div class="hero-dots"><span></span><span></span><span></span></div>
+</div>
 </header>
 
 <div class="quick-services">
@@ -667,6 +728,24 @@ footer .tricolor-rule{margin:0 auto 14px;}
     <a class="quick-item" href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener"><span class="ico">📍</span><span data-i18n="quick_directions">Directions</span></a>
   </div>
 </div>
+
+<section id="important-links">
+<div class="section-inner reveal">
+<span class="eyebrow" data-i18n="links_eyebrow">Official Portals</span>
+<h2 data-i18n="links_title">Important Links</h2>
+<div class="tricolor-rule"></div>
+<div class="important-links-grid">
+<a class="link-chip" href="https://uidai.gov.in" target="_blank" rel="noopener">🪪 UIDAI (Aadhaar)</a>
+<a class="link-chip" href="https://www.onlineservices.nsdl.com" target="_blank" rel="noopener">💳 PAN (NSDL)</a>
+<a class="link-chip" href="https://www.incometax.gov.in" target="_blank" rel="noopener">📄 Income Tax e-Filing</a>
+<a class="link-chip" href="https://scholarships.gov.in" target="_blank" rel="noopener">🎓 National Scholarship Portal</a>
+<a class="link-chip" href="https://scholarship.up.gov.in" target="_blank" rel="noopener">🎓 UP Scholarship</a>
+<a class="link-chip" href="https://csc.gov.in" target="_blank" rel="noopener">🖥️ CSC Official Site</a>
+<a class="link-chip" href="https://digitalindia.gov.in" target="_blank" rel="noopener">🇮🇳 Digital India</a>
+<a class="link-chip" href="https://edistrict.up.gov.in" target="_blank" rel="noopener">🏛️ UP e-District</a>
+</div>
+</div>
+</section>
 
 <section id="about">
 <div class="section-inner reveal">
@@ -849,7 +928,31 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 </section>
 
 <footer>
-<div class="tricolor-rule"></div>
+<div class="footer-grid">
+  <div class="footer-col">
+    <h4 data-i18n="footer_quicklinks">Quick Links</h4>
+    <a href="#about" data-i18n="nav_about">About</a>
+    <a href="#services" data-i18n="nav_services">Services</a>
+    <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+    <a href="#form" data-i18n="nav_request">Request</a>
+    <a href="#contact" data-i18n="nav_contact">Contact</a>
+  </div>
+  <div class="footer-col">
+    <h4 data-i18n="links_title">Important Links</h4>
+    <a href="https://uidai.gov.in" target="_blank" rel="noopener">UIDAI (Aadhaar)</a>
+    <a href="https://www.onlineservices.nsdl.com" target="_blank" rel="noopener">PAN (NSDL)</a>
+    <a href="https://scholarships.gov.in" target="_blank" rel="noopener">National Scholarship Portal</a>
+    <a href="https://csc.gov.in" target="_blank" rel="noopener">CSC Official Site</a>
+    <a href="https://edistrict.up.gov.in" target="_blank" rel="noopener">UP e-District</a>
+  </div>
+  <div class="footer-col">
+    <h4 data-i18n="footer_contact">Contact Us</h4>
+    <a href="tel:8954214200">📞 8954214200</a>
+    <a href="mailto:panmtr60@gmail.com">📧 panmtr60@gmail.com</a>
+    <span>📍 Malipura, Tentigaon Road, Khair, Aligarh - 202138</span>
+  </div>
+</div>
+<div class="tricolor-rule" style="margin:0 auto;"></div>
 <p>© 2026 Sahaj Jan Seva Kendra | Gaurav Chaudhary</p>
 </footer>
 
@@ -869,6 +972,8 @@ en: {
   hero_apply:"Apply Online", cta_call:"📞 Call Now", cta_whatsapp:"💬 WhatsApp Now",
   stat_years:"Years Experience", stat_customers:"Happy Customers", stat_services:"Services Available",
   quick_call:"Call Us", quick_whatsapp:"WhatsApp", quick_apply:"Apply Online", quick_allservices:"All Services", quick_directions:"Directions",
+  links_eyebrow:"Official Portals", links_title:"Important Links",
+  footer_quicklinks:"Quick Links", footer_contact:"Contact Us",
   about_eyebrow:"Who We Are", about_title:"About Us", about_role:"Founder & VLE",
   about_text:"Sahaj Jan Seva Kendra is a trusted Digital & Government Service Center helping citizens of Khair with Aadhaar, PAN Card, Income Certificate, Caste Certificate, Domicile Certificate, AEPS Banking, Account Opening, Scholarship forms and many other online services. Our goal is simple — bring every government service closer to you, with speed and transparency.",
   why_title:"Why Choose Us",
@@ -924,6 +1029,8 @@ hi: {
   hero_apply:"ऑनलाइन आवेदन करें", cta_call:"📞 अभी कॉल करें", cta_whatsapp:"💬 व्हाट्सएप करें",
   stat_years:"वर्षों का अनुभव", stat_customers:"खुश ग्राहक", stat_services:"उपलब्ध सेवाएं",
   quick_call:"कॉल करें", quick_whatsapp:"व्हाट्सएप", quick_apply:"ऑनलाइन आवेदन", quick_allservices:"सभी सेवाएं", quick_directions:"दिशा-निर्देश",
+  links_eyebrow:"आधिकारिक पोर्टल", links_title:"महत्वपूर्ण लिंक",
+  footer_quicklinks:"त्वरित लिंक", footer_contact:"संपर्क करें",
   about_eyebrow:"हम कौन हैं", about_title:"हमारे बारे में", about_role:"संस्थापक एवं वीएलई",
   about_text:"सहज जन सेवा केंद्र खैर के नागरिकों के लिए एक विश्वसनीय डिजिटल एवं सरकारी सेवा केंद्र है, जो आधार, पैन कार्ड, आय प्रमाण पत्र, जाति प्रमाण पत्र, निवास प्रमाण पत्र, एईपीएस बैंकिंग, खाता खोलना, छात्रवृत्ति फॉर्म तथा कई अन्य ऑनलाइन सेवाओं में मदद करता है। हमारा लक्ष्य सरल है — हर सरकारी सेवा को तेज़ी और पारदर्शिता के साथ आप तक पहुंचाना।",
   why_title:"हमें क्यों चुनें",
@@ -979,6 +1086,8 @@ mr: {
   hero_apply:"ऑनलाइन अर्ज करा", cta_call:"📞 आता कॉल करा", cta_whatsapp:"💬 व्हॉट्सअॅप करा",
   stat_years:"वर्षांचा अनुभव", stat_customers:"समाधानी ग्राहक", stat_services:"उपलब्ध सेवा",
   quick_call:"कॉल करा", quick_whatsapp:"व्हॉट्सअॅप", quick_apply:"ऑनलाइन अर्ज", quick_allservices:"सर्व सेवा", quick_directions:"दिशादर्शन",
+  links_eyebrow:"अधिकृत पोर्टल", links_title:"महत्त्वाच्या लिंक्स",
+  footer_quicklinks:"द्रुत लिंक्स", footer_contact:"संपर्क करा",
   about_eyebrow:"आम्ही कोण आहोत", about_title:"आमच्याबद्दल", about_role:"संस्थापक व व्हीएलई",
   about_text:"सहज जन सेवा केंद्र हे खैरमधील नागरिकांसाठी एक विश्वासार्ह डिजिटल व शासकीय सेवा केंद्र आहे, जे आधार, पॅन कार्ड, उत्पन्न प्रमाणपत्र, जात प्रमाणपत्र, रहिवासी प्रमाणपत्र, एईपीएस बँकिंग, खाते उघडणे, शिष्यवृत्ती फॉर्म तसेच इतर अनेक ऑनलाइन सेवांसाठी मदत करते. आमचे ध्येय सोपे आहे — प्रत्येक शासकीय सेवा वेग आणि पारदर्शकतेने तुमच्यापर्यंत पोहोचवणे.",
   why_title:"आम्हाला का निवडावे",
