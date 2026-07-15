@@ -46,37 +46,38 @@
 
 <style>
 :root{
-  --bg:#F5F5FA;
+  --bg:#F8FAFC;
   --bg-alt:#FFFFFF;
   --surface:rgba(255,255,255,0.7);
   --surface-solid:#FFFFFF;
-  --text:#212529;
-  --text-muted:#5B5F6A;
-  --primary:#0B00CF;
-  --primary-dark:#300A6E;
-  --primary-light:#4A3FE0;
-  --accent:#FF2D2B;
-  --accent-2:#C10A28;
-  --border:rgba(11,0,207,0.16);
-  --shadow:rgba(11,0,207,0.14);
+  --text:#1E293B;
+  --text-muted:#64748B;
+  --primary:#1E40AF;
+  --primary-dark:#13275C;
+  --primary-light:#3B5FCC;
+  --accent:#D97706;
+  --accent-2:#1E40AF;
+  --border:rgba(30,64,175,0.14);
+  --shadow:rgba(30,64,175,0.10);
   --radius:16px;
-  --tricolor:linear-gradient(90deg,#0B00CF 0%,#FFFFFF 50%,#FF2D2B 100%);
+  --tricolor:var(--primary);
 }
 
 [data-theme="dark"]{
-  --bg:#191927;
-  --bg-alt:#1F2140;
-  --surface:rgba(255,255,255,0.06);
-  --surface-solid:#1F2140;
-  --text:#F1F2F8;
-  --text-muted:#9B9FC2;
-  --primary:#57FF8F;
-  --primary-dark:#2FBF6B;
-  --primary-light:#8CFFB4;
-  --accent:#00D7D2;
-  --accent-2:#8E72EE;
-  --border:rgba(87,255,143,0.18);
+  --bg:#0B1220;
+  --bg-alt:#111A2E;
+  --surface:rgba(255,255,255,0.05);
+  --surface-solid:#111A2E;
+  --text:#E2E8F0;
+  --text-muted:#94A3B8;
+  --primary:#4C7DFF;
+  --primary-dark:#1E3A8A;
+  --primary-light:#7FA3FF;
+  --accent:#F0A93E;
+  --accent-2:#4C7DFF;
+  --border:rgba(255,255,255,0.1);
   --shadow:rgba(0,0,0,0.5);
+  --tricolor:var(--accent);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
@@ -226,11 +227,8 @@ header{
 }
 .hero-overlay{
   position:absolute;inset:0;z-index:1;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(255,45,43,0.3), transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(48,10,110,0.4), transparent 45%),
-    linear-gradient(135deg,var(--primary-dark) 10%,var(--primary) 100%);
-  opacity:.88;
+  background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);
+  opacity:.9;
 }
 .hero-content{position:relative;z-index:2;}
 .hero-dots{display:flex;gap:8px;justify-content:center;margin-top:26px;position:relative;z-index:2;}
@@ -251,7 +249,7 @@ header::after{
   font-size:12px;
   letter-spacing:3px;
   text-transform:uppercase;
-  color:#FFD1D0;
+  color:#BFD3FF;
   font-weight:700;
   margin-bottom:14px;
 }
@@ -376,7 +374,7 @@ h2{color:var(--primary);font-size:clamp(1.6rem,3vw,2.2rem);}
 
 /* ===== SCHOLARSHIP BANNER ===== */
 .scholarship-banner{
-  background:linear-gradient(120deg,var(--accent),var(--accent-2));
+  background:linear-gradient(120deg,var(--accent),#A85B05);
   color:#fff;
   border-radius:20px;
   padding:34px clamp(20px,4vw,50px);
@@ -385,7 +383,7 @@ h2{color:var(--primary);font-size:clamp(1.6rem,3vw,2.2rem);}
   justify-content:space-between;
   gap:20px;
   flex-wrap:wrap;
-  box-shadow:0 12px 30px rgba(255,45,43,.3);
+  box-shadow:0 12px 30px rgba(217,119,6,.25);
 }
 .scholarship-banner h3{font-size:22px;margin-bottom:6px;}
 .scholarship-banner p{font-size:14px;opacity:.95;}
@@ -600,9 +598,7 @@ footer .tricolor-rule{margin:0 auto 14px;}
 .btn-blue{background:var(--accent);color:#fff;}
 .btn-whatsapp{background:#25D366;color:#fff;}
 .btn-green:hover, .btn-blue:hover, .btn-whatsapp:hover{filter:brightness(1.1);}
-[data-theme="dark"] .btn-green{color:#0B2914;font-weight:800;}
-[data-theme="dark"] .stat-card{color:#0B2914;}
-[data-theme="dark"] .hero-stat h3{color:#F1F2F8;}
+
 
 .service-desc{font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.4;}
 .service-card{flex-direction:column;align-items:flex-start;}
