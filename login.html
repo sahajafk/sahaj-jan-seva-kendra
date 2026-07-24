@@ -8,36 +8,68 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FAF7EF; --bg-alt:#FFFFFF; --surface:rgba(255,255,255,0.65);
-  --text:#15241E; --text-muted:#4B5D57;
-  --primary:#0B4D3C; --primary-dark:#093B2E; --primary-light:#15794F;
-  --accent:#E1992F; --border:rgba(11,77,60,0.14);
-  --tricolor:linear-gradient(90deg,#E1992F 0%,#F4EFE2 50%,#0B4D3C 100%);
+  --bg:#0B1220; --bg-alt:#111A2E; --surface:rgba(255,255,255,0.06);
+  --text:#E2E8F0; --text-muted:#94A3B8;
+  --primary:#1E40AF; --primary-dark:#13275C; --primary-light:#3B5FCC;
+  --accent:#D97706; --border:rgba(255,255,255,0.1);
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{
   min-height:100vh;
   background:
-    radial-gradient(circle at 15% 20%, rgba(225,153,47,0.25), transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(21,121,79,0.25), transparent 45%),
-    linear-gradient(135deg,var(--primary-dark),var(--primary));
+    radial-gradient(circle at 20% 20%, rgba(30,64,175,0.35), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(217,119,6,0.15), transparent 45%),
+    linear-gradient(135deg,#080D18,#0B1220);
   display:flex;align-items:center;justify-content:center;
   padding:20px;
 }
-.card{
-  background:var(--bg-alt);
+
+.glow-wrap{
+  position:relative;
   width:100%;max-width:420px;
-  border-radius:20px;
+  border-radius:26px;
+  padding:3px;
+  overflow:hidden;
+  box-shadow:0 25px 70px rgba(0,0,0,.55);
+}
+.glow-wrap::before{
+  content:'';
+  position:absolute;
+  top:50%;left:50%;
+  width:220%;height:220%;
+  background:conic-gradient(from 0deg,
+    transparent 0deg,
+    var(--accent) 40deg,
+    #FFD37A 70deg,
+    var(--primary-light) 130deg,
+    #7FA3FF 160deg,
+    transparent 220deg,
+    transparent 360deg);
+  animation:spin 4s linear infinite;
+  z-index:0;
+}
+@keyframes spin{
+  from{transform:translate(-50%,-50%) rotate(0deg);}
+  to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+.card{
+  position:relative;z-index:1;
+  background:var(--bg-alt);
+  border-radius:23px;
   padding:36px 30px;
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
-  border-top:6px solid var(--accent);
 }
 .brand{text-align:center;margin-bottom:22px;}
-.brand h1{font-family:'Playfair Display',serif;font-size:22px;color:var(--primary);}
+.brand h1{font-family:'Playfair Display',serif;font-size:22px;color:#fff;}
 .brand p{font-size:12px;color:var(--text-muted);margin-top:4px;letter-spacing:1px;text-transform:uppercase;}
-.tricolor-rule{height:4px;width:60px;background:var(--tricolor);border-radius:4px;margin:12px auto 0;}
+.avatar-ring{
+  width:64px;height:64px;border-radius:50%;margin:0 auto 14px;
+  background:linear-gradient(135deg,var(--primary-light),var(--accent));
+  display:flex;align-items:center;justify-content:center;font-size:28px;
+}
+.tricolor-rule{height:3px;width:50px;background:linear-gradient(90deg,var(--accent),var(--primary-light));border-radius:4px;margin:12px auto 0;}
 
-.tabs{display:flex;background:#F1EEE4;border-radius:12px;padding:5px;margin-bottom:22px;}
+.tabs{display:flex;background:rgba(255,255,255,0.06);border-radius:12px;padding:5px;margin-bottom:22px;}
 .tab-btn{
   flex:1;text-align:center;padding:10px;border:none;background:none;
   border-radius:9px;font-weight:600;font-size:14px;cursor:pointer;color:var(--text-muted);
@@ -50,27 +82,31 @@ body{
 label{font-size:13px;font-weight:600;color:var(--text);display:block;margin:12px 0 4px;}
 input{
   width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;
-  font-size:14px;background:#FBFAF6;
+  font-size:14px;background:rgba(255,255,255,0.05);color:var(--text);
 }
+input::placeholder{color:var(--text-muted);}
 input:focus{outline:2px solid var(--accent);outline-offset:1px;}
 .btn{
   width:100%;margin-top:20px;padding:13px;border:none;border-radius:10px;
-  background:var(--primary);color:#fff;font-weight:700;font-size:15px;cursor:pointer;
+  background:linear-gradient(135deg,var(--primary-light),var(--primary));color:#fff;font-weight:700;font-size:15px;cursor:pointer;
   transition:.2s;
 }
-.btn:hover{background:var(--primary-light);}
+.btn:hover{filter:brightness(1.1);}
 .hint{
   margin-top:16px;font-size:12px;color:var(--text-muted);
-  background:#FBF3E1;border:1px dashed var(--accent);border-radius:8px;padding:10px;
+  background:rgba(217,119,6,0.1);border:1px dashed var(--accent);border-radius:8px;padding:10px;
 }
-.error{color:#c0392b;font-size:13px;margin-top:10px;display:none;}
-.back-link{display:block;text-align:center;margin-top:18px;font-size:13px;color:var(--primary);text-decoration:none;font-weight:600;}
+.error{color:#FF8080;font-size:13px;margin-top:10px;display:none;}
+.back-link{display:block;text-align:center;margin-top:18px;font-size:13px;color:var(--text-muted);text-decoration:none;font-weight:600;}
+.back-link:hover{color:#fff;}
 </style>
 </head>
 <body>
 
+<div class="glow-wrap">
 <div class="card">
   <div class="brand">
+    <div class="avatar-ring">🔐</div>
     <h1>SAHAJ JAN SEVA KENDRA</h1>
     <p>Secure Login</p>
     <div class="tricolor-rule"></div>
@@ -102,6 +138,7 @@ input:focus{outline:2px solid var(--accent);outline-offset:1px;}
   </div>
 
   <a class="back-link" href="index.html">← Back to Website</a>
+</div>
 </div>
 
 <script>
