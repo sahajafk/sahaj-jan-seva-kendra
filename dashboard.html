@@ -5,201 +5,398 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard | Sahaj Jan Seva Kendra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
-:root{
-  --bg:#FAF7EF; --bg-alt:#FFFFFF; --surface:rgba(255,255,255,0.7);
-  --text:#15241E; --text-muted:#4B5D57;
-  --primary:#0B4D3C; --primary-dark:#093B2E; --primary-light:#15794F;
-  --accent:#E1992F; --border:rgba(11,77,60,0.14);
-  --tricolor:linear-gradient(90deg,#E1992F 0%,#F4EFE2 50%,#0B4D3C 100%);
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:var(--bg);color:var(--text);}
-header{
-  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
-  color:#fff;padding:26px 20px;display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:12px;
-}
-header h1{font-family:'Playfair Display',serif;font-size:20px;}
-header .sub{font-size:12px;opacity:.85;margin-top:2px;}
-header::after{content:"";}
-.logout-btn{
-  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff;
-  padding:9px 18px;border-radius:30px;cursor:pointer;font-weight:600;font-size:13px;
-}
-.logout-btn:hover{background:rgba(255,255,255,.25);}
-
-main{max-width:1100px;margin:30px auto;padding:0 20px 60px;}
-.demo-notice{
-  background:#FBF3E1;border:1px dashed var(--accent);border-radius:12px;
-  padding:14px 18px;font-size:13px;color:var(--text-muted);margin-bottom:24px;
+:root {
+  --bg-dark: #07221A;
+  --header-bg: #0C382B;
+  --accent: #135240;
+  --card-bg: #FFFFFF;
+  --body-bg: #F5F3E9;
+  --text-main: #1A2E26;
+  --text-muted: #667D73;
 }
 
-.card{
-  background:var(--bg-alt);border:1px solid var(--border);border-radius:16px;
-  padding:24px;box-shadow:0 8px 24px rgba(11,77,60,.1);margin-bottom:24px;
-}
-.card h2{font-family:'Playfair Display',serif;color:var(--primary);font-size:19px;margin-bottom:14px;}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-table{width:100%;border-collapse:collapse;font-size:13px;}
-th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border);}
-th{color:var(--primary);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px;}
-tr:hover{background:#FAF7EF;}
-.status{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;display:inline-block;}
-.status-pending{background:#FDEACB;color:#8A5A00;}
-.status-process{background:#D6EAF8;color:#1B4F72;}
-.status-done{background:#D5F5E3;color:#1E8449;}
-select.status-select{border:1px solid var(--border);border-radius:8px;padding:4px 6px;font-size:12px;}
+body {
+  background-color: var(--body-bg);
+  color: var(--text-main);
+  min-height: 100vh;
+}
 
-.add-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;}
-.add-form input, .add-form select{
-  padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px;
+/* Header */
+header {
+  background-color: var(--header-bg);
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.add-form button{
-  grid-column:1/-1;background:var(--primary);color:#fff;border:none;border-radius:8px;
-  padding:11px;font-weight:700;cursor:pointer;
+
+.brand-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  letter-spacing: 0.5px;
 }
-.add-form button:hover{background:var(--primary-light);}
-.empty{padding:20px;text-align:center;color:var(--text-muted);font-size:13px;}
+
+.user-status {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  padding: 8px 22px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* Main Container */
+.container {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+
+/* Add Request Box (Only Visible to Staff) */
+.add-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.add-card h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: var(--text-main);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #E0E7E4;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #FAFAF7;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: var(--accent);
+}
+
+.submit-btn {
+  width: 100%;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover {
+  background: #0E4032;
+}
+
+/* Requests List Table Box */
+.table-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.table-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.table-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--header-bg);
+}
+
+/* SEARCH BAR STYLING */
+.search-box-wrapper {
+  position: relative;
+  min-width: 280px;
+}
+
+.search-box-wrapper i {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.search-input {
+  padding-left: 38px !important;
+  background: #FAFAF7;
+  border-radius: 20px !important;
+  border: 1px solid #D5DFDC !important;
+}
+
+.search-input:focus {
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(19,82,64,0.1);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #F0F4F2;
+}
+
+td {
+  padding: 16px;
+  font-size: 14px;
+  border-bottom: 1px solid #F0F4F2;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-pending { background: #FEF3C7; color: #92400E; }
+.status-completed { background: #D1FAE5; color: #065F46; }
+.status-process { background: #E0F2FE; color: #075985; }
+
+.empty-msg {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+@media(max-width: 768px){
+  .form-grid { grid-template-columns: 1fr; }
+  header { padding: 15px 20px; }
+  .table-header-flex { flex-direction: column; align-items: stretch; }
+  .search-box-wrapper { min-width: 100%; }
+}
 </style>
 </head>
 <body>
 
 <header>
   <div>
-    <h1 id="welcomeText">SAHAJ JAN SEVA KENDRA — Dashboard</h1>
-    <div class="sub" id="roleText">Loading...</div>
+    <h1 class="brand-title">SAHAJ JAN SEVA KENDRA — Dashboard</h1>
+    <div class="user-status" id="userRoleText">Logged in as...</div>
   </div>
   <button class="logout-btn" onclick="logout()">Logout</button>
 </header>
 
-<main>
+<div class="container">
 
+  <!-- ADD REQUEST FORM (Visible Only to Staff) -->
+  <div class="add-card" id="addRequestSection">
     <h2>Add New Request</h2>
-    <div class="add-form">
-      <input type="text" id="newName" placeholder="Customer Name">
-      <input type="tel" id="newMobile" placeholder="Mobile Number">
-      <select id="newService">
-        <option>Aadhaar Service</option>
-        <option>New PAN Card</option>
-        <option>PAN Correction</option>
-        <option>Income Certificate</option>
-        <option>Caste Certificate</option>
-        <option>Domicile Certificate</option>
-        <option>AEPS Banking</option>
-        <option>Scholarship Form</option>
-        <option>Other Service</option>
-      </select>
-      <button onclick="addRequest()">Add Request</button>
+    <form onsubmit="event.preventDefault(); addNewRequest();">
+      <div class="form-grid">
+        <input type="text" id="reqName" placeholder="Customer Name" required>
+        <input type="tel" id="reqMobile" placeholder="Mobile Number" maxlength="10" required>
+        <select id="reqService">
+          <option>Aadhaar Service</option>
+          <option>New PAN Card</option>
+          <option>PAN Correction</option>
+          <option>Income Certificate</option>
+          <option>Caste Certificate</option>
+          <option>Domicile Certificate</option>
+          <option>AEPS Banking</option>
+          <option>Scholarship Form</option>
+          <option selected>Other Service</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">Add Request</button>
+    </form>
+  </div>
+
+  <!-- ALL REQUESTS TABLE WITH SEARCH -->
+  <div class="table-card">
+    <div class="table-header-flex">
+      <h2 id="tableHeading">All Requests</h2>
+      
+      <!-- SEARCH BAR -->
+      <div class="search-box-wrapper">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by Name, Mobile or Service..." onkeyup="filterRequests()">
+      </div>
+    </div>
+
+    <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Service</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="requestTableBody">
+          <!-- Rows dynamically loaded here -->
+        </tbody>
+      </table>
+      <div id="noDataMsg" class="empty-msg" style="display:none;">Koi request nahi mili.</div>
     </div>
   </div>
 
-  <div class="card">
-    <h2 id="tableTitle">Requests</h2>
-    <table id="reqTable">
-      <thead>
-        <tr><th>Name</th><th>Mobile</th><th>Service</th><th>Date</th><th>Status</th></tr>
-      </thead>
-      <tbody id="reqBody"></tbody>
-    </table>
-    <div class="empty" id="emptyMsg" style="display:none;">Koi request nahi mili.</div>
-  </div>
-</main>
+</div>
 
 <script>
-// PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwvVtzAYDjmFJW8Ol7yT7VJ6EENbjiUT_oUeh07DBH30xJZ-Awpr-7Qxn9X1RWlZIM1/exec";
+// Mock Data Storage Init
+let requests = JSON.parse(localStorage.getItem('sjsk_requests')) || [
+  { name: "bhupendra kumar", mobile: "8006705605", service: "Other Service", date: "2026-07-25", status: "Pending" },
+  { name: "Gaurav Chaudhary", mobile: "8954214200", service: "PAN Correction", date: "2026-07-24", status: "Completed" },
+  { name: "Rahul Sharma", mobile: "9876543210", service: "Aadhaar Service", date: "2026-07-23", status: "In Process" }
+];
 
-const role = sessionStorage.getItem('sjsk_role');
-if(!role){ window.location.href = 'login.html'; }
+const role = sessionStorage.getItem('sjsk_role') || 'staff';
+const custMobile = sessionStorage.getItem('sjsk_mobile') || '';
 
-const roleText = document.getElementById('roleText');
-const tableTitle = document.getElementById('tableTitle');
-const addCard = document.getElementById('addCard');
-
-if(role === 'staff'){
-  roleText.textContent = 'Logged in as Staff (Admin)';
-  tableTitle.textContent = 'All Requests';
-  addCard.style.display = 'block';
-} else {
-  const mobile = sessionStorage.getItem('sjsk_mobile');
-  roleText.textContent = 'Logged in as Customer — ' + mobile;
-  tableTitle.textContent = 'My Requests';
-}
-
-function statusLabel(s){
-  if(s==='done') return '<span class="status status-done">Completed</span>';
-  if(s==='process') return '<span class="status status-process">In Process</span>';
-  return '<span class="status status-pending">Pending</span>';
-}
-
-async function fetchRequests(){
-  const body = document.getElementById('reqBody');
-  const emptyMsg = document.getElementById('emptyMsg');
-
-  if(SCRIPT_URL.includes('PASTE_YOUR')){
-    body.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:#c0392b;">Setup abhi baaki hai — dashboard.html mein SCRIPT_URL set karein.</td></tr>';
+window.addEventListener('DOMContentLoaded', () => {
+  // Check login state
+  if(!sessionStorage.getItem('sjsk_role')){
+    window.location.href = 'login.html';
     return;
   }
 
-  body.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted);">Loading...</td></tr>';
-  try{
-    const res = await fetch(SCRIPT_URL);
-    let list = await res.json();
-    if(role === 'customer'){
-      const mobile = sessionStorage.getItem('sjsk_mobile');
-      list = list.filter(r => String(r.mobile) === mobile);
-    }
-    body.innerHTML = '';
-    if(list.length === 0){ emptyMsg.style.display='block'; return; }
-    emptyMsg.style.display='none';
-    list.forEach(r => {
-      const tr = document.createElement('tr');
-      let statusCell;
-      if(role === 'staff'){
-        statusCell = `<select class="status-select" onchange="updateStatus('${r.mobile}','${r.date}','${r.service}',this.value)">
-          <option value="pending" ${r.status==='pending'?'selected':''}>Pending</option>
-          <option value="process" ${r.status==='process'?'selected':''}>In Process</option>
-          <option value="done" ${r.status==='done'?'selected':''}>Completed</option>
-        </select>`;
-      } else {
-        statusCell = statusLabel(r.status);
-      }
-      tr.innerHTML = `<td>${r.name}</td><td>${r.mobile}</td><td>${r.service}</td><td>${r.date}</td><td>${statusCell}</td>`;
-      body.appendChild(tr);
-    });
-  } catch(err){
-    body.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:#c0392b;">Data load nahi ho paya. Internet check karein ya SCRIPT_URL sahi hai verify karein.</td></tr>';
+  // Display User Role
+  if(role === 'staff'){
+    document.getElementById('userRoleText').textContent = 'Logged in as Staff (Admin)';
+  } else {
+    document.getElementById('userRoleText').textContent = `Logged in as Customer (${custMobile})`;
+    document.getElementById('addRequestSection').style.display = 'none';
+    document.getElementById('tableHeading').textContent = 'My Requests';
   }
+
+  renderRequests();
+});
+
+// Render Requests to Table
+function renderRequests(data = null) {
+  const tbody = document.getElementById('requestTableBody');
+  const noDataMsg = document.getElementById('noDataMsg');
+  tbody.innerHTML = '';
+
+  let listToDisplay = data || requests;
+
+  // Filter if Customer is logged in
+  if(role === 'customer'){
+    listToDisplay = listToDisplay.filter(r => r.mobile === custMobile);
+  }
+
+  if(listToDisplay.length === 0){
+    noDataMsg.style.display = 'block';
+    return;
+  } else {
+    noDataMsg.style.display = 'none';
+  }
+
+  listToDisplay.forEach(req => {
+    let statusClass = 'status-pending';
+    if(req.status === 'Completed') statusClass = 'status-completed';
+    if(req.status === 'In Process') statusClass = 'status-process';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><b>${req.name}</b></td>
+      <td>${req.mobile}</td>
+      <td>${req.service}</td>
+      <td>${req.date}</td>
+      <td><span class="status-badge ${statusClass}">${req.status}</span></td>
+    `;
+    tbody.appendChild(tr);
+  });
 }
 
-async function updateStatus(mobile, date, service, newStatus){
-  const url = `${SCRIPT_URL}?action=update&mobile=${encodeURIComponent(mobile)}&date=${encodeURIComponent(date)}&service=${encodeURIComponent(service)}&status=${encodeURIComponent(newStatus)}`;
-  await fetch(url);
-  fetchRequests();
+// Live Search Filter Function
+function filterRequests() {
+  const query = document.getElementById('searchInput').value.toLowerCase().trim();
+  
+  const filtered = requests.filter(req => {
+    return req.name.toLowerCase().includes(query) || 
+           req.mobile.includes(query) || 
+           req.service.toLowerCase().includes(query) ||
+           req.status.toLowerCase().includes(query);
+  });
+
+  renderRequests(filtered);
 }
 
-async function addRequest(){
-  const name = document.getElementById('newName').value.trim();
-  const mobile = document.getElementById('newMobile').value.trim();
-  const service = document.getElementById('newService').value;
-  if(!name || !mobile){ alert('Naam aur mobile number dono zaroori hai.'); return; }
-  const today = new Date().toISOString().slice(0,10);
-  const url = `${SCRIPT_URL}?action=add&name=${encodeURIComponent(name)}&mobile=${encodeURIComponent(mobile)}&service=${encodeURIComponent(service)}&date=${encodeURIComponent(today)}`;
-  await fetch(url);
-  document.getElementById('newName').value = '';
-  document.getElementById('newMobile').value = '';
-  fetchRequests();
+// Add New Request Function
+function addNewRequest() {
+  const name = document.getElementById('reqName').value.trim();
+  const mobile = document.getElementById('reqMobile').value.trim();
+  const service = document.getElementById('reqService').value;
+  const date = new Date().toISOString().split('T')[0];
+
+  const newReq = { name, mobile, service, date, status: "Pending" };
+  requests.unshift(newReq);
+  localStorage.setItem('sjsk_requests', JSON.stringify(requests));
+
+  // Reset form & re-render
+  document.getElementById('reqName').value = '';
+  document.getElementById('reqMobile').value = '';
+  renderRequests();
 }
 
-function logout(){
-  sessionStorage.removeItem('sjsk_role');
-  sessionStorage.removeItem('sjsk_mobile');
+// Logout Function
+function logout() {
+  sessionStorage.clear();
   window.location.href = 'login.html';
 }
-
-fetchRequests();
 </script>
 
 </body>
