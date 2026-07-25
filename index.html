@@ -1,180 +1,785 @@
 <!DOCTYPE html>
-<html lang="hi" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Modern Landing Page</title>
+    <title>Sahaj Jan Seva Kendra Khair Aligarh | PAN Card, Aadhaar, CSC Services</title>
+
+    <meta name="description" content="Sahaj Jan Seva Kendra, Khair Aligarh — trusted CSC / Jan Seva Kendra for PAN Card, Aadhaar, Income Certificate, Caste Certificate, Domicile Certificate, AEPS Banking, Pension and Scholarship services. Call 8954214200.">
+    <meta name="keywords" content="Jan Seva Kendra Khair, CSC Khair, PAN Card Khair Aligarh, Aadhaar Service Khair, Income Certificate Khair, Caste Certificate Khair, Domicile Certificate Khair, AEPS Banking Khair, Scholarship Form Khair">
+    <meta name="author" content="Gaurav Chaudhary">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sahajjansevakhair.in/">
+
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="Sahaj Jan Seva Kendra Khair Aligarh">
+    <meta property="og:description" content="PAN Card, Aadhaar, Certificates, AEPS Banking & Scholarship help — Malipura, Tentigaon Road, Khair, Aligarh.">
+    <meta property="og:image" content="office1.jpeg">
+    <meta property="og:locale" content="en_IN">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%82%3C/text%3E%3C/svg%3E">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS Animation Library -->
+    <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0F172A',   /* Deep Slate */
-                        secondary: '#1E293B', /* Charcoal */
-                        accent: '#2563EB',    /* Electric Blue */
-                        accentHover: '#1D4ED8',
-                        surface: '#F8F9FA'    /* Clean Light Gray */
+                        primary: '#1E40AF',
+                        primaryDark: '#13275C',
+                        primaryLight: '#3B5FCC',
+                        accent: '#D97706',
+                        accentHover: '#B45309',
+                        surface: '#F8FAFC',
+                        surfaceDark: '#0B1220',
+                        cardDark: '#111A2E'
                     }
                 }
             }
         }
     </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Sahaj Jan Seva Kendra",
+      "image": "office1.jpeg",
+      "telephone": ["+91-8954214200", "+91-8954204200"],
+      "email": "panmtr60@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Malipura, Tentigaon Road",
+        "addressLocality": "Khair, Aligarh",
+        "addressRegion": "Uttar Pradesh",
+        "postalCode": "202138",
+        "addressCountry": "IN"
+      },
+      "areaServed": "Khair, Aligarh",
+      "priceRange": "₹"
+    }
+    </script>
+
     <style>
         .glass-nav {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(19, 39, 92, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .dark .glass-nav {
+            background: rgba(11, 18, 32, 0.9);
+        }
+        .ticker-wrap {
+            background: #13275C;
+            color: #fff;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-track {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 26s linear infinite;
+        }
+        .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .hero-slide {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            opacity: 0; animation: heroFade 12s infinite;
+        }
+        .hero-slide:nth-child(1) { animation-delay: 0s; }
+        .hero-slide:nth-child(2) { animation-delay: 4s; }
+        .hero-slide:nth-child(3) { animation-delay: 8s; }
+        @keyframes heroFade {
+            0% { opacity: 0; } 6% { opacity: 1; } 33% { opacity: 1; } 40% { opacity: 0; } 100% { opacity: 0; }
         }
     </style>
 </head>
-<body class="bg-surface text-slate-800 font-sans antialiased selection:bg-accent selection:text-white">
+<body class="bg-slate-50 dark:bg-surfaceDark text-slate-800 dark:text-slate-200 font-sans antialiased selection:bg-accent selection:text-white transition-colors duration-300">
 
-    <!-- 1. GLASSMORPHIC NAVBAR -->
-    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-slate-800/50">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 text-white font-bold text-xl tracking-wide">
+    <!-- SCHOLARSHIP POPUP -->
+    <div class="hidden fixed inset-0 bg-black/70 z-[2000] items-center justify-center p-4 backdrop-blur-sm" id="scholarshipPopup">
+        <div class="bg-white dark:bg-cardDark rounded-2xl max-w-md w-full p-8 text-center relative border-t-8 border-accent shadow-2xl transform transition-all" data-aos="zoom-in">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-white text-xl font-bold" id="popupClose" aria-label="Close">✕</button>
+            <div class="text-5xl mb-3">👋</div>
+            <h3 class="text-2xl font-bold text-primary dark:text-accent mb-2" data-i18n="popup_title">Welcome to Sahaj Jan Seva Kendra</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed" data-i18n="popup_text">Choose what you need — apply for a service, sell/buy a laptop, or check the scholarship form.</p>
+            <div class="flex flex-col gap-3">
+                <a href="#form" class="w-full bg-primary hover:bg-primaryDark text-white py-3 rounded-xl font-semibold shadow-lg transition-all" id="popupCta" data-i18n="popup_cta">📝 Apply for a Service</a>
+                <a href="#computer-services" class="w-full bg-accent hover:bg-accentHover text-white py-3 rounded-xl font-semibold shadow-lg transition-all" id="popupCtaLaptop" data-i18n="popup_cta_laptop">💻 Sell / Buy Laptop</a>
+                <a href="#form" class="w-full bg-primaryDark hover:bg-slate-900 text-white py-3 rounded-xl font-semibold shadow-lg transition-all" id="popupCtaScholar" data-i18n="popup_cta_scholar">🎓 Scholarship Form</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEWS TICKER -->
+    <div class="ticker-wrap py-2 z-50 text-xs sm:text-sm font-medium border-b border-white/10">
+        <div class="ticker-track">
+            <span class="mr-12" data-i18n="ticker1">🎓 Scholarship Form 2026-27 registration open — visit today for NSP help</span>
+            <span class="mr-12" data-i18n="ticker2">📢 Naye Aadhaar update aur PAN correction ab same-day possible</span>
+            <span class="mr-12" data-i18n="ticker3">💳 AEPS Banking &amp; Account Opening available at counter</span>
+            <span class="mr-12" data-i18n="ticker4">📞 Emergency service ke liye call karein: 8954214200</span>
+        </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 glass-nav border-b border-white/10 text-white shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 font-bold text-lg sm:text-xl tracking-wide">
                 <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white shadow-lg shadow-accent/40">
-                    <i class="fa-solid fa-cube text-lg"></i>
+                    <i class="fa-solid fa-building-columns"></i>
                 </div>
-                <span>Brand<span class="text-accent">Name</span></span>
+                <span>SAHAJ <span class="text-accent">CSC</span></span>
             </a>
 
             <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                <a href="#features" class="hover:text-white transition-colors duration-200">Features</a>
-                <a href="#about" class="hover:text-white transition-colors duration-200">About</a>
-                <a href="#pricing" class="hover:text-white transition-colors duration-200">Pricing</a>
-                <a href="#contact" class="hover:text-white transition-colors duration-200">Contact</a>
+            <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-200">
+                <a href="#about" class="hover:text-accent transition-colors" data-i18n="nav_about">About</a>
+                <a href="#services" class="hover:text-accent transition-colors" data-i18n="nav_services">Services</a>
+                <a href="#computer-services" class="hover:text-accent transition-colors" data-i18n="nav_compservices">Computer Repair</a>
+                <a href="#gallery" class="hover:text-accent transition-colors" data-i18n="nav_gallery">Gallery</a>
+                <a href="#form" class="hover:text-accent transition-colors" data-i18n="nav_request">Request</a>
+                <a href="#contact" class="hover:text-accent transition-colors" data-i18n="nav_contact">Contact</a>
             </nav>
 
-            <!-- Call to Action Button -->
-            <div class="flex items-center gap-4">
-                <a href="#" class="hidden sm:inline-block text-sm font-medium text-slate-300 hover:text-white transition-colors">Sign In</a>
-                <a href="#" class="bg-accent hover:bg-accentHover text-white text-sm font-medium px-5 py-2.5 rounded-xl shadow-lg shadow-accent/30 hover:shadow-accent/50 hover:-translate-y-0.5 transition-all duration-200">
-                    Get Started
-                </a>
+            <!-- Language & Portal Options -->
+            <div class="hidden sm:flex items-center gap-3">
+                <div class="flex bg-white/10 rounded-xl p-1 border border-white/10" id="langSwitch">
+                    <button data-lang="en" class="lang-btn text-xs font-bold px-2.5 py-1 rounded-lg transition-all active bg-accent text-white">EN</button>
+                    <button data-lang="hi" class="lang-btn text-xs font-bold px-2.5 py-1 rounded-lg transition-all text-slate-300">हिं</button>
+                    <button data-lang="mr" class="lang-btn text-xs font-bold px-2.5 py-1 rounded-lg transition-all text-slate-300">मर</button>
+                </div>
+
+                <div class="flex rounded-xl overflow-hidden border border-white/20 text-xs font-bold">
+                    <a href="login.html?tab=staff" class="bg-red-800 text-yellow-300 px-3 py-2 hover:bg-red-900 transition-colors" data-i18n="staff_login">Staff</a>
+                    <a href="login.html?tab=customer" class="bg-emerald-700 text-white px-3 py-2 hover:bg-emerald-800 transition-colors" data-i18n="customer_login">Customer</a>
+                </div>
+
+                <button id="themeToggle" class="bg-white/10 border border-white/20 hover:bg-white/20 px-3 py-1.5 rounded-xl text-xs font-medium transition-all">🌙 Dark</button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="navToggle" class="lg:hidden text-2xl text-white focus:outline-none">☰</button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="navLinks" class="hidden lg:hidden bg-primaryDark/95 border-b border-white/10 px-6 py-4 space-y-3 text-sm">
+            <a href="#about" class="block hover:text-accent" data-i18n="nav_about">About</a>
+            <a href="#services" class="block hover:text-accent" data-i18n="nav_services">Services</a>
+            <a href="#computer-services" class="block hover:text-accent" data-i18n="nav_compservices">Computer Repair</a>
+            <a href="#gallery" class="block hover:text-accent" data-i18n="nav_gallery">Gallery</a>
+            <a href="#form" class="block hover:text-accent" data-i18n="nav_request">Request</a>
+            <a href="#contact" class="block hover:text-accent" data-i18n="nav_contact">Contact</a>
+            <div class="pt-3 border-t border-white/10 flex flex-wrap gap-3 items-center justify-between">
+                <div class="flex bg-white/10 rounded-lg p-1">
+                    <button data-lang="en" class="lang-btn text-xs font-bold px-2 py-1 rounded">EN</button>
+                    <button data-lang="hi" class="lang-btn text-xs font-bold px-2 py-1 rounded">हिं</button>
+                    <button data-lang="mr" class="lang-btn text-xs font-bold px-2 py-1 rounded">मर</button>
+                </div>
+                <button id="themeToggleMobile" class="text-xs bg-white/10 px-3 py-1.5 rounded-lg">🌙 Theme</button>
             </div>
         </div>
     </header>
 
-    <!-- 2. HERO SECTION -->
-    <section class="relative bg-primary text-white pt-36 pb-24 md:pt-48 md:pb-32 overflow-hidden">
-        <!-- Background Glow FX -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[140px] pointer-events-none"></div>
+    <!-- HERO SECTION WITH SMOOTH SLIDER -->
+    <section class="relative bg-primaryDark text-white pt-24 pb-20 md:pt-36 md:pb-28 overflow-hidden">
+        <div class="hero-carousel">
+            <div class="hero-slide" style="background-image:url('office1.jpeg');"></div>
+            <div class="hero-slide" style="background-image:url('office2.jpeg');"></div>
+            <div class="hero-slide" style="background-image:url('office3.jpeg');"></div>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primaryDark/95 via-primaryDark/90 to-primary/80 z-10"></div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <!-- Badge -->
-            <div data-aos="fade-down" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/60 text-slate-300 text-xs font-medium mb-8">
-                <span class="flex h-2 w-2 rounded-full bg-accent"></span>
-                Next-Gen Platform Live
+        <div class="max-w-7xl mx-auto px-6 relative z-20 text-center">
+            <div data-aos="fade-down" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-yellow-400 text-xs font-bold uppercase tracking-widest mb-6">
+                <i class="fa-solid fa-certificate"></i>
+                <span data-i18n="hero_eyebrow">Authorised CSC · Jan Seva Kendra · Khair, Aligarh</span>
             </div>
 
-            <!-- Main Heading -->
-            <h1 data-aos="fade-up" data-aos-delay="100" class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
-                Build Faster with <span class="bg-gradient-to-r from-blue-400 to-accent bg-clip-text text-transparent">Professional</span> Experience
+            <h1 data-aos="fade-up" data-aos-delay="100" class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto font-serif">
+                SAHAJ JAN SEVA KENDRA
             </h1>
 
-            <!-- Subtitle -->
-            <p data-aos="fade-up" data-aos-delay="200" class="mt-6 text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-normal leading-relaxed">
-                Elevate your digital workflow with smooth animations, high-contrast layouts, and clean responsive components designed for speed.
+            <p data-aos="fade-up" data-aos-delay="200" class="mt-4 text-base md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed" data-i18n="hero_tagline">
+                All Government &amp; Digital Services Under One Roof
             </p>
 
-            <!-- CTA Buttons -->
-            <div data-aos="fade-up" data-aos-delay="300" class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#" class="w-full sm:w-auto bg-accent hover:bg-accentHover text-white font-semibold px-8 py-4 rounded-xl shadow-xl shadow-accent/30 hover:shadow-accent/50 hover:-translate-y-0.5 transition-all duration-200 text-base">
-                    Start Free Trial <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+            <div data-aos="fade-up" data-aos-delay="250" class="mt-3 text-xs md:text-sm text-slate-400 font-mono space-y-1">
+                <p>📍 Malipura, Tentigaon Road, Khair, Aligarh - 202138</p>
+                <p>📞 8954214200 &nbsp;|&nbsp; 8954204200</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="300" class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#form" class="w-full sm:w-auto bg-accent hover:bg-accentHover text-white font-semibold px-8 py-3.5 rounded-xl shadow-lg shadow-accent/30 hover:-translate-y-0.5 transition-all text-sm" data-i18n="hero_apply">
+                    Apply Online
                 </a>
-                <a href="#" class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold px-8 py-4 rounded-xl hover:-translate-y-0.5 transition-all duration-200 text-base">
-                    Watch Demo
+                <a href="tel:8954214200" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-8 py-3.5 rounded-xl hover:-translate-y-0.5 transition-all text-sm" data-i18n="cta_call">
+                    📞 Call Now
                 </a>
             </div>
 
-            <!-- Hero Image / Visual Element -->
-            <div data-aos="zoom-in" data-aos-delay="400" class="mt-16 relative max-w-5xl mx-auto rounded-2xl p-2 bg-slate-800/50 border border-slate-700/50 shadow-2xl backdrop-blur-sm">
-                <div class="bg-secondary rounded-xl overflow-hidden aspect-video relative flex items-center justify-center border border-slate-700/40">
-                    <div class="text-center p-8">
-                        <i class="fa-solid fa-laptop-code text-6xl text-accent/80 mb-4"></i>
-                        <p class="text-slate-400 text-sm font-mono">Interactive Dashboard / Product Mockup Placeholder</p>
-                    </div>
+            <!-- Stats Bar -->
+            <div data-aos="zoom-in" data-aos-delay="400" class="mt-14 grid grid-cols-3 gap-4 max-w-2xl mx-auto border border-white/10 bg-white/5 backdrop-blur-md p-4 rounded-2xl">
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-accent">5+</h3>
+                    <p class="text-xs text-slate-300" data-i18n="stat_years">Years Experience</p>
+                </div>
+                <div class="border-x border-white/10">
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-accent">1000+</h3>
+                    <p class="text-xs text-slate-300" data-i18n="stat_customers">Happy Customers</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-accent">25+</h3>
+                    <p class="text-xs text-slate-300" data-i18n="stat_services">Services Available</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. FEATURES SECTION -->
-    <section id="features" class="py-24 bg-surface">
-        <div class="max-w-7xl mx-auto px-6">
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-                <h2 class="text-xs font-bold tracking-widest text-accent uppercase mb-3">Core Features</h2>
-                <p class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Designed for High Performance & Quality</p>
-                <p class="mt-4 text-slate-600 text-base">Everything you need to deliver high-quality web applications without clutter.</p>
+    <!-- QUICK SERVICES BAR -->
+    <div class="max-w-6xl mx-auto px-4 -mt-8 relative z-30">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 bg-white dark:bg-cardDark border border-slate-200 dark:border-slate-800 p-4 rounded-2xl shadow-xl backdrop-blur-lg">
+            <a class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-center group" href="tel:8954214200">
+                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">📞</span>
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300" data-i18n="quick_call">Call Us</span>
+            </a>
+            <a class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-center group" href="https://wa.me/918954214200" target="_blank" rel="noopener">
+                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">💬</span>
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300" data-i18n="quick_whatsapp">WhatsApp</span>
+            </a>
+            <a class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-center group" href="#form">
+                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">📝</span>
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300" data-i18n="quick_apply">Apply Online</span>
+            </a>
+            <a class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-center group" href="#services">
+                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🗂️</span>
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300" data-i18n="quick_allservices">All Services</span>
+            </a>
+            <a class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-center group col-span-2 md:col-span-1" href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener">
+                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">📍</span>
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300" data-i18n="quick_directions">Directions</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- IMPORTANT PORTALS LINKS -->
+    <section id="important-links" class="py-16 max-w-7xl mx-auto px-6">
+        <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="links_eyebrow">Official Portals</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-6 font-serif" data-i18n="links_title">Important Links</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a class="p-3.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-primary hover:text-white rounded-xl border border-slate-200 dark:border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-2 transition-all" href="https://uidai.gov.in" target="_blank" rel="noopener">🪪 UIDAI (Aadhaar)</a>
+                <a class="p-3.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-primary hover:text-white rounded-xl border border-slate-200 dark:border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-2 transition-all" href="https://www.onlineservices.nsdl.com" target="_blank" rel="noopener">💳 PAN (NSDL)</a>
+                <a class="p-3.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-primary hover:text-white rounded-xl border border-slate-200 dark:border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-2 transition-all" href="https://www.incometax.gov.in" target="_blank" rel="noopener">📄 Income Tax e-Filing</a>
+                <a class="p-3.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-primary hover:text-white rounded-xl border border-slate-200 dark:border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-2 transition-all" href="https://scholarships.gov.in" target="_blank" rel="noopener">🎓 NSP Portal</a>
+                <a class="p-3.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-primary hover:text-white rounded-xl border border-slate-200 dark:border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-2 transition-all" href="https://scholarship.up.gov.in" target="_blank" rel="noopener">🎓 UP Scholarship</a>
+                <a class="p-3.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-primary hover:text-white rounded-xl border border-slate-200 dark:border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-2 transition-all" href="https://csc.gov.in" target="_blank" rel="noopener">🖥️ CSC Official</a>
+                <a class="p-3.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-primary hover:text-white rounded-xl border border-slate-200 dark:border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-2 transition-all" href="https://digitalindia.gov.in" target="_blank" rel="noopener">🇮🇳 Digital India</a>
+                <a class="p-3.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-primary hover:text-white rounded-xl border border-slate-200 dark:border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-2 transition-all" href="https://edistrict.up.gov.in" target="_blank" rel="noopener">🏛️ UP e-District</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-12 max-w-7xl mx-auto px-6">
+        <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="about_eyebrow">Who We Are</span>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-6 font-serif" data-i18n="about_title">About Us</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 items-center mb-8">
+                <div class="text-center">
+                    <div class="w-36 h-36 mx-auto rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white text-4xl font-black shadow-xl border-4 border-white dark:border-slate-700">
+                        GC
+                    </div>
+                    <div class="mt-3 font-bold text-lg text-primary dark:text-primaryLight">Gaurav Chaudhary</div>
+                    <div class="text-xs text-slate-500 uppercase font-semibold" data-i18n="about_role">Founder &amp; VLE</div>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base" data-i18n="about_text">
+                    Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helping citizens of Khair with Aadhaar, PAN Card, Income Certificate, Caste Certificate, Domicile Certificate, AEPS Banking, Account Opening, Scholarship forms and many other online services.
+                </p>
             </div>
 
-            <!-- Features Grid (3 Columns) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature Card 1 -->
-                <div data-aos="fade-up" data-aos-delay="100" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-accent text-xl mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-bolt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Lightning Fast</h3>
-                    <p class="text-slate-600 leading-relaxed text-sm">Optimized structure and lightweight components ensure zero load lag across devices.</p>
+            <!-- Why Choose Us Grid -->
+            <h3 class="text-xl font-bold text-primary dark:text-primaryLight mb-4 font-serif" data-i18n="why_title">Why Choose Us</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                    <span class="text-2xl">⚡</span>
+                    <h4 class="font-bold text-sm mt-2" data-i18n="why1_title">Fast Turnaround</h4>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="why1_desc">Most documents processed same-day, no unnecessary delays.</p>
                 </div>
-
-                <!-- Feature Card 2 -->
-                <div data-aos="fade-up" data-aos-delay="200" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-accent text-xl mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Secure Architecture</h3>
-                    <p class="text-slate-600 leading-relaxed text-sm">Built with modern design best practices ensuring clean code separation and data integrity.</p>
+                <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                    <span class="text-2xl">🤝</span>
+                    <h4 class="font-bold text-sm mt-2" data-i18n="why2_title">Trusted Locally</h4>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="why2_desc">Years of service to Khair families, known and recommended by name.</p>
                 </div>
-
-                <!-- Feature Card 3 -->
-                <div data-aos="fade-up" data-aos-delay="300" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
-                    <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-accent text-xl mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Smooth Motion</h3>
-                    <p class="text-slate-600 leading-relaxed text-sm">Subtle micro-interactions and scroll animations provide an intuitive user flow.</p>
+                <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                    <span class="text-2xl">🔍</span>
+                    <h4 class="font-bold text-sm mt-2" data-i18n="why3_title">Transparent Process</h4>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="why3_desc">Clear guidance at every step — no hidden confusion about your application.</p>
+                </div>
+                <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+                    <span class="text-2xl">🗂️</span>
+                    <h4 class="font-bold text-sm mt-2" data-i18n="why4_title">One-Stop Center</h4>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="why4_desc">Aadhaar to banking to certificates — all under one roof.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. FOOTER -->
-    <footer class="bg-primary border-t border-slate-800 text-slate-400 py-12">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3 text-white font-bold text-lg">
-                <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-white">
-                    <i class="fa-solid fa-cube text-sm"></i>
+    <!-- CORE SERVICES SECTION -->
+    <section id="services" class="py-12 max-w-7xl mx-auto px-6">
+        <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="services_eyebrow">What We Offer</span>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8 font-serif" data-i18n="services_title">Our Services</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Card Item template -->
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
+                    <span class="text-2xl">🪪</span>
+                    <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc1_title">Aadhaar Card Services</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="svc1_desc">New enrollment, updates &amp; corrections.</p>
                 </div>
-                <span>Brand<span class="text-accent">Name</span></span>
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
+                    <span class="text-2xl">💳</span>
+                    <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc2_title">New PAN Card</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="svc2_desc">Fresh PAN application, guided end-to-end.</p>
+                </div>
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
+                    <span class="text-2xl">✏️</span>
+                    <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc3_title">PAN Card Correction</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="svc3_desc">Name, DOB &amp; detail corrections.</p>
+                </div>
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
+                    <span class="text-2xl">📄</span>
+                    <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc4_title">Income Certificate</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="svc4_desc">Official income proof for government use.</p>
+                </div>
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
+                    <span class="text-2xl">📜</span>
+                    <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc5_title">Caste Certificate</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="svc5_desc">Category certificates for eligible applicants.</p>
+                </div>
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
+                    <span class="text-2xl">🏠</span>
+                    <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc6_title">Residence Certificate</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="svc6_desc">Domicile proof for local residents.</p>
+                </div>
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
+                    <span class="text-2xl">👷</span>
+                    <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc7_title">Labour Card</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="svc7_desc">Registration for construction/labour workers.</p>
+                </div>
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
+                    <span class="text-2xl">🎓</span>
+                    <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc16_title">Scholarship Form (NSP)</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="svc16_desc">National Scholarship Portal form filling.</p>
+                </div>
             </div>
-            <p class="text-sm text-slate-500">© 2026 BrandName Inc. All rights reserved.</p>
-            <div class="flex gap-5 text-slate-400">
-                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter text-lg"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-github text-lg"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-lg"></i></a>
+            <p class="text-xs text-slate-400 mt-6" data-i18n="svc_note">*Service fees vary by document type — call or WhatsApp us for current pricing.</p>
+        </div>
+    </section>
+
+    <!-- COMPUTER SERVICES SECTION -->
+    <section id="computer-services" class="py-12 max-w-7xl mx-auto px-6">
+        <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="compsvc_eyebrow">Tech Support</span>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8 font-serif" data-i18n="compsvc_title">Computer &amp; Laptop Services</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all">
+                    <span class="text-2xl">💻</span>
+                    <h3 class="font-bold text-sm mt-2" data-i18n="csvc1_title">Laptop Repair</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="csvc1_desc">Screen, keyboard, battery &amp; hardware fixes.</p>
+                </div>
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all">
+                    <span class="text-2xl">🖥️</span>
+                    <h3 class="font-bold text-sm mt-2" data-i18n="csvc2_title">Desktop / PC Repair</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="csvc2_desc">Hardware troubleshooting &amp; upgrades.</p>
+                </div>
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all">
+                    <span class="text-2xl">🔁</span>
+                    <h3 class="font-bold text-sm mt-2" data-i18n="csvc6_title">Buy &amp; Sell Used Laptops</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="csvc6_desc">Fair-price resale &amp; exchange options.</p>
+                </div>
+                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all">
+                    <span class="text-2xl">🖨️</span>
+                    <h3 class="font-bold text-sm mt-2" data-i18n="csvc8_title">Printer Setup &amp; Repair</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="csvc8_desc">Installation, troubleshooting &amp; cartridge refill.</p>
+                </div>
             </div>
+            <p class="text-xs text-slate-400 mt-6" data-i18n="compsvc_note">*Repair charges depend on the issue &amp; part required — call or WhatsApp us for a quick estimate.</p>
+        </div>
+    </section>
+
+    <!-- SCHOLARSHIP BANNER -->
+    <section class="py-6 max-w-7xl mx-auto px-6">
+        <div data-aos="zoom-in" class="bg-gradient-to-r from-accent to-amber-700 text-white rounded-2xl p-8 md:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <h3 class="text-2xl font-bold font-serif" data-i18n="scholarship_title">🎓 Scholarship Form 2026-27 — Registration Open</h3>
+                <p class="text-sm opacity-90 mt-1" data-i18n="scholarship_text">Students apna documents leke aaj hi visit karein aur apna NSP scholarship form submit karayein.</p>
+            </div>
+            <a href="#form" class="bg-white text-accent hover:bg-slate-100 font-bold px-6 py-3 rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm shrink-0" data-i18n="scholarship_cta">
+                Apply for Scholarship
+            </a>
+        </div>
+    </section>
+
+    <!-- GALLERY LIGHTBOX SECTION -->
+    <section id="gallery" class="py-12 max-w-7xl mx-auto px-6">
+        <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="gallery_eyebrow">Take A Look</span>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8 font-serif" data-i18n="gallery_title">Our Digital Service Center</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="gallery-card group cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-img="office1.jpeg">
+                    <img src="office1.jpeg" alt="Main service desk" class="w-full h-52 object-cover rounded-xl group-hover:opacity-90 transition-opacity">
+                    <h3 class="mt-3 text-center font-bold text-sm text-primary dark:text-primaryLight" data-i18n="gallery1_title">Premium Service Desk</h3>
+                </div>
+                <div class="gallery-card group cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-img="office2.jpeg">
+                    <img src="office2.jpeg" alt="Waiting Area" class="w-full h-52 object-cover rounded-xl group-hover:opacity-90 transition-opacity">
+                    <h3 class="mt-3 text-center font-bold text-sm text-primary dark:text-primaryLight" data-i18n="gallery2_title">Customer Support Area</h3>
+                </div>
+                <div class="gallery-card group cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-img="office3.jpeg">
+                    <img src="office3.jpeg" alt="Digital Service Workspace" class="w-full h-52 object-cover rounded-xl group-hover:opacity-90 transition-opacity">
+                    <h3 class="mt-3 text-center font-bold text-sm text-primary dark:text-primaryLight" data-i18n="gallery3_title">Digital Service Workspace</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX OVERLAY -->
+    <div class="hidden fixed inset-0 bg-black/90 z-[3000] items-center justify-center p-6" id="lightbox">
+        <button class="absolute top-6 right-8 text-white text-4xl font-bold" id="lightboxClose">✕</button>
+        <img id="lightboxImg" src="" alt="Enlarged" class="max-w-full max-h-[85vh] rounded-xl shadow-2xl">
+    </div>
+
+    <!-- ONLINE REQUEST FORM -->
+    <section id="form" class="py-12 max-w-7xl mx-auto px-6">
+        <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="form_eyebrow">Get Started</span>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-6 font-serif" data-i18n="form_title">Online Work Request</h2>
+
+            <form action="https://formsubmit.co/panmtr60@gmail.com" method="POST" class="space-y-4">
+                <input type="hidden" name="_captcha" value="false">
+                <div>
+                    <input type="text" name="name" placeholder="Your Name" data-i18n-placeholder="placeholder_name" required class="w-full p-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
+                </div>
+                <div>
+                    <input type="tel" name="mobile" placeholder="Mobile Number" data-i18n-placeholder="placeholder_mobile" required class="w-full p-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
+                </div>
+                <div>
+                    <select name="service" class="w-full p-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
+                        <option data-i18n="form_opt1">Aadhaar Service</option>
+                        <option data-i18n="form_opt2">New PAN Card</option>
+                        <option data-i18n="form_opt3">PAN Correction</option>
+                        <option data-i18n="form_opt4">Income Certificate</option>
+                        <option data-i18n="form_opt5">Caste Certificate</option>
+                        <option data-i18n="form_opt6">Domicile Certificate</option>
+                        <option data-i18n="form_opt7">AEPS Banking</option>
+                        <option data-i18n="form_opt8">Scholarship Form</option>
+                        <option data-i18n="form_opt9">Other Service</option>
+                    </select>
+                </div>
+                <div>
+                    <textarea name="message" rows="4" placeholder="Write Your Requirement" data-i18n-placeholder="placeholder_message" class="w-full p-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-primary hover:bg-primaryDark text-white font-bold py-3.5 rounded-xl transition-all shadow-lg text-sm" data-i18n="submit_btn">
+                    Submit Request
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CONTACT & GOOGLE MAPS -->
+    <section id="contact" class="py-12 max-w-7xl mx-auto px-6">
+        <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="contact_eyebrow">Reach Us</span>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8 font-serif" data-i18n="contact_title">Contact Us</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <div class="p-6 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-4 text-sm leading-relaxed">
+                    <p>📞 <a href="tel:8954214200" class="font-bold text-primary dark:text-primaryLight hover:underline">8954214200</a></p>
+                    <p>📞 <a href="tel:8954204200" class="font-bold text-primary dark:text-primaryLight hover:underline">8954204200</a></p>
+                    <p>📧 <a href="mailto:panmtr60@gmail.com" class="font-bold text-primary dark:text-primaryLight hover:underline">panmtr60@gmail.com</a></p>
+                    <p>📍 Malipura, Tentigaon Road, Khair, Aligarh - 202138</p>
+                    
+                    <a href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener" class="inline-block pt-2">
+                        <button class="bg-accent hover:bg-accentHover text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow transition-all" data-i18n="contact_map_btn">
+                            Open Google Maps
+                        </button>
+                    </a>
+                </div>
+
+                <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 min-h-[250px]">
+                    <iframe src="https://www.google.com/maps?q=Malipura,Tentigaon+Road,Khair,Aligarh+202138&output=embed" class="w-full h-full min-h-[250px] border-0" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-primaryDark text-slate-400 py-12 border-t border-white/10 text-xs">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-8">
+            <div>
+                <h4 class="text-white text-sm font-bold font-serif mb-3" data-i18n="footer_quicklinks">Quick Links</h4>
+                <div class="space-y-2">
+                    <a href="#about" class="block hover:text-white" data-i18n="nav_about">About</a>
+                    <a href="#services" class="block hover:text-white" data-i18n="nav_services">Services</a>
+                    <a href="#gallery" class="block hover:text-white" data-i18n="nav_gallery">Gallery</a>
+                    <a href="#contact" class="block hover:text-white" data-i18n="nav_contact">Contact</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white text-sm font-bold font-serif mb-3" data-i18n="links_title">Important Links</h4>
+                <div class="space-y-2">
+                    <a href="https://uidai.gov.in" target="_blank" class="block hover:text-white">UIDAI (Aadhaar)</a>
+                    <a href="https://www.onlineservices.nsdl.com" target="_blank" class="block hover:text-white">PAN (NSDL)</a>
+                    <a href="https://scholarships.gov.in" target="_blank" class="block hover:text-white">National Scholarship Portal</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white text-sm font-bold font-serif mb-3" data-i18n="footer_contact">Contact Us</h4>
+                <p>📞 8954214200</p>
+                <p>📧 panmtr60@gmail.com</p>
+                <p>📍 Malipura, Khair, Aligarh</p>
+            </div>
+        </div>
+        <div class="text-center pt-8 border-t border-white/10">
+            <p>© 2026 Sahaj Jan Seva Kendra | Gaurav Chaudhary</p>
         </div>
     </footer>
 
-    <!-- AOS JS for Scroll Animations -->
+    <!-- FLOATING QUICK ACTION BUTTONS -->
+    <div class="fixed right-5 bottom-5 flex flex-col gap-3 z-50">
+        <a href="tel:8954214200" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-xl shadow-2xl hover:scale-110 transition-transform" aria-label="Call">📞</a>
+        <a href="https://wa.me/918954214200" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xl shadow-2xl hover:scale-110 transition-transform" aria-label="WhatsApp">💬</a>
+    </div>
+
+    <!-- AOS JS & Translation Logic -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 700,
-            once: true,
-            easing: 'ease-out-cubic'
+        AOS.init({ duration: 700, once: true, easing: 'ease-out-cubic' });
+
+        const TRANSLATIONS = {
+            en: {
+                nav_about:"About", nav_services:"Services", nav_compservices:"Computer Repair", nav_gallery:"Gallery", nav_request:"Request", nav_contact:"Contact",
+                staff_login:"Staff", customer_login:"Customer",
+                hero_eyebrow:"Authorised CSC · Jan Seva Kendra · Khair, Aligarh", hero_tagline:"All Government & Digital Services Under One Roof",
+                hero_apply:"Apply Online", cta_call:"📞 Call Now", stat_years:"Years Experience", stat_customers:"Happy Customers", stat_services:"Services Available",
+                quick_call:"Call Us", quick_whatsapp:"WhatsApp", quick_apply:"Apply Online", quick_allservices:"All Services", quick_directions:"Directions",
+                links_eyebrow:"Official Portals", links_title:"Important Links", footer_quicklinks:"Quick Links", footer_contact:"Contact Us",
+                about_eyebrow:"Who We Are", about_title:"About Us", about_role:"Founder & VLE",
+                about_text:"Sahaj Jan Seva Kendra is a trusted Digital & Government Service Center helping citizens of Khair with Aadhaar, PAN Card, Income Certificate, Caste Certificate, Domicile Certificate, AEPS Banking, Account Opening, Scholarship forms and many other online services.",
+                why_title:"Why Choose Us", why1_title:"Fast Turnaround", why1_desc:"Most documents processed same-day, no unnecessary delays.",
+                why2_title:"Trusted Locally", why2_desc:"Years of service to Khair families, known and recommended by name.",
+                why3_title:"Transparent Process", why3_desc:"Clear guidance at every step — no hidden confusion about your application.",
+                why4_title:"One-Stop Center", why4_desc:"Aadhaar to banking to certificates — all under one roof.",
+                services_eyebrow:"What We Offer", services_title:"Our Services",
+                svc1_title:"Aadhaar Card Services", svc1_desc:"New enrollment, updates & corrections.",
+                svc2_title:"New PAN Card", svc2_desc:"Fresh PAN application, guided end-to-end.",
+                svc3_title:"PAN Card Correction", svc3_desc:"Name, DOB & detail corrections.",
+                svc4_title:"Income Certificate", svc4_desc:"Official income proof for government use.",
+                svc5_title:"Caste Certificate", svc5_desc:"Category certificates for eligible applicants.",
+                svc6_title:"Residence Certificate", svc6_desc:"Domicile proof for local residents.",
+                svc7_title:"Labour Card", svc7_desc:"Registration for construction/labour workers.",
+                svc16_title:"Scholarship Form (NSP)", svc16_desc:"National Scholarship Portal form filling.",
+                compsvc_eyebrow:"Tech Support", compsvc_title:"Computer & Laptop Services",
+                csvc1_title:"Laptop Repair", csvc1_desc:"Screen, keyboard, battery & hardware fixes.",
+                csvc2_title:"Desktop / PC Repair", csvc2_desc:"Hardware troubleshooting & upgrades.",
+                csvc6_title:"Buy & Sell Used Laptops", csvc6_desc:"Fair-price resale & exchange options.",
+                csvc8_title:"Printer Setup & Repair", csvc8_desc:"Installation, troubleshooting & cartridge refill.",
+                compsvc_note:"*Repair charges depend on the issue & part required — call or WhatsApp us for a quick estimate.",
+                svc_note:"*Service fees vary by document type — call or WhatsApp us for current pricing.",
+                scholarship_title:"🎓 Scholarship Form 2026-27 — Registration Open", scholarship_text:"Students should visit today with their documents and submit their NSP scholarship form.",
+                scholarship_cta:"Apply for Scholarship", gallery_eyebrow:"Take A Look", gallery_title:"Our Digital Service Center",
+                gallery1_title:"Premium Service Desk", gallery2_title:"Customer Support Area", gallery3_title:"Digital Service Workspace",
+                form_eyebrow:"Get Started", form_title:"Online Work Request", placeholder_name:"Your Name", placeholder_mobile:"Mobile Number", placeholder_message:"Write Your Requirement", submit_btn:"Submit Request",
+                form_opt1:"Aadhaar Service", form_opt2:"New PAN Card", form_opt3:"PAN Correction", form_opt4:"Income Certificate", form_opt5:"Caste Certificate", form_opt6:"Domicile Certificate", form_opt7:"AEPS Banking", form_opt8:"Scholarship Form", form_opt9:"Other Service",
+                contact_eyebrow:"Reach Us", contact_title:"Contact Us", contact_map_btn:"Open Google Maps",
+                ticker1:"🎓 Scholarship Form 2026-27 registration open — visit today for NSP help", ticker2:"📢 New Aadhaar update and PAN correction now possible same-day", ticker3:"💳 AEPS Banking & Account Opening available at counter", ticker4:"📞 For emergency service, call: 8954214200",
+                popup_title:"Welcome to Sahaj Jan Seva Kendra", popup_text:"Choose what you need — apply for a service, sell/buy a laptop, or check the scholarship form.",
+                popup_cta:"📝 Apply for a Service", popup_cta_laptop:"💻 Sell / Buy Laptop", popup_cta_scholar:"🎓 Scholarship Form"
+            },
+            hi: {
+                nav_about:"हमारे बारे में", nav_services:"सेवाएं", nav_compservices:"कंप्यूटर रिपेयर", nav_gallery:"गैलरी", nav_request:"अनुरोध", nav_contact:"संपर्क",
+                staff_login:"स्टाफ", customer_login:"ग्राहक",
+                hero_eyebrow:"अधिकृत सीएससी · जन सेवा केंद्र · खैर, अलीगढ़", hero_tagline:"सभी सरकारी और डिजिटल सेवाएं एक ही छत के नीचे",
+                hero_apply:"ऑनलाइन आवेदन करें", cta_call:"📞 अभी कॉल करें", stat_years:"वर्षों का अनुभव", stat_customers:"खुश ग्राहक", stat_services:"उपलब्ध सेवाएं",
+                quick_call:"कॉल करें", quick_whatsapp:"व्हाट्सएप", quick_apply:"ऑनलाइन आवेदन", quick_allservices:"सभी सेवाएं", quick_directions:"दिशा-निर्देश",
+                links_eyebrow:"आधिकारिक पोर्टल", links_title:"महत्वपूर्ण लिंक", footer_quicklinks:"त्वरित लिंक", footer_contact:"संपर्क करें",
+                about_eyebrow:"हम कौन हैं", about_title:"हमारे बारे में", about_role:"संस्थापक एवं वीएलई",
+                about_text:"सहज जन सेवा केंद्र खैर के नागरिकों के लिए एक विश्वसनीय डिजिटल एवं सरकारी सेवा केंद्र है, जो आधार, पैन कार्ड, आय प्रमाण पत्र, जाति प्रमाण पत्र, निवास प्रमाण पत्र, एईपीएस बैंकिंग, खाता खोलना, छात्रवृत्ति फॉर्म में मदद करता है।",
+                why_title:"हमें क्यों चुनें", why1_title:"तेज़ सेवा", why1_desc:"अधिकांश दस्तावेज़ उसी दिन तैयार हो जाते हैं।",
+                why2_title:"स्थानीय विश्वास", why2_desc:"खैर के परिवारों को वर्षों से सेवा।",
+                why3_title:"पारदर्शी प्रक्रिया", why3_desc:"हर कदम पर स्पष्ट मार्गदर्शन।",
+                why4_title:"वन-स्टॉप केंद्र", why4_desc:"सब एक ही छत के नीचे।",
+                services_eyebrow:"हम क्या प्रदान करते हैं", services_title:"हमारी सेवाएं",
+                svc1_title:"आधार कार्ड सेवाएं", svc1_desc:"नया पंजीकरण, अपडेट और सुधार।",
+                svc2_title:"नया पैन कार्ड", svc2_desc:"नया पैन आवेदन।",
+                svc3_title:"पैन कार्ड सुधार", svc3_desc:"नाम, जन्मतिथि व विवरण सुधार।",
+                svc4_title:"आय प्रमाण पत्र", svc4_desc:"सरकारी उपयोग हेतु आय प्रमाण।",
+                svc5_title:"जाति प्रमाण पत्र", svc5_desc:"श्रेणी प्रमाण पत्र।",
+                svc6_title:"निवास प्रमाण पत्र", svc6_desc:"अधिवास प्रमाण।",
+                svc7_title:"श्रमिक कार्ड", svc7_desc:"श्रमिक पंजीकरण।",
+                svc16_title:"छात्रवृत्ति फॉर्म (एनएसपी)", svc16_desc:"राष्ट्रीय छात्रवृत्ति पोर्टल फॉर्म।",
+                compsvc_eyebrow:"टेक सहायता", compsvc_title:"कंप्यूटर और लैपटॉप सेवाएं",
+                csvc1_title:"लैपटॉप रिपेयर", csvc1_desc:"स्क्रीन, कीबोर्ड, बैटरी रिपेयर।",
+                csvc2_title:"डेस्कटॉप / पीसी रिपेयर", csvc2_desc:"हार्डवेयर समस्या निवारण।",
+                csvc6_title:"पुराने लैपटॉप खरीदें-बेचें", csvc6_desc:"रीसेल और एक्सचेंज।",
+                csvc8_title:"प्रिंटर सेटअप और रिपेयर", csvc8_desc:"कार्ट्रिज रिफिल व रिपेयर।",
+                compsvc_note:"*मरम्मत शुल्क समस्या पर निर्भर करता है।",
+                svc_note:"*सेवा शुल्क दस्तावेज़ अनुसार भिन्न होता है।",
+                scholarship_title:"🎓 छात्रवृत्ति फॉर्म 2026-27 — पंजीकरण शुरू", scholarship_text:"छात्र अपने दस्तावेज़ लेकर आज ही आएं और फॉर्म जमा करें।",
+                scholarship_cta:"आवेदन करें", gallery_eyebrow:"एक नज़र डालें", gallery_title:"हमारा डिजिटल सेवा केंद्र",
+                gallery1_title:"प्रीमियम सेवा डेस्क", gallery2_title:"ग्राहक सहायता क्षेत्र", gallery3_title:"डिजिटल सेवा कार्यक्षेत्र",
+                form_eyebrow:"शुरू करें", form_title:"ऑनलाइन कार्य अनुरोध", placeholder_name:"आपका नाम", placeholder_mobile:"मोबाइल नंबर", placeholder_message:"अपनी आवश्यकता लिखें", submit_btn:"अनुरोध जमा करें",
+                form_opt1:"आधार सेवा", form_opt2:"नया पैन कार्ड", form_opt3:"पैन सुधार", form_opt4:"आय प्रमाण पत्र", form_opt5:"जाति प्रमाण पत्र", form_opt6:"निवास प्रमाण पत्र", form_opt7:"एईपीएस बैंकिंग", form_opt8:"छात्रवृत्ति फॉर्म", form_opt9:"अन्य सेवा",
+                contact_eyebrow:"हमसे संपर्क करें", contact_title:"संपर्क करें", contact_map_btn:"गूगल मैप्स खोलें",
+                ticker1:"🎓 छात्रवृत्ति फॉर्म 2026-27 पंजीकरण शुरू", ticker2:"📢 नया आधार अपडेट और पैन सुधार उसी दिन संभव", ticker3:"💳 एईपीएस बैंकिंग उपलब्ध", ticker4:"📞 आपातकालीन सेवा कॉल: 8954214200",
+                popup_title:"सहज जन सेवा केंद्र में स्वागत है", popup_text:"आपको क्या चाहिए चुनें — सेवा आवेदन, लैपटॉप खरीदें/बेचें या छात्रवृत्ति फॉर्म।",
+                popup_cta:"📝 सेवा के लिए आवेदन करें", popup_cta_laptop:"💻 लैपटॉप बेचें / खरीदें", popup_cta_scholar:"🎓 छात्रवृत्ति फॉर्म"
+            },
+            mr: {
+                nav_about:"आमच्याबद्दल", nav_services:"सेवा", nav_compservices:"संगणक दुरुस्ती", nav_gallery:"गॅलरी", nav_request:"विनंती", nav_contact:"संपर्क",
+                staff_login:"स्टाफ", customer_login:"ग्राहक",
+                hero_eyebrow:"अधिकृत सीएससी · जन सेवा केंद्र · खैर, अलीगढ", hero_tagline:"सर्व शासकीय आणि डिजिटल सेवा एकाच छताखाली",
+                hero_apply:"ऑनलाइन अर्ज करा", cta_call:"📞 आता कॉल करा", stat_years:"वर्षांचा अनुभव", stat_customers:"समाधानी ग्राहक", stat_services:"उपलब्ध सेवा",
+                quick_call:"कॉल करा", quick_whatsapp:"व्हॉट्सअॅप", quick_apply:"ऑनलाइन अर्ज", quick_allservices:"सर्व सेवा", quick_directions:"दिशादर्शन",
+                links_eyebrow:"अधिकृत पोर्टल", links_title:"महत्त्वाच्या लिंक्स", footer_quicklinks:"द्रुत लिंक्स", footer_contact:"संपर्क करा",
+                about_eyebrow:"आम्ही कोण आहोत", about_title:"आमच्याबद्दल", about_role:"संस्थापक व व्हीएलई",
+                about_text:"सहज जन सेवा केंद्र हे खैरमधील नागरिकांसाठी एक विश्वासार्ह डिजिटल व शासकीय सेवा केंद्र आहे.",
+                why_title:"आम्हाला का निवडावे", why1_title:"जलद सेवा", why1_desc:"अनावश्यक विलंब नाही.",
+                why2_title:"स्थानिक विश्वास", why2_desc:"अनेक वर्षांची सेवा.",
+                why3_title:"पारदर्शक प्रक्रिया", why3_desc:"स्पष्ट मार्गदर्शन.",
+                why4_title:"वन-स्टॉप केंद्र", why4_desc:"सर्व एकाच छताखाली.",
+                services_eyebrow:"आम्ही काय देतो", services_title:"आमच्या सेवा",
+                svc1_title:"आधार कार्ड सेवा", svc1_desc:"नवीन नोंदणी व दुरुस्ती.",
+                svc2_title:"नवीन पॅन कार्ड", svc2_desc:"नवीन पॅन अर्ज.",
+                svc3_title:"पॅन कार्ड दुरुस्ती", svc3_desc:"तपशील दुरुस्ती.",
+                svc4_title:"उत्पन्न प्रमाणपत्र", svc4_desc:"उत्पन्नाचा पुरावा.",
+                svc5_title:"जात प्रमाणपत्र", svc5_desc:"प्रवर्ग प्रमाणपत्र.",
+                svc6_title:"रहिवासी प्रमाणपत्र", svc6_desc:"अधिवास पुरावा.",
+                svc7_title:"कामगार कार्ड", svc7_desc:"कामगार नोंदणी.",
+                svc16_title:"शिष्यवृत्ती फॉर्म (एनएसपी)", svc16_desc:"एनएसपी फॉर्म भरणे.",
+                compsvc_eyebrow:"तांत्रिक सहाय्य", compsvc_title:"संगणक आणि लॅपटॉप सेवा",
+                csvc1_title:"लॅपटॉप दुरुस्ती", csvc1_desc:"हार्डवेअर दुरुस्ती.",
+                csvc2_title:"डेस्कटॉप दुरुस्ती", csvc2_desc:"हार्डवेअर अपग्रेड.",
+                csvc6_title:"जुने लॅपटॉप खरेदी-विक्री", csvc6_desc:"रीसेल आणि एक्सचेंज.",
+                csvc8_title:"प्रिंटर सेटअप", csvc8_desc:"कार्ट्रिज रिफिल.",
+                compsvc_note:"*दुरुस्ती शुल्क भागांवर अवलंबून असते.",
+                svc_note:"*सेवा शुल्क कागदपत्रांनुसार बदलते.",
+                scholarship_title:"🎓 शिष्यवृत्ती फॉर्म 2026-27 — नोंदणी सुरू", scholarship_text:"विद्यार्थ्यांनी एनएसपी शिष्यवृत्ती फॉर्म सादर करावा.",
+                scholarship_cta:"अर्ज करा", gallery_eyebrow:"एक नजर टाका", gallery_title:"आमचे डिजिटल सेवा केंद्र",
+                gallery1_title:"प्रीमियम सेवा डेस्क", gallery2_title:"ग्राहक सहाय्य क्षेत्र", gallery3_title:"डिजिटल सेवा कार्यक्षेत्र",
+                form_eyebrow:"सुरुवात करा", form_title:"ऑनलाइन कामाची विनंती", placeholder_name:"तुमचे नाव", placeholder_mobile:"मोबाइल नंबर", placeholder_message:"तुमची गरज लिहा", submit_btn:"विनंती सादर करा",
+                form_opt1:"आधार सेवा", form_opt2:"नवीन पॅन कार्ड", form_opt3:"पॅन दुरुस्ती", form_opt4:"उत्पन्न प्रमाणपत्र", form_opt5:"जात प्रमाणपत्र", form_opt6:"अधिवास प्रमाणपत्र", form_opt7:"एईपीएस बँकिंग", form_opt8:"शिष्यवृत्ती फॉर्म", form_opt9:"इतर सेवा",
+                contact_eyebrow:"आमच्याशी संपर्क साधा", contact_title:"संपर्क करा", contact_map_btn:"गुगल नकाशा उघडा",
+                ticker1:"🎓 शिष्यवृत्ती फॉर्म 2026-27 नोंदणी सुरू", ticker2:"📢 नवीन आधार अद्ययावत व पॅन दुरुस्ती", ticker3:"💳 एईपीएस बँकिंग उपलब्ध", ticker4:"📞 कॉल करा: 8954214200",
+                popup_title:"सहज जन सेवा केंद्रात स्वागत आहे", popup_text:"तुमची गरज निवडा.",
+                popup_cta:"📝 सेवेसाठी अर्ज करा", popup_cta_laptop:"💻 लॅपटॉप विका / खरेदी करा", popup_cta_scholar:"🎓 शिष्यवृत्ती फॉर्म"
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'en';
+
+        function applyLanguage(lang){
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            const dict = TRANSLATIONS[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(dict[key]) el.textContent = dict[key];
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if(dict[key]) el.placeholder = dict[key];
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                btn.classList.toggle('bg-accent', btn.getAttribute('data-lang') === lang);
+                btn.classList.toggle('text-white', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+        });
+        applyLanguage(currentLang);
+
+        // Mobile Nav Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('hidden'));
+
+        // Dark Mode Setup
+        const themeToggle = document.getElementById('themeToggle');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        function applyTheme(isDark) {
+            if(isDark) {
+                document.documentElement.classList.add('dark');
+                themeToggle.textContent = '☀️ Light';
+                if(themeToggleMobile) themeToggleMobile.textContent = '☀️ Light';
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggle.textContent = '🌙 Dark';
+                if(themeToggleMobile) themeToggleMobile.textContent = '🌙 Dark';
+            }
+        }
+        
+        let isDark = localStorage.getItem('theme') === 'dark';
+        applyTheme(isDark);
+
+        const toggleTheme = () => {
+            isDark = !isDark;
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            applyTheme(isDark);
+        };
+
+        themeToggle.addEventListener('click', toggleTheme);
+        if(themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // Scholarship Popup
+        const popup = document.getElementById('scholarshipPopup');
+        if(!sessionStorage.getItem('scholarshipPopupSeen')){
+            setTimeout(() => { popup.classList.remove('hidden'); popup.classList.add('flex'); }, 2000);
+        }
+        function closePopup(){
+            popup.classList.add('hidden');
+            popup.classList.remove('flex');
+            sessionStorage.setItem('scholarshipPopupSeen','1');
+        }
+        document.getElementById('popupClose').addEventListener('click', closePopup);
+        document.getElementById('popupCta').addEventListener('click', closePopup);
+        document.getElementById('popupCtaLaptop').addEventListener('click', closePopup);
+        document.getElementById('popupCtaScholar').addEventListener('click', closePopup);
+
+        // Lightbox Handler
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        document.querySelectorAll('.gallery-card').forEach(card => {
+            card.addEventListener('click', () => {
+                lightboxImg.src = card.getAttribute('data-img');
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+            });
+        });
+        document.getElementById('lightboxClose').addEventListener('click', () => {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
         });
     </script>
 </body>
