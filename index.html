@@ -554,6 +554,10 @@ footer .tricolor-rule{margin:0 auto 14px;}
 .popup-box h3{color:var(--primary);font-size:22px;margin-bottom:10px;}
 [data-theme="dark"] .popup-box h3{color:var(--primary-light);}
 .popup-box p{color:var(--text-muted);font-size:14px;margin-bottom:20px;line-height:1.6;}
+.popup-actions{display:flex;flex-direction:column;gap:10px;}
+.popup-btn{width:100%;justify-content:center;background:var(--primary)!important;color:#fff!important;}
+.popup-btn:nth-child(2){background:var(--accent)!important;}
+.popup-btn:nth-child(3){background:var(--primary-dark)!important;}
 .popup-close{
   position:absolute;top:14px;right:16px;
   background:none;border:none;font-size:20px;
@@ -644,10 +648,14 @@ footer .tricolor-rule{margin:0 auto 14px;}
 <div class="popup-overlay" id="scholarshipPopup">
   <div class="popup-box">
     <button class="popup-close" id="popupClose" aria-label="Close">✕</button>
-    <div style="font-size:40px;">🎓</div>
-    <h3 data-i18n="popup_title">Scholarship Form 2026-27</h3>
-    <p data-i18n="popup_text">National Scholarship Portal (NSP) ke form ab bharwaye ja rahe hain. Students apna scholarship form aaj hi Sahaj Jan Seva Kendra Khair par aakar submit karayein.</p>
-    <a href="#form" class="btn btn-primary" style="background:var(--primary);color:#fff;" id="popupCta" data-i18n="popup_cta">Apply Now</a>
+    <div style="font-size:36px;">👋</div>
+    <h3 data-i18n="popup_title">Welcome to Sahaj Jan Seva Kendra</h3>
+    <p data-i18n="popup_text">Choose what you need — apply for a service, sell/buy a laptop, or check the scholarship form.</p>
+    <div class="popup-actions">
+      <a href="#form" class="btn btn-primary popup-btn" id="popupCta" data-i18n="popup_cta">📝 Apply for a Service</a>
+      <a href="#computer-services" class="btn btn-primary popup-btn" id="popupCtaLaptop" data-i18n="popup_cta_laptop">💻 Sell / Buy Laptop</a>
+      <a href="#form" class="btn btn-primary popup-btn" id="popupCtaScholar" data-i18n="popup_cta_scholar">🎓 Scholarship Form</a>
+    </div>
   </div>
 </div>
 
@@ -1049,9 +1057,11 @@ en: {
   ticker2:"📢 New Aadhaar update and PAN correction now possible same-day",
   ticker3:"💳 AEPS Banking & Account Opening available at counter",
   ticker4:"📞 For emergency service, call: 8954214200",
-  popup_title:"Scholarship Form 2026-27",
-  popup_text:"National Scholarship Portal (NSP) forms are now being filled. Students should visit Sahaj Jan Seva Kendra Khair today to submit their scholarship form.",
-  popup_cta:"Apply Now"
+  popup_title:"Welcome to Sahaj Jan Seva Kendra",
+  popup_text:"Choose what you need — apply for a service, sell/buy a laptop, or check the scholarship form.",
+  popup_cta:"📝 Apply for a Service",
+  popup_cta_laptop:"💻 Sell / Buy Laptop",
+  popup_cta_scholar:"🎓 Scholarship Form"
 },
 hi: {
   nav_about:"हमारे बारे में", nav_services:"सेवाएं", nav_compservices:"कंप्यूटर रिपेयर", nav_reviews:"समीक्षाएं", nav_gallery:"गैलरी", nav_request:"अनुरोध", nav_contact:"संपर्क",
@@ -1116,9 +1126,11 @@ hi: {
   ticker2:"📢 नया आधार अपडेट और पैन सुधार अब उसी दिन संभव",
   ticker3:"💳 एईपीएस बैंकिंग व खाता खोलना काउंटर पर उपलब्ध",
   ticker4:"📞 आपातकालीन सेवा हेतु कॉल करें: 8954214200",
-  popup_title:"छात्रवृत्ति फॉर्म 2026-27",
-  popup_text:"राष्ट्रीय छात्रवृत्ति पोर्टल (एनएसपी) के फॉर्म अब भरे जा रहे हैं। छात्र आज ही सहज जन सेवा केंद्र खैर आकर अपना छात्रवृत्ति फॉर्म जमा करें।",
-  popup_cta:"अभी आवेदन करें"
+  popup_title:"सहज जन सेवा केंद्र में आपका स्वागत है",
+  popup_text:"आपको क्या चाहिए चुनें — सेवा के लिए आवेदन करें, लैपटॉप बेचें/खरीदें, या छात्रवृत्ति फॉर्म देखें।",
+  popup_cta:"📝 सेवा के लिए आवेदन करें",
+  popup_cta_laptop:"💻 लैपटॉप बेचें / खरीदें",
+  popup_cta_scholar:"🎓 छात्रवृत्ति फॉर्म"
 },
 mr: {
   nav_about:"आमच्याबद्दल", nav_services:"सेवा", nav_compservices:"संगणक दुरुस्ती", nav_reviews:"अभिप्राय", nav_gallery:"गॅलरी", nav_request:"विनंती", nav_contact:"संपर्क",
@@ -1183,9 +1195,11 @@ mr: {
   ticker2:"📢 नवीन आधार अद्ययावत आणि पॅन दुरुस्ती आता त्याच दिवशी शक्य",
   ticker3:"💳 एईपीएस बँकिंग व खाते उघडणे काउंटरवर उपलब्ध",
   ticker4:"📞 आपत्कालीन सेवेसाठी कॉल करा: 8954214200",
-  popup_title:"शिष्यवृत्ती फॉर्म 2026-27",
-  popup_text:"राष्ट्रीय शिष्यवृत्ती पोर्टल (एनएसपी) चे फॉर्म आता भरले जात आहेत. विद्यार्थ्यांनी आजच सहज जन सेवा केंद्र खैर येथे येऊन आपला शिष्यवृत्ती फॉर्म सादर करावा.",
-  popup_cta:"आता अर्ज करा"
+  popup_title:"सहज जन सेवा केंद्रात आपले स्वागत आहे",
+  popup_text:"तुम्हाला काय हवे आहे ते निवडा — सेवेसाठी अर्ज करा, लॅपटॉप विका/खरेदी करा, किंवा शिष्यवृत्ती फॉर्म पहा.",
+  popup_cta:"📝 सेवेसाठी अर्ज करा",
+  popup_cta_laptop:"💻 लॅपटॉप विका / खरेदी करा",
+  popup_cta_scholar:"🎓 शिष्यवृत्ती फॉर्म"
 }
 };
 
@@ -1249,6 +1263,8 @@ function closePopup(){
 }
 document.getElementById('popupClose').addEventListener('click', closePopup);
 document.getElementById('popupCta').addEventListener('click', closePopup);
+document.getElementById('popupCtaLaptop').addEventListener('click', closePopup);
+document.getElementById('popupCtaScholar').addEventListener('click', closePopup);
 popup.addEventListener('click', (e) => { if(e.target === popup) closePopup(); });
 
 // Scroll reveal
