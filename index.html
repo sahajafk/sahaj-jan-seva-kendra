@@ -184,33 +184,19 @@ nav a:hover, nav a:focus-visible{color:var(--primary);}
 }
 .lang-btn.active{background:var(--primary);color:#fff;}
 
-.portal-buttons{
-  display:flex;
-  border-radius:6px;
-  overflow:hidden;
-  box-shadow:0 3px 10px rgba(0,0,0,.15);
-}
-.portal-btn{
+.btn-login{
   text-decoration:none;
-  font-weight:800;
-  font-size:11px;
-  letter-spacing:.5px;
-  padding:9px 13px;
-  text-transform:uppercase;
-  transition:filter .2s;
+  font-weight:700;
+  font-size:13px;
+  padding:9px 20px;
+  border-radius:30px;
+  background:var(--bg-alt);
+  color:var(--text);
+  border:1.5px solid var(--border);
+  transition:.2s;
+  white-space:nowrap;
 }
-.portal-btn:hover{filter:brightness(1.08);}
-.portal-staff{
-  background:#8B1E23;
-  color:#FFD447;
-  border:2px solid #FFD447;
-  border-right:none;
-}
-.portal-customer{
-  background:#0B7A3F;
-  color:#FFFFFF;
-  border:2px solid #0B7A3F;
-}
+.btn-login:hover{border-color:var(--primary);color:var(--primary);}
 .btn-apply-now{
   background:var(--primary);color:#fff;
   padding:10px 20px;border-radius:30px;font-weight:700;font-size:13px;
@@ -648,7 +634,7 @@ footer .tricolor-rule{margin:0 auto 14px;}
   .nav-toggle{display:block;}
   .nav-actions{display:none;width:100%;flex-direction:column;gap:10px;padding-top:10px;}
   .nav-actions.open{display:flex;}
-  .portal-buttons{width:100%;justify-content:center;}
+  .btn-login{width:100%;text-align:center;}
   .theme-toggle{width:100%;}
   .lang-switch{justify-content:center;}
   .btn-apply-now{text-align:center;}
@@ -713,10 +699,7 @@ footer .tricolor-rule{margin:0 auto 14px;}
 <button data-lang="hi" class="lang-btn">हिं</button>
 <button data-lang="mr" class="lang-btn">मर</button>
 </div>
-<div class="portal-buttons">
-<a class="portal-btn portal-staff" href="login.html?tab=staff" data-i18n="staff_login">Staff Login</a>
-<a class="portal-btn portal-customer" href="login.html?tab=customer" data-i18n="customer_login">Customer Login</a>
-</div>
+<a class="btn-login" href="login.html" data-i18n="nav_login">Login</a>
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
 <a href="#form" class="btn-apply-now" data-i18n="nav_apply_now">Apply Now</a>
 </div>
@@ -1033,7 +1016,7 @@ Sahaj Jan Seva Kendra is a trusted Digital &amp; Government Service Center helpi
 const TRANSLATIONS = {
 en: {
   nav_about:"About", nav_services:"Services", nav_compservices:"Computer Repair", nav_reviews:"Reviews", nav_gallery:"Gallery", nav_request:"Request", nav_contact:"Contact",
-  staff_login:"Staff Login", customer_login:"Customer Login",
+  staff_login:"Staff Login", customer_login:"Customer Login", nav_login:"Login",
   theme_dark:"🌙 Dark", theme_light:"☀️ Light",
   hero_eyebrow:"Authorised CSC · Jan Seva Kendra · Khair, Aligarh",
   hero_tagline:"All Government & Digital Services Under One Roof",
@@ -1111,7 +1094,7 @@ en: {
 },
 hi: {
   nav_about:"हमारे बारे में", nav_services:"सेवाएं", nav_compservices:"कंप्यूटर रिपेयर", nav_reviews:"समीक्षाएं", nav_gallery:"गैलरी", nav_request:"अनुरोध", nav_contact:"संपर्क",
-  staff_login:"स्टाफ लॉगिन", customer_login:"ग्राहक लॉगिन",
+  staff_login:"स्टाफ लॉगिन", customer_login:"ग्राहक लॉगिन", nav_login:"लॉगिन",
   theme_dark:"🌙 डार्क", theme_light:"☀️ लाइट",
   hero_eyebrow:"अधिकृत सीएससी · जन सेवा केंद्र · खैर, अलीगढ़",
   hero_tagline:"सभी सरकारी और डिजिटल सेवाएं एक ही छत के नीचे",
@@ -1189,7 +1172,7 @@ hi: {
 },
 mr: {
   nav_about:"आमच्याबद्दल", nav_services:"सेवा", nav_compservices:"संगणक दुरुस्ती", nav_reviews:"अभिप्राय", nav_gallery:"गॅलरी", nav_request:"विनंती", nav_contact:"संपर्क",
-  staff_login:"स्टाफ लॉगिन", customer_login:"ग्राहक लॉगिन",
+  staff_login:"स्टाफ लॉगिन", customer_login:"ग्राहक लॉगिन", nav_login:"लॉगिन",
   theme_dark:"🌙 डार्क", theme_light:"☀️ लाइट",
   hero_eyebrow:"अधिकृत सीएससी · जन सेवा केंद्र · खैर, अलीगढ",
   hero_tagline:"सर्व शासकीय आणि डिजिटल सेवा एकाच छताखाली",
