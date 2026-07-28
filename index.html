@@ -14,7 +14,10 @@
     <meta property="og:type" content="business.business">
     <meta property="og:title" content="Sahaj Jan Seva Kendra Khair Aligarh">
     <meta property="og:description" content="PAN Card, Aadhaar, Certificates, AEPS Banking & Scholarship help — Malipura, Tentigaon Road, Khair, Aligarh.">
-    <meta property="og:image" content="office1.jpeg">
+    <!-- FIX: og:image and og:url must be absolute URLs — a relative path does not resolve when
+         WhatsApp/Facebook crawlers fetch this page, so link previews were showing no image. -->
+    <meta property="og:image" content="https://sahajjansevakhair.in/office1.jpeg">
+    <meta property="og:url" content="https://sahajjansevakhair.in/">
     <meta property="og:locale" content="en_IN">
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%82%3C/text%3E%3C/svg%3E">
@@ -22,9 +25,12 @@
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- FIX: Hind supports both Latin + Devanagari in one family, so Hindi/Marathi headings no
+         longer silently fall back to a mismatched system font. Fraunces (no Devanagari glyphs)
+         is now scoped only to content that is always Latin: the wordmark and stat numerals. -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- AOS Animation CSS -->
@@ -36,14 +42,20 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1E40AF',
-                        primaryDark: '#13275C',
-                        primaryLight: '#3B5FCC',
-                        accent: '#D97706',
-                        accentHover: '#B45309',
-                        surface: '#F8FAFC',
+                        ink: '#101B33',
+                        primary: '#1B2E5C',
+                        primaryDark: '#0B1830',
+                        primaryLight: '#3E5A9E',
+                        accent: '#E08A1E',
+                        accentHover: '#B96F12',
+                        seal: '#A3273A',
+                        surface: '#FAF6EC',
                         surfaceDark: '#0B1220',
                         cardDark: '#111A2E'
+                    },
+                    fontFamily: {
+                        display: ['Fraunces', 'serif'],
+                        sans: ['Hind', 'sans-serif']
                     }
                 }
             }
@@ -55,7 +67,7 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Sahaj Jan Seva Kendra",
-      "image": "office1.jpeg",
+      "image": "https://sahajjansevakhair.in/office1.jpeg",
       "telephone": ["+91-8954214200", "+91-8954204200"],
       "email": "panmtr60@gmail.com",
       "address": {
@@ -72,16 +84,25 @@
     </script>
 
     <style>
+        body { font-family: 'Hind', sans-serif; }
+        .font-display { font-family: 'Fraunces', serif; }
+
+        /* Subtle paper texture on the light background — ties to "official document" without being loud */
+        body:not(.dark) {
+            background-image: radial-gradient(circle, rgba(27,46,92,0.05) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+
         .glass-nav {
-            background: rgba(19, 39, 92, 0.85);
+            background: rgba(16, 27, 51, 0.9);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
         }
         .dark .glass-nav {
-            background: rgba(11, 18, 32, 0.9);
+            background: rgba(11, 18, 32, 0.92);
         }
         .ticker-wrap {
-            background: #13275C;
+            background: #0B1830;
             color: #fff;
             overflow: hidden;
             white-space: nowrap;
@@ -96,6 +117,7 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-100%); }
         }
+        .hero-carousel { position: relative; }
         .hero-slide {
             position: absolute; inset: 0;
             background-size: cover; background-position: center;
@@ -107,12 +129,41 @@
         @keyframes heroFade {
             0% { opacity: 0; } 6% { opacity: 1; } 33% { opacity: 1; } 40% { opacity: 0; } 100% { opacity: 0; }
         }
+
+        /* Signature element: the seal "stamps" into place once, echoing the physical act of
+           certifying a document. */
+        .stamp-seal {
+            animation: stampPress 0.9s cubic-bezier(.2,.8,.2,1) both;
+            animation-delay: .5s;
+        }
+        @keyframes stampPress {
+            0%   { transform: scale(1.7) rotate(-16deg); opacity: 0; }
+            60%  { transform: scale(0.93) rotate(2deg);  opacity: 1; }
+            100% { transform: scale(1) rotate(-6deg);    opacity: 1; }
+        }
+        .seal-ring-text { font-size: 7.4px; letter-spacing: 2.5px; fill: currentColor; }
+
+        /* Accessible focus states — visible keyboard focus across interactive elements */
+        a:focus-visible, button:focus-visible, input:focus-visible,
+        select:focus-visible, textarea:focus-visible {
+            outline: 2px solid #E08A1E;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-track { animation: none; }
+            .stamp-seal { animation: none; opacity: 1; transform: none; }
+            .hero-slide { animation: none; opacity: 0; }
+            .hero-slide:first-child { opacity: 1; }
+            [data-aos] { animation: none !important; transition: none !important; }
+        }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-surfaceDark text-slate-800 dark:text-slate-200 font-sans antialiased selection:bg-accent selection:text-white transition-colors duration-300">
+<body class="bg-surface dark:bg-surfaceDark text-slate-800 dark:text-slate-200 font-sans antialiased selection:bg-accent selection:text-white transition-colors duration-300">
 
     <!-- SCHOLARSHIP POPUP -->
-    <div class="hidden fixed inset-0 bg-black/70 z-[2000] items-center justify-center p-4 backdrop-blur-sm" id="scholarshipPopup">
+    <div class="hidden fixed inset-0 bg-ink/70 z-[2000] items-center justify-center p-4 backdrop-blur-sm" id="scholarshipPopup">
         <div class="bg-white dark:bg-cardDark rounded-2xl max-w-md w-full p-8 text-center relative border-t-8 border-accent shadow-2xl transform transition-all" data-aos="zoom-in">
             <button class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-white text-xl font-bold" id="popupClose" aria-label="Close">✕</button>
             <div class="text-5xl mb-3">👋</div>
@@ -121,7 +172,7 @@
             <div class="flex flex-col gap-3">
                 <a href="#form" class="w-full bg-primary hover:bg-primaryDark text-white py-3 rounded-xl font-semibold shadow-lg transition-all" id="popupCta" data-i18n="popup_cta">📝 Apply for a Service</a>
                 <a href="#computer-services" class="w-full bg-accent hover:bg-accentHover text-white py-3 rounded-xl font-semibold shadow-lg transition-all" id="popupCtaLaptop" data-i18n="popup_cta_laptop">💻 Sell / Buy Laptop</a>
-                <a href="#form" class="w-full bg-primaryDark hover:bg-slate-900 text-white py-3 rounded-xl font-semibold shadow-lg transition-all" id="popupCtaScholar" data-i18n="popup_cta_scholar">🎓 Scholarship Form</a>
+                <a href="#form" class="w-full bg-primaryDark hover:bg-ink text-white py-3 rounded-xl font-semibold shadow-lg transition-all" id="popupCtaScholar" data-i18n="popup_cta_scholar">🎓 Scholarship Form</a>
             </div>
         </div>
     </div>
@@ -139,7 +190,7 @@
     <!-- NAVIGATION BAR -->
     <header class="sticky top-0 z-50 glass-nav border-b border-white/10 text-white shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 font-bold text-lg sm:text-xl tracking-wide">
+            <a href="#" class="flex items-center gap-3 font-bold text-lg sm:text-xl tracking-wide font-display">
                 <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white shadow-lg shadow-accent/40">
                     <i class="fa-solid fa-building-columns"></i>
                 </div>
@@ -165,7 +216,7 @@
                 </div>
 
                 <div class="flex rounded-xl overflow-hidden border border-white/20 text-xs font-bold">
-                    <a href="login.html?tab=staff" class="bg-red-800 text-yellow-300 px-3 py-2 hover:bg-red-900 transition-colors" data-i18n="staff_login">Staff</a>
+                    <a href="login.html?tab=staff" class="bg-seal text-white px-3 py-2 hover:bg-seal/80 transition-colors" data-i18n="staff_login">Staff</a>
                     <a href="login.html?tab=customer" class="bg-emerald-700 text-white px-3 py-2 hover:bg-emerald-800 transition-colors" data-i18n="customer_login">Customer</a>
                 </div>
 
@@ -173,7 +224,8 @@
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <button id="navToggle" class="lg:hidden text-2xl text-white focus:outline-none">☰</button>
+            <!-- FIX: aria-expanded/aria-controls added so screen readers announce menu state -->
+            <button id="navToggle" class="lg:hidden text-2xl text-white focus:outline-none" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">☰</button>
         </div>
 
         <!-- Mobile Menu Dropdown -->
@@ -196,56 +248,74 @@
     </header>
 
     <!-- HERO SECTION WITH SMOOTH SLIDER -->
-    <section class="relative bg-primaryDark text-white pt-24 pb-20 md:pt-36 md:pb-28 overflow-hidden">
-        <div class="hero-carousel">
+    <section class="relative bg-primaryDark text-white pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
+        <div class="hero-carousel absolute inset-0">
             <div class="hero-slide" style="background-image:url('office1.jpeg');"></div>
             <div class="hero-slide" style="background-image:url('office2.jpeg');"></div>
             <div class="hero-slide" style="background-image:url('office3.jpeg');"></div>
         </div>
         <div class="absolute inset-0 bg-gradient-to-r from-primaryDark/95 via-primaryDark/90 to-primary/80 z-10"></div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-20 text-center">
-            <div data-aos="fade-down" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-yellow-400 text-xs font-bold uppercase tracking-widest mb-6">
-                <i class="fa-solid fa-certificate"></i>
-                <span data-i18n="hero_eyebrow">Authorised CSC · Jan Seva Kendra · Khair, Aligarh</span>
+        <div class="max-w-7xl mx-auto px-6 relative z-20 grid md:grid-cols-[1fr_auto] gap-10 items-center">
+            <div class="text-center md:text-left">
+                <div data-aos="fade-down" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-yellow-400 text-xs font-bold uppercase tracking-widest mb-6">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span data-i18n="hero_eyebrow">Authorised CSC · Jan Seva Kendra · Khair, Aligarh</span>
+                </div>
+
+                <h1 data-aos="fade-up" data-aos-delay="100" class="font-display text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+                    SAHAJ JAN SEVA KENDRA
+                </h1>
+
+                <p data-aos="fade-up" data-aos-delay="200" class="mt-4 text-base md:text-xl text-slate-300 max-w-2xl font-light leading-relaxed mx-auto md:mx-0" data-i18n="hero_tagline">
+                    All Government &amp; Digital Services Under One Roof
+                </p>
+
+                <div data-aos="fade-up" data-aos-delay="250" class="mt-3 text-xs md:text-sm text-slate-400 space-y-1">
+                    <p>📍 Malipura, Tentigaon Road, Khair, Aligarh - 202138</p>
+                    <p>📞 8954214200 &nbsp;|&nbsp; 8954204200</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                    <a href="#form" class="w-full sm:w-auto bg-accent hover:bg-accentHover text-white font-semibold px-8 py-3.5 rounded-xl shadow-lg shadow-accent/30 hover:-translate-y-0.5 transition-all text-sm" data-i18n="hero_apply">
+                        Apply Online
+                    </a>
+                    <a href="tel:8954214200" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-8 py-3.5 rounded-xl hover:-translate-y-0.5 transition-all text-sm" data-i18n="cta_call">
+                        📞 Call Now
+                    </a>
+                </div>
+
+                <!-- Stats Bar -->
+                <div data-aos="zoom-in" data-aos-delay="400" class="mt-14 grid grid-cols-3 gap-4 max-w-2xl border border-white/10 bg-white/5 backdrop-blur-md p-4 rounded-2xl mx-auto md:mx-0">
+                    <div>
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-accent">5+</h3>
+                        <p class="text-xs text-slate-300" data-i18n="stat_years">Years Experience</p>
+                    </div>
+                    <div class="border-x border-white/10">
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-accent">1000+</h3>
+                        <p class="text-xs text-slate-300" data-i18n="stat_customers">Happy Customers</p>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-accent">25+</h3>
+                        <p class="text-xs text-slate-300" data-i18n="stat_services">Services Available</p>
+                    </div>
+                </div>
             </div>
 
-            <h1 data-aos="fade-up" data-aos-delay="100" class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto font-serif">
-                SAHAJ JAN SEVA KENDRA
-            </h1>
-
-            <p data-aos="fade-up" data-aos-delay="200" class="mt-4 text-base md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed" data-i18n="hero_tagline">
-                All Government &amp; Digital Services Under One Roof
-            </p>
-
-            <div data-aos="fade-up" data-aos-delay="250" class="mt-3 text-xs md:text-sm text-slate-400 font-mono space-y-1">
-                <p>📍 Malipura, Tentigaon Road, Khair, Aligarh - 202138</p>
-                <p>📞 8954214200 &nbsp;|&nbsp; 8954204200</p>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="300" class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#form" class="w-full sm:w-auto bg-accent hover:bg-accentHover text-white font-semibold px-8 py-3.5 rounded-xl shadow-lg shadow-accent/30 hover:-translate-y-0.5 transition-all text-sm" data-i18n="hero_apply">
-                    Apply Online
-                </a>
-                <a href="tel:8954214200" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-8 py-3.5 rounded-xl hover:-translate-y-0.5 transition-all text-sm" data-i18n="cta_call">
-                    📞 Call Now
-                </a>
-            </div>
-
-            <!-- Stats Bar -->
-            <div data-aos="zoom-in" data-aos-delay="400" class="mt-14 grid grid-cols-3 gap-4 max-w-2xl mx-auto border border-white/10 bg-white/5 backdrop-blur-md p-4 rounded-2xl">
-                <div>
-                    <h3 class="text-2xl md:text-3xl font-extrabold text-accent">5+</h3>
-                    <p class="text-xs text-slate-300" data-i18n="stat_years">Years Experience</p>
-                </div>
-                <div class="border-x border-white/10">
-                    <h3 class="text-2xl md:text-3xl font-extrabold text-accent">1000+</h3>
-                    <p class="text-xs text-slate-300" data-i18n="stat_customers">Happy Customers</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl md:text-3xl font-extrabold text-accent">25+</h3>
-                    <p class="text-xs text-slate-300" data-i18n="stat_services">Services Available</p>
-                </div>
+            <!-- Signature element: the authorised seal, stamped once on load -->
+            <div class="hidden md:flex stamp-seal shrink-0 items-center justify-center" aria-hidden="true">
+                <svg viewBox="0 0 200 200" width="190" height="190" class="text-accent/90">
+                    <defs>
+                        <path id="sealRing" d="M 100,100 m -84,0 a 84,84 0 1,1 168,0 a 84,84 0 1,1 -168,0" fill="none"/>
+                    </defs>
+                    <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="1 7" stroke-linecap="round"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                    <text class="seal-ring-text">
+                        <textPath href="#sealRing" startOffset="1%">★ AUTHORISED CSC ★ JAN SEVA KENDRA ★ KHAIR ALIGARH ★</textPath>
+                    </text>
+                    <text x="100" y="96" text-anchor="middle" font-family="Hind, sans-serif" font-size="34" font-weight="700" fill="currentColor">सहज</text>
+                    <text x="100" y="122" text-anchor="middle" font-family="Hind, sans-serif" font-size="9" letter-spacing="2" fill="currentColor">DIGITAL &amp; GOVT. SEVA</text>
+                </svg>
             </div>
         </div>
     </section>
@@ -254,23 +324,23 @@
     <div class="max-w-6xl mx-auto px-4 -mt-8 relative z-30">
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3 bg-white dark:bg-cardDark border border-slate-200 dark:border-slate-800 p-4 rounded-2xl shadow-xl backdrop-blur-lg">
             <a class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-center group" href="tel:8954214200">
-                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">📞</span>
+                <span class="w-10 h-10 rounded-full border-2 border-dashed border-accent/50 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">📞</span>
                 <span class="text-xs font-bold text-slate-700 dark:text-slate-300" data-i18n="quick_call">Call Us</span>
             </a>
             <a class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-center group" href="https://wa.me/918954214200" target="_blank" rel="noopener">
-                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">💬</span>
+                <span class="w-10 h-10 rounded-full border-2 border-dashed border-accent/50 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">💬</span>
                 <span class="text-xs font-bold text-slate-700 dark:text-slate-300" data-i18n="quick_whatsapp">WhatsApp</span>
             </a>
             <a class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-center group" href="#form">
-                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">📝</span>
+                <span class="w-10 h-10 rounded-full border-2 border-dashed border-accent/50 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">📝</span>
                 <span class="text-xs font-bold text-slate-700 dark:text-slate-300" data-i18n="quick_apply">Apply Online</span>
             </a>
             <a class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-center group" href="#services">
-                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🗂️</span>
+                <span class="w-10 h-10 rounded-full border-2 border-dashed border-accent/50 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">🗂️</span>
                 <span class="text-xs font-bold text-slate-700 dark:text-slate-300" data-i18n="quick_allservices">All Services</span>
             </a>
             <a class="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-center group col-span-2 md:col-span-1" href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener">
-                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">📍</span>
+                <span class="w-10 h-10 rounded-full border-2 border-dashed border-accent/50 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">📍</span>
                 <span class="text-xs font-bold text-slate-700 dark:text-slate-300" data-i18n="quick_directions">Directions</span>
             </a>
         </div>
@@ -280,7 +350,7 @@
     <section id="important-links" class="py-16 max-w-7xl mx-auto px-6">
         <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
             <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="links_eyebrow">Official Portals</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-6 font-serif" data-i18n="links_title">Important Links</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-6" data-i18n="links_title">Important Links</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <a class="p-3.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-primary hover:text-white rounded-xl border border-slate-200 dark:border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-2 transition-all" href="https://uidai.gov.in" target="_blank" rel="noopener">🪪 UIDAI (Aadhaar)</a>
                 <a class="p-3.5 bg-slate-50 dark:bg-slate-800/50 hover:bg-primary hover:text-white rounded-xl border border-slate-200 dark:border-slate-700 text-xs md:text-sm font-semibold flex items-center gap-2 transition-all" href="https://www.onlineservices.nsdl.com" target="_blank" rel="noopener">💳 PAN (NSDL)</a>
@@ -298,11 +368,11 @@
     <section id="about" class="py-12 max-w-7xl mx-auto px-6">
         <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
             <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="about_eyebrow">Who We Are</span>
-            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-6 font-serif" data-i18n="about_title">About Us</h2>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-6" data-i18n="about_title">About Us</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 items-center mb-8">
                 <div class="text-center">
-                    <div class="w-36 h-36 mx-auto rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white text-4xl font-black shadow-xl border-4 border-white dark:border-slate-700">
+                    <div class="w-36 h-36 mx-auto rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white text-4xl font-black shadow-xl border-4 border-white dark:border-slate-700 font-display">
                         GC
                     </div>
                     <div class="mt-3 font-bold text-lg text-primary dark:text-primaryLight">Gaurav Chaudhary</div>
@@ -314,7 +384,7 @@
             </div>
 
             <!-- Why Choose Us Grid -->
-            <h3 class="text-xl font-bold text-primary dark:text-primaryLight mb-4 font-serif" data-i18n="why_title">Why Choose Us</h3>
+            <h3 class="text-xl font-bold text-primary dark:text-primaryLight mb-4" data-i18n="why_title">Why Choose Us</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
                     <span class="text-2xl">⚡</span>
@@ -344,47 +414,46 @@
     <section id="services" class="py-12 max-w-7xl mx-auto px-6">
         <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
             <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="services_eyebrow">What We Offer</span>
-            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8 font-serif" data-i18n="services_title">Our Services</h2>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8" data-i18n="services_title">Our Services</h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <!-- Card Item template -->
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
-                    <span class="text-2xl">🪪</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">🪪</span>
                     <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc1_title">Aadhaar Card Services</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="svc1_desc">New enrollment, updates &amp; corrections.</p>
                 </div>
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
-                    <span class="text-2xl">💳</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">💳</span>
                     <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc2_title">New PAN Card</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="svc2_desc">Fresh PAN application, guided end-to-end.</p>
                 </div>
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
-                    <span class="text-2xl">✏️</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">✏️</span>
                     <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc3_title">PAN Card Correction</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="svc3_desc">Name, DOB &amp; detail corrections.</p>
                 </div>
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
-                    <span class="text-2xl">📄</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">📄</span>
                     <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc4_title">Income Certificate</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="svc4_desc">Official income proof for government use.</p>
                 </div>
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
-                    <span class="text-2xl">📜</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">📜</span>
                     <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc5_title">Caste Certificate</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="svc5_desc">Category certificates for eligible applicants.</p>
                 </div>
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
-                    <span class="text-2xl">🏠</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">🏠</span>
                     <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc6_title">Residence Certificate</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="svc6_desc">Domicile proof for local residents.</p>
                 </div>
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
-                    <span class="text-2xl">👷</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">👷</span>
                     <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc7_title">Labour Card</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="svc7_desc">Registration for construction/labour workers.</p>
                 </div>
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-accent">
-                    <span class="text-2xl">🎓</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">🎓</span>
                     <h3 class="font-bold text-sm mt-2 text-slate-900 dark:text-white" data-i18n="svc16_title">Scholarship Form (NSP)</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="svc16_desc">National Scholarship Portal form filling.</p>
                 </div>
@@ -397,26 +466,26 @@
     <section id="computer-services" class="py-12 max-w-7xl mx-auto px-6">
         <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
             <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="compsvc_eyebrow">Tech Support</span>
-            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8 font-serif" data-i18n="compsvc_title">Computer &amp; Laptop Services</h2>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8" data-i18n="compsvc_title">Computer &amp; Laptop Services</h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all">
-                    <span class="text-2xl">💻</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">💻</span>
                     <h3 class="font-bold text-sm mt-2" data-i18n="csvc1_title">Laptop Repair</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="csvc1_desc">Screen, keyboard, battery &amp; hardware fixes.</p>
                 </div>
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all">
-                    <span class="text-2xl">🖥️</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">🖥️</span>
                     <h3 class="font-bold text-sm mt-2" data-i18n="csvc2_title">Desktop / PC Repair</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="csvc2_desc">Hardware troubleshooting &amp; upgrades.</p>
                 </div>
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all">
-                    <span class="text-2xl">🔁</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">🔁</span>
                     <h3 class="font-bold text-sm mt-2" data-i18n="csvc6_title">Buy &amp; Sell Used Laptops</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="csvc6_desc">Fair-price resale &amp; exchange options.</p>
                 </div>
                 <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:shadow-md transition-all">
-                    <span class="text-2xl">🖨️</span>
+                    <span class="inline-flex w-10 h-10 rounded-full bg-primary/10 dark:bg-white/10 items-center justify-center text-xl">🖨️</span>
                     <h3 class="font-bold text-sm mt-2" data-i18n="csvc8_title">Printer Setup &amp; Repair</h3>
                     <p class="text-xs text-slate-500 mt-1" data-i18n="csvc8_desc">Installation, troubleshooting &amp; cartridge refill.</p>
                 </div>
@@ -427,9 +496,9 @@
 
     <!-- SCHOLARSHIP BANNER -->
     <section class="py-6 max-w-7xl mx-auto px-6">
-        <div data-aos="zoom-in" class="bg-gradient-to-r from-accent to-amber-700 text-white rounded-2xl p-8 md:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div data-aos="zoom-in" class="bg-gradient-to-r from-accent to-seal text-white rounded-2xl p-8 md:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-                <h3 class="text-2xl font-bold font-serif" data-i18n="scholarship_title">🎓 Scholarship Form 2026-27 — Registration Open</h3>
+                <h3 class="text-2xl font-bold" data-i18n="scholarship_title">🎓 Scholarship Form 2026-27 — Registration Open</h3>
                 <p class="text-sm opacity-90 mt-1" data-i18n="scholarship_text">Students apna documents leke aaj hi visit karein aur apna NSP scholarship form submit karayein.</p>
             </div>
             <a href="#form" class="bg-white text-accent hover:bg-slate-100 font-bold px-6 py-3 rounded-xl shadow-md hover:-translate-y-0.5 transition-all text-sm shrink-0" data-i18n="scholarship_cta">
@@ -442,19 +511,19 @@
     <section id="gallery" class="py-12 max-w-7xl mx-auto px-6">
         <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
             <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="gallery_eyebrow">Take A Look</span>
-            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8 font-serif" data-i18n="gallery_title">Our Digital Service Center</h2>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8" data-i18n="gallery_title">Our Digital Service Center</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="gallery-card group cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-img="office1.jpeg">
+                <div class="gallery-card group cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-img="office1.jpeg" role="button" tabindex="0">
                     <img src="office1.jpeg" alt="Main service desk" class="w-full h-52 object-cover rounded-xl group-hover:opacity-90 transition-opacity">
                     <h3 class="mt-3 text-center font-bold text-sm text-primary dark:text-primaryLight" data-i18n="gallery1_title">Premium Service Desk</h3>
                 </div>
-                <div class="gallery-card group cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-img="office2.jpeg">
-                    <img src="office2.jpeg" alt="Waiting Area" class="w-full h-52 object-cover rounded-xl group-hover:opacity-90 transition-opacity">
+                <div class="gallery-card group cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-img="office2.jpeg" role="button" tabindex="0">
+                    <img src="office2.jpeg" alt="Waiting area" class="w-full h-52 object-cover rounded-xl group-hover:opacity-90 transition-opacity">
                     <h3 class="mt-3 text-center font-bold text-sm text-primary dark:text-primaryLight" data-i18n="gallery2_title">Customer Support Area</h3>
                 </div>
-                <div class="gallery-card group cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-img="office3.jpeg">
-                    <img src="office3.jpeg" alt="Digital Service Workspace" class="w-full h-52 object-cover rounded-xl group-hover:opacity-90 transition-opacity">
+                <div class="gallery-card group cursor-pointer bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all hover:-translate-y-1" data-img="office3.jpeg" role="button" tabindex="0">
+                    <img src="office3.jpeg" alt="Digital service workspace" class="w-full h-52 object-cover rounded-xl group-hover:opacity-90 transition-opacity">
                     <h3 class="mt-3 text-center font-bold text-sm text-primary dark:text-primaryLight" data-i18n="gallery3_title">Digital Service Workspace</h3>
                 </div>
             </div>
@@ -463,15 +532,15 @@
 
     <!-- LIGHTBOX OVERLAY -->
     <div class="hidden fixed inset-0 bg-black/90 z-[3000] items-center justify-center p-6" id="lightbox">
-        <button class="absolute top-6 right-8 text-white text-4xl font-bold" id="lightboxClose">✕</button>
-        <img id="lightboxImg" src="" alt="Enlarged" class="max-w-full max-h-[85vh] rounded-xl shadow-2xl">
+        <button class="absolute top-6 right-8 text-white text-4xl font-bold" id="lightboxClose" aria-label="Close image">✕</button>
+        <img id="lightboxImg" src="" alt="Enlarged gallery photo" class="max-w-full max-h-[85vh] rounded-xl shadow-2xl">
     </div>
 
     <!-- ONLINE REQUEST FORM -->
     <section id="form" class="py-12 max-w-7xl mx-auto px-6">
         <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto">
             <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="form_eyebrow">Get Started</span>
-            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-6 font-serif" data-i18n="form_title">Online Work Request</h2>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-6" data-i18n="form_title">Online Work Request</h2>
 
             <form action="https://formsubmit.co/panmtr60@gmail.com" method="POST" class="space-y-4">
                 <input type="hidden" name="_captcha" value="false">
@@ -479,19 +548,22 @@
                     <input type="text" name="name" placeholder="Your Name" data-i18n-placeholder="placeholder_name" required class="w-full p-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
                 </div>
                 <div>
-                    <input type="tel" name="mobile" placeholder="Mobile Number" data-i18n-placeholder="placeholder_mobile" required class="w-full p-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
+                    <input type="tel" name="mobile" placeholder="Mobile Number" data-i18n-placeholder="placeholder_mobile" required pattern="[0-9]{10}" title="10-digit mobile number" class="w-full p-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
                 </div>
                 <div>
+                    <!-- FIX: options now carry a fixed English `value` so the email you receive always
+                         reports the service consistently, even if the visitor filled the form in Hindi/Marathi.
+                         The visible label still translates via data-i18n. -->
                     <select name="service" class="w-full p-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
-                        <option data-i18n="form_opt1">Aadhaar Service</option>
-                        <option data-i18n="form_opt2">New PAN Card</option>
-                        <option data-i18n="form_opt3">PAN Correction</option>
-                        <option data-i18n="form_opt4">Income Certificate</option>
-                        <option data-i18n="form_opt5">Caste Certificate</option>
-                        <option data-i18n="form_opt6">Domicile Certificate</option>
-                        <option data-i18n="form_opt7">AEPS Banking</option>
-                        <option data-i18n="form_opt8">Scholarship Form</option>
-                        <option data-i18n="form_opt9">Other Service</option>
+                        <option value="Aadhaar Service" data-i18n="form_opt1">Aadhaar Service</option>
+                        <option value="New PAN Card" data-i18n="form_opt2">New PAN Card</option>
+                        <option value="PAN Correction" data-i18n="form_opt3">PAN Correction</option>
+                        <option value="Income Certificate" data-i18n="form_opt4">Income Certificate</option>
+                        <option value="Caste Certificate" data-i18n="form_opt5">Caste Certificate</option>
+                        <option value="Domicile Certificate" data-i18n="form_opt6">Domicile Certificate</option>
+                        <option value="AEPS Banking" data-i18n="form_opt7">AEPS Banking</option>
+                        <option value="Scholarship Form" data-i18n="form_opt8">Scholarship Form</option>
+                        <option value="Other Service" data-i18n="form_opt9">Other Service</option>
                     </select>
                 </div>
                 <div>
@@ -508,7 +580,7 @@
     <section id="contact" class="py-12 max-w-7xl mx-auto px-6">
         <div data-aos="fade-up" class="bg-white dark:bg-cardDark p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
             <span class="text-xs font-bold uppercase tracking-widest text-accent" data-i18n="contact_eyebrow">Reach Us</span>
-            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8 font-serif" data-i18n="contact_title">Contact Us</h2>
+            <h2 class="text-3xl font-bold text-primary dark:text-primaryLight mt-1 mb-8" data-i18n="contact_title">Contact Us</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                 <div class="p-6 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-4 text-sm leading-relaxed">
@@ -516,7 +588,7 @@
                     <p>📞 <a href="tel:8954204200" class="font-bold text-primary dark:text-primaryLight hover:underline">8954204200</a></p>
                     <p>📧 <a href="mailto:panmtr60@gmail.com" class="font-bold text-primary dark:text-primaryLight hover:underline">panmtr60@gmail.com</a></p>
                     <p>📍 Malipura, Tentigaon Road, Khair, Aligarh - 202138</p>
-                    
+
                     <a href="https://maps.app.goo.gl/pT6YBHWfxtQeSeSL7" target="_blank" rel="noopener" class="inline-block pt-2">
                         <button class="bg-accent hover:bg-accentHover text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow transition-all" data-i18n="contact_map_btn">
                             Open Google Maps
@@ -525,17 +597,17 @@
                 </div>
 
                 <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 min-h-[250px]">
-                    <iframe src="https://www.google.com/maps?q=Malipura,Tentigaon+Road,Khair,Aligarh+202138&output=embed" class="w-full h-full min-h-[250px] border-0" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps?q=Malipura,Tentigaon+Road,Khair,Aligarh+202138&output=embed" class="w-full h-full min-h-[250px] border-0" loading="lazy" title="Sahaj Jan Seva Kendra location on Google Maps"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-primaryDark text-slate-400 py-12 border-t border-white/10 text-xs">
+    <footer class="bg-ink text-slate-400 py-12 border-t border-white/10 text-xs">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-8">
             <div>
-                <h4 class="text-white text-sm font-bold font-serif mb-3" data-i18n="footer_quicklinks">Quick Links</h4>
+                <h4 class="text-white text-sm font-bold mb-3" data-i18n="footer_quicklinks">Quick Links</h4>
                 <div class="space-y-2">
                     <a href="#about" class="block hover:text-white" data-i18n="nav_about">About</a>
                     <a href="#services" class="block hover:text-white" data-i18n="nav_services">Services</a>
@@ -544,21 +616,21 @@
                 </div>
             </div>
             <div>
-                <h4 class="text-white text-sm font-bold font-serif mb-3" data-i18n="links_title">Important Links</h4>
+                <h4 class="text-white text-sm font-bold mb-3" data-i18n="links_title">Important Links</h4>
                 <div class="space-y-2">
-                    <a href="https://uidai.gov.in" target="_blank" class="block hover:text-white">UIDAI (Aadhaar)</a>
-                    <a href="https://www.onlineservices.nsdl.com" target="_blank" class="block hover:text-white">PAN (NSDL)</a>
-                    <a href="https://scholarships.gov.in" target="_blank" class="block hover:text-white">National Scholarship Portal</a>
+                    <a href="https://uidai.gov.in" target="_blank" rel="noopener" class="block hover:text-white">UIDAI (Aadhaar)</a>
+                    <a href="https://www.onlineservices.nsdl.com" target="_blank" rel="noopener" class="block hover:text-white">PAN (NSDL)</a>
+                    <a href="https://scholarships.gov.in" target="_blank" rel="noopener" class="block hover:text-white">National Scholarship Portal</a>
                 </div>
             </div>
             <div>
-                <h4 class="text-white text-sm font-bold font-serif mb-3" data-i18n="footer_contact">Contact Us</h4>
+                <h4 class="text-white text-sm font-bold mb-3" data-i18n="footer_contact">Contact Us</h4>
                 <p>📞 8954214200</p>
                 <p>📧 panmtr60@gmail.com</p>
                 <p>📍 Malipura, Khair, Aligarh</p>
             </div>
         </div>
-        <div class="text-center pt-8 border-t border-white/10">
+        <div class="text-center pt-8 border-t border-white/10 font-display">
             <p>© 2026 Sahaj Jan Seva Kendra | Gaurav Chaudhary</p>
         </div>
     </footer>
@@ -694,11 +766,16 @@
             }
         };
 
+        // FIX: <html lang="..."> now updates with the chosen language, instead of always staying "en" —
+        // this matters for screen readers and for the Devanagari fonts to be interpreted correctly.
+        const LANG_ATTR = { en: 'en', hi: 'hi', mr: 'mr' };
+
         let currentLang = localStorage.getItem('lang') || 'en';
 
         function applyLanguage(lang){
             currentLang = lang;
             localStorage.setItem('lang', lang);
+            document.documentElement.lang = LANG_ATTR[lang] || 'en';
             const dict = TRANSLATIONS[lang];
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -723,7 +800,10 @@
         // Mobile Nav Toggle
         const navToggle = document.getElementById('navToggle');
         const navLinks = document.getElementById('navLinks');
-        navToggle.addEventListener('click', () => navLinks.classList.toggle('hidden'));
+        navToggle.addEventListener('click', () => {
+            const isHidden = navLinks.classList.toggle('hidden');
+            navToggle.setAttribute('aria-expanded', String(!isHidden));
+        });
 
         // Dark Mode Setup
         const themeToggle = document.getElementById('themeToggle');
@@ -739,7 +819,7 @@
                 if(themeToggleMobile) themeToggleMobile.textContent = '🌙 Dark';
             }
         }
-        
+
         let isDark = localStorage.getItem('theme') === 'dark';
         applyTheme(isDark);
 
@@ -770,16 +850,29 @@
         // Lightbox Handler
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
-        document.querySelectorAll('.gallery-card').forEach(card => {
-            card.addEventListener('click', () => {
-                lightboxImg.src = card.getAttribute('data-img');
-                lightbox.classList.remove('hidden');
-                lightbox.classList.add('flex');
-            });
-        });
-        document.getElementById('lightboxClose').addEventListener('click', () => {
+        function openLightbox(card){
+            lightboxImg.src = card.getAttribute('data-img');
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+        }
+        function closeLightbox(){
             lightbox.classList.add('hidden');
             lightbox.classList.remove('flex');
+        }
+        document.querySelectorAll('.gallery-card').forEach(card => {
+            card.addEventListener('click', () => openLightbox(card));
+            // FIX: gallery cards are keyboard-reachable (role="button" tabindex="0" added in markup)
+            // but had no keyboard handler — Enter/Space now open the lightbox too.
+            card.addEventListener('keydown', (e) => {
+                if(e.key === 'Enter' || e.key === ' '){
+                    e.preventDefault();
+                    openLightbox(card);
+                }
+            });
+        });
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape' && !lightbox.classList.contains('hidden')) closeLightbox();
         });
     </script>
 </body>
